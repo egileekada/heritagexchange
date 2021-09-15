@@ -7,7 +7,7 @@ export default function dashboard() {
         <div className='w-full flex flex-col h-screen overflow-hidden' style={{backgroundColor:'#EFF7FF'}}  >
             <div className='flex flex-1 overflow-hidden' >
                 <div className='w-full h-full overflow-hidden flex flex-row' >
-                    <div className='w-84 flex overflow-y-auto ' style={{backgroundColor:'#1123AB'}} >
+                    <div className='flex overflow-y-auto ' style={{backgroundColor:'#1123AB', width: '261px'}} >
                         <SideBar />
                     </div>
                     <div className='w-full h-full'>
