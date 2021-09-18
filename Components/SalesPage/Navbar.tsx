@@ -47,8 +47,8 @@ export default function Navbar() {
                         <a href='#' className='py-2 cursor-pointer ' >Testimonials</a>
                         <a href='#' className='py-2 cursor-pointer ' >Get The App</a>
                         <a href='#' className='py-2 cursor-pointer ' >Support</a> 
-                        <a href='#' className='py-2 cursor-pointer ' >Support</a> 
-                        <a href='#' className='py-2 cursor-pointer ' >Support</a> 
+                        <a href='/register' className='py-2 cursor-pointer ' >Create Account</a> 
+                        <a href='/login' className='py-2 cursor-pointer ' >Log In</a> 
                         {/* <Link href="/">
                             <p onClick={()=>setMenu(false)} className="text-sm py-2 cursor-pointer ">Home</p>
                         </Link>

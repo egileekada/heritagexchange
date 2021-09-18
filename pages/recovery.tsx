@@ -20,6 +20,7 @@ export default function recovery() {
                 </div>
                 <div className='w-full h-full flex justify-center items-center ' >
                     <div className='bg-white w-full h-full flex justify-center flex-col py-24  py-14 px-6 lg:px-40 rounded-lg' >
+                        <p className='font-Inter-ExtraBold text-2xl text-esdiac_text flex lg:hidden mb-8'>HX</p>
                         <p className='font-Inter-SemiBold text-xl text-esdiac_text' >Forgot Password</p>
                         <p className='font-Inter-Regular my-2 text-xs text-esdiac_text' >We’ll send you a link to reset your password via email</p>
                         <div className='w-full flex flex-col py-4' > 

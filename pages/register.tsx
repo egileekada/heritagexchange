@@ -20,6 +20,7 @@ export default function register() {
                 </div>
                 <div className='w-full h-full flex justify-center items-center overflow-y-auto ' >
                     <div className='bg-white w-full h-full flex justify-center flex-col py-20  py-14 px-6 lg:px-40 rounded-lg' >
+                        <p className='font-Inter-ExtraBold text-2xl text-esdiac_text flex lg:hidden mb-8'>HX</p>
                         <p className='font-Inter-SemiBold text-xl text-esdiac_text' >Create Your Account</p>
                         <p className='font-Inter-Regular my-2 text-xs text-esdiac_text' >Sign In To Your Account To Continue</p>
                         <div className='w-full flex flex-col py-4' > 
