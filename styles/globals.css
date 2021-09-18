@@ -26,7 +26,10 @@
   font-family: 'Inter-SemiBold';
   src: url("../public/assets/fonts/Inter-SemiBold.ttf")
 }
-
+ 
+html{  
+  scroll-behavior: smooth;
+}
 
 ::-webkit-scrollbar {
   width: 5px;
