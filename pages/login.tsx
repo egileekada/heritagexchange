@@ -40,7 +40,7 @@ export default function login() {
                             <button className='w-full h-12 text-white font-Inter-Bold text-xs mr-2 mt-4 bg-heritagebutton rounded-md' >SIGN IN</button>
                         </Link>  
                         <div className='w-full flex justify-center items-center mt-10' >
-                            <p className='font-Heebo-Regular text-xs ' >Don't Have An Account? <Link href='/register'><p className='cursor-pointer ml-1 font-Heebo-Regular text-xs' style={{color:'#0E20BE'}} >Create an Account</p></Link></p>
+                            <p className='font-Heebo-Regular text-xs flex ' >Don't Have An Account? <Link href='/register'><p className='cursor-pointer ml-1 font-Heebo-Regular text-xs' style={{color:'#0E20BE'}} >Create an Account</p></Link></p>
                         </div>
                     </div>
                 </div> 

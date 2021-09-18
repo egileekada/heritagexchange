@@ -47,8 +47,7 @@ export default function register() {
                         </Link> 
 
                         <div className='w-full flex justify-center items-center mt-10' >
-                            <p className='font-Heebo-Regular text-xs ' >Already Have An Account?
-                            <Link href='/login'><p className='cursor-pointer ml-1 font-Heebo-Regular text-xs' style={{color:'#0E20BE'}} >Sign In</p></Link></p>
+                            <p className='font-Heebo-Regular text-xs flex ' >Already Have An Account? <Link href='/login'><p className='cursor-pointer ml-1 font-Heebo-Regular text-xs' style={{color:'#0E20BE'}} >Sign In</p></Link></p>
                         </div>
                     </div>
                 </div> 
