@@ -25,9 +25,9 @@ export default function dashboard() {
                         tab === 2 ?
                             <CryptoSaving /> : 
                         tab === 3 ?
-                            <Profile /> : 
-                        tab === 4 ?
-                            <Settings /> : null
+                            <Profile /> 
+                        :  
+                            <Settings />
                         }
                     </div>
                 </div>

@@ -34,7 +34,7 @@ export default function recovery() {
                         </Link> 
 
                         <div className='w-full flex justify-center items-center mt-10' >
-                            <p className='font-Heebo-Regular text-xs ' >Don't Have An Account?<a href='/register' className='cursor-pointer ml-1 font-Heebo-Regular text-xs' style={{color:'#0E20BE'}} >Create an Account</a></p>
+                            <p className='font-Heebo-Regular text-xs ' >Don't Have An Account?<Link href='/register'><p className='cursor-pointer ml-1 font-Heebo-Regular text-xs' style={{color:'#0E20BE'}} >Create an Account</p></Link></p>
                         </div>
                     </div>
                 </div> 

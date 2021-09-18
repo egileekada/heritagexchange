@@ -13,11 +13,21 @@ export default function Navbar() {
                 <p className='text-3xl text-white mt-1 font-Inter-ExtraBold' >HX</p>
             </div>
             <div className=' mt-2 hidden lg:flex xl:flex flex-row text-white  text-sm font-Inter-Medium mx-2' >
-                <a href='#' className='mx-6' >Home</a>
-                <a href='#' className='mx-6' >Features</a>
-                <a href='#' className='mx-6' >Testimonials</a>
-                <a href='#' className='mx-6' >Get The App</a>
-                <a href='#' className='mx-6' >Support</a>   
+                <Link href='#' >
+                    <p className='mx-6 cursor-pointer ' >Home</p> 
+                </Link>
+                <Link href='#' >
+                    <p className='mx-6 cursor-pointer ' >Features</p> 
+                </Link>
+                <Link href='#' >
+                    <p className='mx-6 cursor-pointer ' >Testimonials</p> 
+                </Link>
+                <Link href='#' >
+                    <p className='mx-6 cursor-pointer ' >Get The App</p> 
+                </Link>
+                <Link href='#' >
+                    <p className='mx-6 cursor-pointer ' >Support</p> 
+                </Link> 
             </div>
             <div className='ml-12 hidden lg:flex text-white text-xs mt-2 font-Inter-SemiBold' >
                 <Link href='/register' >
@@ -42,13 +52,27 @@ export default function Navbar() {
             {menu 
                 ?
                     <div className=' w-full h-full text-white xl:hidden flex flex-col items-center mt-4'  > 
-                        <a href='#' className='py-2 cursor-pointer ' >Home</a>
-                        <a href='#' className='py-2 cursor-pointer ' >Features</a>
-                        <a href='#' className='py-2 cursor-pointer ' >Testimonials</a>
-                        <a href='#' className='py-2 cursor-pointer ' >Get The App</a>
-                        <a href='#' className='py-2 cursor-pointer ' >Support</a> 
-                        <a href='/register' className='py-2 cursor-pointer ' >Create Account</a> 
-                        <a href='/login' className='py-2 cursor-pointer ' >Log In</a> 
+                        <Link href='#' >
+                            <p className='py-2 cursor-pointer ' >Home</p> 
+                        </Link>
+                        <Link href='#' >
+                            <p className='py-2 cursor-pointer ' >Features</p> 
+                        </Link>
+                        <Link href='#' >
+                            <p className='py-2 cursor-pointer ' >Testimonials</p> 
+                        </Link>
+                        <Link href='#' >
+                            <p className='py-2 cursor-pointer ' >Get The App</p> 
+                        </Link>
+                        <Link href='#' >
+                            <p className='py-2 cursor-pointer ' >Support</p> 
+                        </Link>
+                        <Link href='/register' >
+                                <a  className='py-2 cursor-pointer ' >Create Account</a> 
+                        </Link>
+                        <Link href='/login'>
+                            <p className='py-2 cursor-pointer ' >Log In</p> 
+                        </Link>
                         {/* <Link href="/">
                             <p onClick={()=>setMenu(false)} className="text-sm py-2 cursor-pointer ">Home</p>
                         </Link>

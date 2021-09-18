@@ -31,15 +31,16 @@ export default function login() {
                             <div className=' w-full flex flex-col py-4' > 
                                 <p className='Inter-Medium text-xs' >Password</p>
                                 <Input placeholder="Password" size="lg" className=' mt-2 bg-gray_bg  border-gray_bg text-primary'  bg="#F6F6F6" focusBorderColor='white' fontSize='sm' borderColor="#F6F6F6" color="#200E32"/>
-                            </div> 
-                            <a className='font-Heebo-Regular text-xs text-right' href='/recovery' >Forgot Password?</a>
+                            </div>  
+                            <Link href='/recovery'>
+                                <p className='font-Heebo-Regular text-xs text-right cursor-pointer' >Forgot Password?</p>
+                            </Link> 
                         </div> 
                         <Link href='/dashboard'>
                             <button className='w-full h-12 text-white font-Inter-Bold text-xs mr-2 mt-4 bg-heritagebutton rounded-md' >SIGN IN</button>
-                        </Link> 
-
+                        </Link>  
                         <div className='w-full flex justify-center items-center mt-10' >
-                            <p className='font-Heebo-Regular text-xs ' >Don't Have An Account?<a href='/register' className='cursor-pointer ml-1 font-Heebo-Regular text-xs' style={{color:'#0E20BE'}} >Create an Account</a></p>
+                            <p className='font-Heebo-Regular text-xs ' >Don't Have An Account? <Link href='/register'><p className='cursor-pointer ml-1 font-Heebo-Regular text-xs' style={{color:'#0E20BE'}} >Create an Account</p></Link></p>
                         </div>
                     </div>
                 </div> 
