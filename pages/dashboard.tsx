@@ -6,7 +6,7 @@ import CryptoSaving from '../Components/Dashboard/TabScreen/CryptoSaving'
 import Profile from '../Components/Dashboard/TabScreen/Profile'
 import Settings from '../Components/Dashboard/TabScreen/Settings'
 
-export default function dashboard() {
+export default function Dashboard() {
 
     const [tab, setTab] = React.useState(0)
 
