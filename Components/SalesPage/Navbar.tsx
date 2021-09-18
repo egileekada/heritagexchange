@@ -16,12 +16,16 @@ export default function Navbar() {
                 <a href='#' className='mx-6' >Home</a>
                 <a href='#' className='mx-6' >Features</a>
                 <a href='#' className='mx-6' >Testimonials</a>
-                <a href='/login' className='mx-6' >Get The App</a>
+                <a href='#' className='mx-6' >Get The App</a>
                 <a href='#' className='mx-6' >Support</a>   
             </div>
             <div className='ml-12 hidden lg:flex text-white text-xs mt-2 font-Inter-SemiBold' >
-                <button style={{width: '158px' }} className=' h-12 bg-heritagebutton mx-2 rounded-md' >Create Account</button>
-                <button style={{width: '158px' }} className=' h-12 border border-white mx-2 rounded-md' >Log In</button>
+                <Link href='/register' >
+                    <button style={{width: '158px' }} className=' h-12 bg-heritagebutton mx-2 rounded-md' >Create Account</button>
+                </Link>
+                <Link href='/login' >
+                    <button style={{width: '158px' }} className=' h-12 border border-white mx-2 rounded-md' >Log In</button>
+                </Link>
             </div>
             <div className='w-full absolute top-9 flex pr-12 justify-end'> 
                 {!menu 
@@ -42,6 +46,8 @@ export default function Navbar() {
                         <a href='#' className='py-2 cursor-pointer ' >Features</a>
                         <a href='#' className='py-2 cursor-pointer ' >Testimonials</a>
                         <a href='#' className='py-2 cursor-pointer ' >Get The App</a>
+                        <a href='#' className='py-2 cursor-pointer ' >Support</a> 
+                        <a href='#' className='py-2 cursor-pointer ' >Support</a> 
                         <a href='#' className='py-2 cursor-pointer ' >Support</a> 
                         {/* <Link href="/">
                             <p onClick={()=>setMenu(false)} className="text-sm py-2 cursor-pointer ">Home</p>
