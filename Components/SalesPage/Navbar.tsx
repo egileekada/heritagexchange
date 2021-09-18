@@ -1,22 +1,68 @@
 import React from 'react'
+import Link from 'next/link' 
+import { FiMenu } from 'react-icons/fi'; 
+import { IoMdClose } from 'react-icons/io';
 
-export default function Navbar() {
+export default function Navbar() { 
+
+    const [menu, setMenu] = React.useState(false);
+
     return (
-        <nav className='bg-heritagecolor w-full h-auto px-12 py-6 flex flex-row' >
+        <nav className='bg-heritagecolor relative w-full h-auto px-12 py-6 flex lg:flex-row xl:flex-row items-center justify-center flex-col' >
             <div className='w-full flex flex-1' >
                 <p className='text-3xl text-white mt-1 font-Inter-ExtraBold' >HX</p>
             </div>
-            <div className=' mt-4 flex flex-row text-white text-sm font-Inter-Regular mx-2' >
+            <div className=' mt-2 hidden lg:flex xl:flex flex-row text-white  text-sm font-Inter-Medium mx-2' >
                 <a href='#' className='mx-6' >Home</a>
                 <a href='#' className='mx-6' >Features</a>
                 <a href='#' className='mx-6' >Testimonials</a>
-                <a href='#' className='mx-6' >Get The App</a>
+                <a href='/login' className='mx-6' >Get The App</a>
                 <a href='#' className='mx-6' >Support</a>   
             </div>
-            <div className='ml-12 flex text-white text-sm font-Inter-SemiBold' >
-                <button style={{width: '158px', height: '48px'}} className='bg-heritagebutton mx-2 rounded-md' >Create Account</button>
-                <button style={{width: '158px', height: '48px'}} className='border border-white mx-2 rounded-md' >Log In</button>
+            <div className='ml-12 hidden lg:flex text-white text-xs mt-2 font-Inter-SemiBold' >
+                <button style={{width: '158px' }} className=' h-12 bg-heritagebutton mx-2 rounded-md' >Create Account</button>
+                <button style={{width: '158px' }} className=' h-12 border border-white mx-2 rounded-md' >Log In</button>
             </div>
+            <div className='w-full absolute top-9 flex pr-12 justify-end'> 
+                {!menu 
+                    ?
+                        <button onClick={()=> setMenu(true)} className="xl:hidden sm:flex sm:justify-end sm:w-auto sm:h-auto  text-center my-auto font-Heebo-Regular">
+                            <FiMenu size={24} color="white" />
+                        </button>
+                    :
+                        <button onClick={()=> setMenu(false)} className="xl:hidden sm:flex sm:justify-end sm:w-auto sm:h-auto text-center font-Heebo-Regular"> 
+                            <IoMdClose  size={24} color="white"/>
+                        </button>
+                }
+            </div>
+            {menu 
+                ?
+                    <div className=' w-full h-full text-white xl:hidden flex flex-col items-center mt-4'  > 
+                        <a href='#' className='py-2 cursor-pointer ' >Home</a>
+                        <a href='#' className='py-2 cursor-pointer ' >Features</a>
+                        <a href='#' className='py-2 cursor-pointer ' >Testimonials</a>
+                        <a href='#' className='py-2 cursor-pointer ' >Get The App</a>
+                        <a href='#' className='py-2 cursor-pointer ' >Support</a> 
+                        {/* <Link href="/">
+                            <p onClick={()=>setMenu(false)} className="text-sm py-2 cursor-pointer ">Home</p>
+                        </Link>
+                        <Link href="/#HowItWorks">
+                            <p onClick={()=>setMenu(false)}  className="text-sm py-2  cursor-pointer ">How It Works</p>
+                        </Link>
+                        <Link href="/#BuyCredits">
+                            <p onClick={()=>setMenu(false)}  className="text-sm py-2  cursor-pointer ">Buy Credits</p>
+                        </Link>
+                        <Link href="/#CallRates" >
+                            <p onClick={()=>setMenu(false)}  className="text-sm py-2  cursor-pointer">Call Rates</p>
+                        </Link>
+                        <Link href="/#Support">
+                            <p onClick={()=>setMenu(false)}  className="text-sm py-2  cursor-pointer ">Supports</p>
+                        </Link>
+                        <Link href="/login">
+                            <p onClick={()=>setMenu(false)}  className="text-sm py-2  cursor-pointer ">My Account</p>
+                        </Link> */}
+                    </div>
+            :null}
         </nav>
     )
 }

@@ -1,14 +1,18 @@
 import React from 'react'
-import SideBarIcons from '../Icons/SideBarIcons';
+import SideBarIcons from '../../Icons/SideBarIcons';
 
-export default function SideBar() {
+export default function SideBar(props: any) {
 
     const [tab, setTab] = React.useState(0)
     const [section, setSection] = React.useState(0)
+    const [tabName,setTabName] = React.useState('Dashboard')
 
-    const ClickHandler =(index: any, subindex: any)=> {
+    const ClickHandler =(index: any, subindex: any, tab: any, name: any)=> {
         setTab(subindex);
         setSection(index);
+        setTabName(name);
+        console.log(tab)
+        props.tab(tab)
     }
 
     const TabArray = [
@@ -17,15 +21,18 @@ export default function SideBar() {
             tabs: [ 
                     {
                         name: 'Dashboard',
-                        img: ''
+                        img: '',
+                        index: 0
                     }, 
                     {
                         name: 'Transactions',
-                        img: ''
+                        img: '',
+                        index: 1
                     }, 
                     {
                         name: 'Crypto Savings',
-                        img: ''
+                        img: '',
+                        index: 2
                     }
                 ]
         },
@@ -34,11 +41,13 @@ export default function SideBar() {
             tabs: [ 
                     {
                         name: 'Profile',
-                        img: ''
+                        img: '',
+                        index: 3
                     }, 
                     {
                         name: 'Settings',
-                        img: ''
+                        img: '',
+                        index: 4
                     } 
                 ]
         }   
@@ -56,9 +65,9 @@ export default function SideBar() {
                                         <p className='text-sm text-white font-Inter-SemiBold' >{item.title}</p>
                                         {item.tabs.map((item: any, subindex: any)=> {
                                             return( 
-                                                    <div key={subindex} onClick={()=> ClickHandler(index, subindex)}  className=' w-full h-5 my-8 items-center flex flex-row text-xs cursor-pointer' >
-                                                        <SideBarIcons  name={item.name} />
-                                                        <p className={subindex === tab && index === section ? 'w-full flex flex-1 text-activetabtext ml-4 ':'w-full flex flex-1 text-tabtext ml-4'} >{item.name}</p>
+                                                    <div key={subindex} onClick={()=> ClickHandler(index, subindex, item.index, item.name)}  className=' w-full h-5 my-8 items-center flex flex-row text-xs cursor-pointer' >
+                                                        <SideBarIcons  name={item.name} tab={tabName} />
+                                                        <p className={subindex === tab && index === section ? 'w-full flex flex-1 text-activetabtext font-Inter-SemiBold ml-4 ':'w-full flex flex-1 font-Inter-Regular text-tabtext ml-4'} >{item.name}</p>
                                                         <div style={{width:'1.7px'}} className={subindex === tab && index === section ? 'h-full bg-white mr-1':'bg-transparent'} />
                                                     </div> 
                                                 ) 

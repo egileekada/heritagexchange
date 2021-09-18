@@ -17,12 +17,16 @@ module.exports = {
       current: 'currentColor',
       heritagecolor: '#061377',
       heritagebutton: '#1526A7',
+      transinactive: '#C6C6C6',
       activetabtext: '#FFFFFFE5',
       tabtext: '#FFFFFF96',
       inactiveiconhigh: '#979ED4',
       inactiveiconlow: '#4554BB',
       activeiconhigh: '#FFFFFF',
       activeiconlow: '#717BCD',
+      cancelcolor: '#D52C60',
+      pendingcolor: '#C97C16',
+      completecolor: '#148B3E',
 
       // 4554BB, 979ED4 inacti
       // 717BCD FFFFFF
@@ -75,7 +79,8 @@ module.exports = {
       80: '20rem',
       84: '21.5rem',
       96: '24rem', 
-      98: '28rem', 
+      98: '28rem',
+      '500px': '500px' 
     },
     animation: {
       none: 'none',
@@ -166,6 +171,7 @@ module.exports = {
       DEFAULT: '1px',
       0: '0px',
       2: '2px',
+      3: '3px',
       4: '4px',
       8: '8px',
     },
@@ -296,6 +302,7 @@ module.exports = {
       ],
     },
     fontSize: {
+      '12px': ['11px', { lineHeight: '1rem' }],
       xs: ['0.75rem', { lineHeight: '1rem' }],
       sm: ['0.875rem', { lineHeight: '1.25rem' }],
       base: ['1rem', { lineHeight: '1.5rem' }],
