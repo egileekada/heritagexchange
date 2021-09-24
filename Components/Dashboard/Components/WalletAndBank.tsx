@@ -5,7 +5,7 @@ export default function WalletAndBank() {
     return (
         <div className='w-full h-auto ' >
             <p className='font-Inter-Bold text-base py-2' >My Wallet Addresses</p>
-            <div className='w-full flex flex-row mt-4 py-2' >
+            <div className='w-full flex flex-col lg:flex-row mt-4 py-2' >
                 <div className='w-full flex flex-col mr-4 ' >  
                     <div className='w-full flex flex-col py-3 ' > 
                         <p className='font-Inter-SemiBold text-xs pb-2' >BTC Address</p>
@@ -16,13 +16,13 @@ export default function WalletAndBank() {
                         <Input variant="filled" fontSize='sm' size="lg" />
                     </div> 
                 </div>
-                <div className='w-full flex flex-col py-3 ml-4 ' > 
+                <div className='w-full flex flex-col py-3 lg:ml-4 ' > 
                     <p className='font-Inter-SemiBold text-xs pb-2' >ETH Address</p>
                     <Input variant="filled" fontSize='sm' size="lg" />
                 </div>
             </div> 
             <p className='font-Inter-Bold text-base py-2' >My Bank</p>
-            <div className='w-full flex flex-row mt-4 py-2' >
+            <div className='w-full flex flex-col lg:flex-row mt-4 py-2' >
                 <div className='w-full flex flex-col mr-4 ' >  
                     <div className='w-full flex flex-col py-3 ' > 
                         <p className='font-Inter-SemiBold text-xs pb-2' >Select Bank</p>
@@ -33,7 +33,7 @@ export default function WalletAndBank() {
                         <Input variant="filled" fontSize='sm' size="lg" />
                     </div> 
                 </div>
-                <div className='w-full flex flex-col py-3 ml-4 ' > 
+                <div className='w-full flex flex-col py-3 lg:ml-4 ' > 
                     <p className='font-Inter-SemiBold text-xs pb-2' >Name On Account</p>
                     <Input variant="filled" fontSize='sm' size="lg" />
                 </div>

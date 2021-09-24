@@ -9,9 +9,9 @@ export default function TranscationTab() {
     const ItemArray = ['Cancelled', 'Pending', 'Completed', 'Cancelled' ]
 
     return (
-        <div className='w-full h-screen pt-16 px-10 overflow-auto'  >
+        <div className='w-full h-screen pt-8 lg:pt-16 px-4 pb-40 lg:px-10 overflow-auto'  >
             <div className='w-full flex flex-row' >
-                <div className='flex flex-col' >
+                <div className=' flex flex-col' >
                     <p className='font-Inter-Bold text-xl'>Transaction History</p>
                     <p style={{color:'#02142FA6'}} className='font-Inter-Regular text-xs'>Here’s your transaction history</p>
                 </div>
@@ -25,7 +25,7 @@ export default function TranscationTab() {
                         <p className='font-Inter-SemiBold text-sm ' >FIAT</p>
                     </div>
                 </div>
-                <div className='py-10 px-8' > 
+                <div className='py-10 px-4 lg:px-8' > 
                     <div className='flex flex-row pb-4' >
                         <Select variant="filled" backgroundColor='#F9FAFA' className='font-Inter-Regular text-sm' size='md' placeholder="All Transactions" />
                         <div className='flex flex-row w-72 justify-center items-center ml-8 px-2  rounded-md' style={{backgroundColor:'#F9FAFA'}}  >

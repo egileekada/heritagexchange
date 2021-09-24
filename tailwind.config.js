@@ -8,7 +8,7 @@ module.exports = {
     screens: {
       sm: '640px',
       md: '768px',
-      lg: '1024px',
+      lg: '1028px',
       xl: '1280px',
       '2xl': '1536px',
     },
@@ -21,9 +21,11 @@ module.exports = {
       activetabtext: '#FFFFFFE5',
       tabtext: '#FFFFFF96',
       inactiveiconhigh: '#979ED4',
-      inactiveiconlow: '#4554BB',
+      // inactiveiconlow: '#4554BB',
       activeiconhigh: '#FFFFFF',
-      activeiconlow: '#717BCD',
+      // activeiconlow: '#717BCD',
+      activenavicon: '#2143A7',
+      inactivenavicon: '#9BA5EB',
       cancelcolor: '#D52C60',
       pendingcolor: '#C97C16',
       completecolor: '#148B3E',
@@ -80,6 +82,7 @@ module.exports = {
       84: '21.5rem',
       96: '24rem', 
       98: '28rem',
+      '252px': '252px',
       '500px': '500px' 
     },
     animation: {
@@ -595,6 +598,7 @@ module.exports = {
     },
     opacity: {
       0: '0',
+      fixed:'0.400000006',
       5: '0.05',
       10: '0.1',
       20: '0.2',
@@ -822,6 +826,7 @@ module.exports = {
       '7/12': '58.333333%',
       '8/12': '66.666667%',
       '9/12': '75%',
+       '305px':'305px',
       '10/12': '83.333333%',
       '11/12': '91.666667%',
       full: '100%',

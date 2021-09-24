@@ -4,7 +4,7 @@ import React from 'react'
 export default function PersonalInformatio() {
     return (
         <div className='w-full h-auto' > 
-            <div className='w-full flex flex-row mt-4 py-2' >
+            <div className='w-full flex flex-col lg:flex-row mt-4 py-2' >
                 <div className='w-full flex flex-col mr-4 ' >  
                     <div className='w-full flex flex-col py-3 ' > 
                         <p className='font-Inter-SemiBold text-xs pb-2' >First Name</p>
@@ -15,7 +15,7 @@ export default function PersonalInformatio() {
                         <Input variant="filled" fontSize='sm' size="lg" />
                     </div> 
                 </div>  
-                <div className='w-full flex flex-col ml-4 ' >  
+                <div className='w-full flex flex-col lg:ml-4 ' >  
                     <div className='w-full flex flex-col py-3 ' > 
                         <p className='font-Inter-SemiBold text-xs pb-2' >Last Name</p>
                         <Input placeholder='' variant="filled" fontSize='sm' size="lg" /> 

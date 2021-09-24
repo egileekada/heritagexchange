@@ -50,3 +50,12 @@ html{
   border-bottom-right-radius: 10px;
   
 } 
+
+.dashboardslide::-webkit-scrollbar {
+  display: none;
+}
+
+.dashboardslide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

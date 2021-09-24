@@ -54,6 +54,10 @@ export default function SideBar(props: any) {
     ] 
 
 
+    React.useEffect(() => {
+        setTabName(props.check)
+    },)
+
     return (
         <div className='w-full h-screen flex flex-1 flex-col pt-20' style={{backgroundColor:'#1123AB'}}>
             <div className='w-full pl-12 h-auto' style={{backgroundColor:'#1123AB'}} >
@@ -65,7 +69,7 @@ export default function SideBar(props: any) {
                                         <p className='text-sm text-white font-Inter-SemiBold' >{item.title}</p>
                                         {item.tabs.map((item: any, subindex: any)=> {
                                             return( 
-                                                    <div key={subindex} onClick={()=> ClickHandler(index, subindex, item.index, item.name)}  className=' w-full h-5 my-8 items-center flex flex-row text-xs cursor-pointer' >
+                                                    <div key={subindex} onClick={()=> ClickHandler(index, subindex, item.name, item.name)}  className=' w-full h-5 my-8 items-center flex flex-row text-xs cursor-pointer' >
                                                         <SideBarIcons  name={item.name} tab={tabName} />
                                                         <p className={subindex === tab && index === section ? 'w-full flex flex-1 text-activetabtext font-Inter-SemiBold ml-4 ':'w-full flex flex-1 font-Inter-Regular text-tabtext ml-4'} >{item.name}</p>
                                                         <div style={{width:'1.7px'}} className={subindex === tab && index === section ? 'h-full bg-white mr-1':'bg-transparent'} />

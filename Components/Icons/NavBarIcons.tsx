@@ -1,16 +1,16 @@
-import React from 'react';
+import React from 'react'
 
-export default function SideBarIcons(props: any) { 
+export default function NavBar(props: any) {
 
-    const activebghigh = 'fill-current text-activeiconhigh' 
-    const activebglow = 'fill-current text-activeiconhigh opacity-fixed'
-    const inactivebghigh = 'fill-current text-inactiveiconhigh' 
-    const inactivebglow = 'fill-current text-inactiveiconhigh opacity-fixed'   
+    const activebghigh = 'fill-current text-activenavicon' 
+    const activebglow = 'fill-current text-activenavicon opacity-fixed'
+    const inactivebghigh = 'fill-current text-inactivenavicon' 
+    const inactivebglow = 'fill-current text-inactivenavicon opacity-fixed'   
 
     return(
         <>
             {props.name === 'Transactions'  ? 
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 17 17">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 17 17">
                         {/* <defs>
                             <style>.a,.b{fill:rgba(240,240,240,0.6);}.a{opacity:0.4;}</style>
                         </defs> */}
@@ -20,7 +20,7 @@ export default function SideBarIcons(props: any) {
                         </g>
                     </svg> 
                 : props.name === 'Dashboard' ?
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 20 20">
                         {/* <defs><style>.a,.b{fill:#fff;}.b{opacity:0.4;}</style></defs> */}
                         <g transform="translate(1.667 1.667)">
                             <path className={props.tab === 'Dashboard' ? activebghigh : inactivebghigh }  d="M6.794.537a.884.884,0,0,1,.083.274l.232,3.45h0l.115,1.734a1.783,1.783,0,0,0,.083.526.869.869,0,0,0,.838.526l5.548-.363a.915.915,0,0,1,.645.25.883.883,0,0,1,.266.507l.01.117a7.235,7.235,0,0,1-5.737,6.515A7.38,7.38,0,0,1,.884,10.52,6.845,6.845,0,0,1,.054,7.9,5.015,5.015,0,0,1,0,7.076,7.246,7.246,0,0,1,5.82.011.909.909,0,0,1,6.794.537Z" transform="translate(0 2.426)"/>
@@ -28,7 +28,7 @@ export default function SideBarIcons(props: any) {
                         </g>
                     </svg>
                 : props.name === 'Crypto Savings' ?
-                    <svg xmlns="http://www.w3.org/2000/svg" width="15.45" height="18" viewBox="0 0 14.45 17">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 14.45 17">
                         {/* <defs><style>.a,.b{fill:rgba(240,240,240,0.6);}.a{opacity:0.4;}</style></defs> */}
                         <path className={props.tab === 'Crypto Savings' ? activebglow : inactivebglow } d="M7.3,17a.665.665,0,0,1-.305-.073L3.932,15.342A7.185,7.185,0,0,1,1.854,13.8,7.006,7.006,0,0,1,.036,9.146L0,3.506A1.541,1.541,0,0,1,1.044,2.05L6.664.091A1.6,1.6,0,0,1,7.71.085l5.642,1.893a1.538,1.538,0,0,1,1.062,1.441l.036,5.644a7.006,7.006,0,0,1-1.756,4.671A7.16,7.16,0,0,1,10.636,15.3L7.6,16.923A.649.649,0,0,1,7.3,17" transform="translate(0 0)"/>
                         <path className={props.tab === 'Crypto Savings' ? activebghigh : inactivebghigh } d="M2.275,4.518a.649.649,0,0,1-.455-.18L.19,2.771a.614.614,0,0,1-.005-.884.654.654,0,0,1,.908-.006L2.265,3.008,5.128.186A.654.654,0,0,1,6.036.18a.613.613,0,0,1,.006.884L2.728,4.332a.646.646,0,0,1-.453.186" transform="translate(4.371 5.955)"/>
@@ -41,10 +41,10 @@ export default function SideBarIcons(props: any) {
                             <path className={props.tab === 'Profile' ? activebglow : inactivebglow} d="M4.41,8.82A4.41,4.41,0,1,0,0,4.41,4.394,4.394,0,0,0,4.41,8.82" transform="translate(2.254)"/></g>
                     </svg>
                 :props.name === 'Settings' ?  
-                    <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="30px" height="30px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
                         <title>Iconly/Bulk/Setting</title>
                         <g id="Iconly/Bulk/Setting" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g id="Setting" transform="translate(2.499897, 2.000100)" fill={props.tab === 'Settings' ? '#ffffff' : '#979ED4'} fill-rule="nonzero">
+                            <g id="Setting" transform="translate(2.499897, 2.000100)" fill={props.tab === 'Settings' ? '#2143A7' : '#979ED4'} fill-rule="nonzero">
                                 <path d="M9.51207539,12.83 C7.9076023,12.83 6.60971643,11.58 6.60971643,10.01 C6.60971643,8.44 7.9076023,7.18 9.51207539,7.18 C11.1165485,7.18 12.3837756,8.44 12.3837756,10.01 C12.3837756,11.58 11.1165485,12.83 9.51207539,12.83" id="Path"></path>
                                 <path d="M18.730131,12.37 C18.5359591,12.07 18.2600306,11.77 17.9023455,11.58 C17.6161974,11.44 17.4322451,11.21 17.2687319,10.94 C16.7475337,10.08 17.0541209,8.95 17.9227847,8.44 C18.944742,7.87 19.2717684,6.6 18.6790331,5.61 L17.9943217,4.43 C17.411806,3.44 16.1343592,3.09 15.1226214,3.67 C14.2232989,4.15 13.0684871,3.83 12.5472888,2.98 C12.3837756,2.7 12.2917995,2.4 12.3122386,2.1 C12.3428973,1.71 12.2202625,1.34 12.0363101,1.04 C11.6581859,0.42 10.9734745,0 10.217226,0 L8.77626608,0 C8.03023719,0.02 7.34552574,0.42 6.96740151,1.04 C6.77322961,1.34 6.6608143,1.71 6.68125344,2.1 C6.70169259,2.4 6.60971643,2.7 6.44620325,2.98 C5.92500498,3.83 4.77019314,4.15 3.88109021,3.67 C2.85913283,3.09 1.59190568,3.44 0.999170395,4.43 L0.314458948,5.61 C-0.26805676,6.6 0.0589696023,7.87 1.07070741,8.44 C1.93937119,8.95 2.2459584,10.08 1.73497971,10.94 C1.56124696,11.21 1.37729463,11.44 1.09114656,11.58 C0.743681049,11.77 0.437093834,12.07 0.273580653,12.37 C-0.104543579,12.99 -0.0841044313,13.77 0.2940198,14.42 L0.999170395,15.62 C1.37729463,16.26 2.08244522,16.66 2.81825454,16.66 C3.16572005,16.66 3.574503,16.56 3.90152936,16.36 C4.15701871,16.19 4.46360592,16.13 4.80085186,16.13 C5.81258967,16.13 6.6608143,16.96 6.68125344,17.95 C6.68125344,19.1 7.62145424,20 8.8069248,20 L10.1967868,20 C11.3720378,20 12.3122386,19.1 12.3122386,17.95 C12.3428973,16.96 13.191122,16.13 14.2028598,16.13 C14.5298861,16.13 14.8364734,16.19 15.1021823,16.36 C15.4292086,16.56 15.827772,16.66 16.1854571,16.66 C16.9110468,16.66 17.6161974,16.26 17.9943217,15.62 L18.7096918,14.42 C19.0775965,13.75 19.1082552,12.99 18.730131,12.37" id="Path" opacity="0.400000006"></path>
                             </g>
@@ -54,7 +54,7 @@ export default function SideBarIcons(props: any) {
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
                         {/* <defs><style>.a,.b{fill:rgba(240,240,240,0.94);}.a{opacity:0.4;}</style></defs> */}
                         <g transform="translate(2.5 2)">
-                            <path className='fill-current text-activeiconhigh opacity-fixed' d="M0,4.446A4.526,4.526,0,0,1,4.591,0H9.624A4.515,4.515,0,0,1,14.2,4.436V15.552A4.526,4.526,0,0,1,9.613,20H4.581A4.517,4.517,0,0,1,0,15.562V4.446Z" transform="translate(4.796)"/>
+                            <path className='fill-current text-activeiconlow' d="M0,4.446A4.526,4.526,0,0,1,4.591,0H9.624A4.515,4.515,0,0,1,14.2,4.436V15.552A4.526,4.526,0,0,1,9.613,20H4.581A4.517,4.517,0,0,1,0,15.562V4.446Z" transform="translate(4.796)"/>
                             <path className='fill-current text-activeiconhigh' d="M13.537,3.134,10.569.225a.79.79,0,0,0-1.106,0,.762.762,0,0,0,0,1.089l1.625,1.593H.782a.77.77,0,1,0,0,1.54H11.091L9.465,6.043a.762.762,0,0,0,0,1.089.79.79,0,0,0,1.106,0l2.968-2.909a.761.761,0,0,0,0-1.091" transform="translate(0 6.32)"/>
                         </g>
                     </svg>
@@ -63,4 +63,3 @@ export default function SideBarIcons(props: any) {
         </>
     )
 }
-

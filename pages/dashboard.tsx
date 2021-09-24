@@ -5,26 +5,34 @@ import TranscationTab from '../Components/Dashboard/TabScreen/TranscationTab'
 import CryptoSaving from '../Components/Dashboard/TabScreen/CryptoSaving'
 import Profile from '../Components/Dashboard/TabScreen/Profile'
 import Settings from '../Components/Dashboard/TabScreen/Settings'
+import NavbarBottom from '../Components/Dashboard/Components/NavbarBottom'
+import NavbarTop from '../Components/Dashboard/Components/NavbarTop'
 
 export default function Dashboard() {
 
-    const [tab, setTab] = React.useState(0)
+    const [tab, setTab] = React.useState('Dashboard')
 
     return ( 
-        <div className='w-full flex flex-col h-screen overflow-hidden' style={{backgroundColor:'#EFF7FF'}}  >
+        <div className='w-full relative flex flex-col h-screen overflow-hidden' style={{backgroundColor:'#EFF7FF'}}  >
+            <div className='w-full lg:hidden h-auto' >
+                <NavbarTop tab={setTab} />
+            </div>
             <div className='flex flex-1 overflow-hidden' >
                 <div className='w-full h-full overflow-hidden flex flex-row' >
-                    <div className='flex w-80 overflow-y-auto ' style={{backgroundColor:'#1123AB'}} >
-                        <SideBar tab={setTab} />
-                    </div>
+                    <div className='lg:flex w-80 overflow-y-auto hidden ' style={{backgroundColor:'#1123AB'}} >
+                        <SideBar check={tab} tab={setTab} />
+                    </div> 
+                    <div className='w-full z-10 lg:hidden h-auto' >
+                        <NavbarBottom check={tab} tab={setTab} />
+                    </div> 
                     <div className='w-full h-full'>
-                        {tab === 0 ?
+                        {tab === 'Dashboard' ?
                             <DashboardTab />  :
-                        tab === 1 ?
+                        tab === 'Transactions' ?
                             <TranscationTab /> :
-                        tab === 2 ?
+                        tab === 'Crypto Savings' || tab === 'Savings' ?
                             <CryptoSaving /> : 
-                        tab === 3 ?
+                        tab === 'Profile' ?
                             <Profile /> 
                         :  
                             <Settings />
