@@ -11,7 +11,7 @@ import Notification from '../Components/Dashboard/TabScreen/Notification'
 
 export default function Dashboard() {
 
-    const [tab, setTab] = React.useState('')
+    const [tab, setTab] = React.useState('Dashboard')
 
     return ( 
         <div className='w-full relative flex flex-col h-screen overflow-hidden' style={{backgroundColor:'#EFF7FF'}}  >
