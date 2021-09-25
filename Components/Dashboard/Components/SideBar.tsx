@@ -71,8 +71,8 @@ export default function SideBar(props: any) {
                                             return( 
                                                     <div key={subindex} onClick={()=> ClickHandler(index, subindex, item.name, item.name)}  className=' w-full h-5 my-8 items-center flex flex-row text-xs cursor-pointer' >
                                                         <SideBarIcons  name={item.name} tab={tabName} />
-                                                        <p className={subindex === tab && index === section ? 'w-full flex flex-1 text-activetabtext font-Inter-SemiBold ml-4 ':'w-full flex flex-1 font-Inter-Regular text-tabtext ml-4'} >{item.name}</p>
-                                                        <div style={{width:'1.7px'}} className={subindex === tab && index === section ? 'h-full bg-white mr-1':'bg-transparent'} />
+                                                        <p className={subindex === tab && index === section && tabName === item.name ? 'w-full flex flex-1 text-activetabtext font-Inter-SemiBold ml-4 ':'w-full flex flex-1 font-Inter-Regular text-tabtext ml-4'} >{item.name}</p>
+                                                        <div style={{width:'1.7px'}} className={subindex === tab && index === section && tabName === item.name ? 'h-full bg-white mr-1':'bg-transparent'} />
                                                     </div> 
                                                 ) 
                                             })

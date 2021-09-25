@@ -3,7 +3,7 @@ import { IoIosNotificationsOutline } from 'react-icons/io';
 import PersonalInformatio from '../Components/PersonalInformatio';
 import WalletAndBank from '../Components/WalletAndBank';
 
-export default function Profile() { 
+export default function Profile(props: any) { 
 
     const [tab, setTab] = React.useState(0);
 
@@ -15,7 +15,7 @@ export default function Profile() {
                     <p style={{color:'#02142FA6'}} className='font-Inter-Regular text-xs'>Manage Your Heritage Xchange Profile Here</p>
                 </div> 
                 <div className='w-full flex flex-1' />
-                <div style={{backgroundColor:'#FFF'}}  className='w-auto hidden lg:flex mr-2 relative cursor-pointer h-auto p-3 rounded-full' >
+                <div onClick={()=> props.tab('Notify')} style={{backgroundColor:'#FFF'}}  className='w-auto hidden lg:flex mr-2 relative cursor-pointer h-auto p-3 rounded-full' >
                     <IoIosNotificationsOutline style={{color:'#3B4FE6D5'}} className='w-7 h-6' />
                 </div>
             </div>    

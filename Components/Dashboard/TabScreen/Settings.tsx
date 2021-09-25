@@ -2,7 +2,7 @@ import { Input } from '@chakra-ui/react'
 import React from 'react'
 import { IoIosNotificationsOutline } from 'react-icons/io'
 
-export default function Settings() {
+export default function Settings(props: any) {
     return (
         <div className='w-screen lg:w-full h-screen pt-8 lg:pt-16 px-4 lg:pb-0 pb-48 lg:px-10 overflow-auto'  >
             <div className='w-full flex pb-8 flex-row items-center' >
@@ -11,7 +11,7 @@ export default function Settings() {
                     <p style={{color:'#02142FA6'}} className='font-Inter-Regular text-xs'>Account Settings</p>
                 </div>  
                 <div className='w-full flex flex-1' />
-                <div style={{backgroundColor:'#FFF'}}  className='w-auto hidden lg:flex mr-2 relative cursor-pointer h-auto p-3 rounded-full' >
+                <div onClick={()=> props.tab('Notify')} style={{backgroundColor:'#FFF'}}  className='w-auto hidden lg:flex mr-2 relative cursor-pointer h-auto p-3 rounded-full' >
                     <IoIosNotificationsOutline style={{color:'#3B4FE6D5'}} className='w-7 h-6' />
                 </div>
             </div>  

@@ -3,7 +3,7 @@ import React from 'react'
 import { Select } from "@chakra-ui/react" 
 import { IoIosNotificationsOutline } from 'react-icons/io';
 
-export default function TranscationTab() {
+export default function TranscationTab(props: any) {
 
     const [tab, setTab] = React.useState(0);
 
@@ -17,7 +17,7 @@ export default function TranscationTab() {
                     <p style={{color:'#02142FA6'}} className='font-Inter-Regular text-xs'>Here’s your transaction history</p>
                 </div>
                 <div className='w-full flex flex-1' />
-                <div style={{backgroundColor:'#FFF'}}  className='w-auto hidden lg:flex mr-2 relative cursor-pointer h-auto p-3 rounded-full' >
+                <div onClick={()=> props.tab('Notify')} style={{backgroundColor:'#FFF'}}  className='w-auto hidden lg:flex mr-2 relative cursor-pointer h-auto p-3 rounded-full' >
                     <IoIosNotificationsOutline style={{color:'#3B4FE6D5'}} className='w-7 h-6 ' />
                 </div>
             </div>

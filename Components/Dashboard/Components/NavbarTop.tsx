@@ -10,7 +10,7 @@ export default function NavbarTop(props: any) {
             <div onClick={()=>props.tab('Profile')} className='w-10 h-10 rounded-full mr-2 bg-red-300' >
 
             </div>
-            <div style={{backgroundColor:'#FFFFFF17'}}  className='w-auto relative h-auto p-3 rounded-full' >
+            <div style={{backgroundColor:'#FFFFFF17'}} onClick={()=> props.tab('Notify')}  className='w-auto relative h-auto p-3 rounded-full' >
                 <div style={{backgroundColor:'#EB982A'}} className=' fixed w-3 h-3 rounded-full right-4 top-9' />
                 <IoIosNotificationsOutline className='w-8 h-7 ' />
             </div>

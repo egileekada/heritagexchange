@@ -7,10 +7,11 @@ import Profile from '../Components/Dashboard/TabScreen/Profile'
 import Settings from '../Components/Dashboard/TabScreen/Settings'
 import NavbarBottom from '../Components/Dashboard/Components/NavbarBottom'
 import NavbarTop from '../Components/Dashboard/Components/NavbarTop'
+import Notification from '../Components/Dashboard/TabScreen/Notification'
 
 export default function Dashboard() {
 
-    const [tab, setTab] = React.useState('Dashboard')
+    const [tab, setTab] = React.useState('')
 
     return ( 
         <div className='w-full relative flex flex-col h-screen overflow-hidden' style={{backgroundColor:'#EFF7FF'}}  >
@@ -27,15 +28,17 @@ export default function Dashboard() {
                     </div> 
                     <div className='w-full h-full'>
                         {tab === 'Dashboard' ?
-                            <DashboardTab />  :
+                            <DashboardTab tab={setTab} />  :
                         tab === 'Transactions' ?
-                            <TranscationTab /> :
+                            <TranscationTab tab={setTab} /> :
                         tab === 'Crypto Savings' || tab === 'Savings' ?
-                            <CryptoSaving /> : 
+                            <CryptoSaving tab={setTab} /> : 
                         tab === 'Profile' ?
-                            <Profile /> 
-                        :  
-                            <Settings />
+                            <Profile tab={setTab} /> :
+                        tab === 'Settings' ? 
+                            <Settings tab={setTab} />
+                        :
+                           <Notification /> 
                         }
                     </div>
                 </div>
