@@ -4,7 +4,7 @@ import { IoIosNotificationsOutline } from 'react-icons/io'
 
 export default function Settings() {
     return (
-        <div className='w-screen lg:w-full h-screen pt-16 px-4 lg:pb-0 pb-48 lg:px-10 overflow-auto'  >
+        <div className='w-screen lg:w-full h-screen pt-8 lg:pt-16 px-4 lg:pb-0 pb-48 lg:px-10 overflow-auto'  >
             <div className='w-full flex pb-8 flex-row items-center' >
                 <div className='flex flex-col' >
                     <p className='font-Inter-Bold text-xl'>Settings</p>

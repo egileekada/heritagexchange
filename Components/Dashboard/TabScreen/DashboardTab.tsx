@@ -3,28 +3,40 @@ import { IoIosNotificationsOutline } from 'react-icons/io';
 import BuyCoin from '../DashboardModal.tsx/BuyCoin';
 import CoinInstruction from '../DashboardModal.tsx/CoinInstruction';
 import PaymentProof from '../DashboardModal.tsx/PaymentProof';
+import SellCoin from '../DashboardModal.tsx/SellCoin';
+import SellCoinInstruction from '../DashboardModal.tsx/SellCoinInstruction';
+import SellPaymentProof from '../DashboardModal.tsx/SellPaymentProof';
 import Transaction from '../DashboardModal.tsx/Transaction';
 
 export default function DashboardTab() {
 
     const [tab, setTab] = React.useState(0);
     const [coinType, setCoinType] = React.useState('BTC')
+    const [sellCoinModal, setSellCoinModal] = React.useState(false); 
     const [buyCoinModal, setBuyCoinModal] = React.useState(false); 
     const [instructionModal, setInstructionModal] = React.useState(false); 
+    const [sellInstructionModal, setSellInstructionModal] = React.useState(false); 
     const [paymentModal, setPaymentModal] = React.useState(false); 
+    const [sellPaymentModal, setSellPaymentModal] = React.useState(true); 
     const [transactionModal, setTransactionModal] = React.useState(false); 
 
     const activeTab = 'w-full flex items-center justify-center flex-col lg:flex-row mt-2 py-4'
     const inactiveTab = 'w-full hidden items-center justify-center lg:flex flex-col lg:flex-row mt-2 py-4'
 
-    const ClickHandler =(type: any)=> {
+    const ClickHandlerBC =(type: any)=> {
         setBuyCoinModal(true);
         setCoinType(type);
     } 
 
+    const ClickHandlerSC =(type: any)=> {
+        setSellCoinModal(true);
+        setCoinType(type);
+    } 
+
+
     return ( 
     <div className='w-full h-screen overflow-y-auto overflow-x-hidden'> 
-        <div className='w-full h-screen pt-16 px-4 lg:px-10 '  >
+        <div className='w-full h-screen pt-8 lg:pt-16 px-4 lg:px-10 '  >
             <div className='w-full flex flex-row items-center' >
                 <div className='flex flex-col' >
                     <p className='font-Inter-Bold text-xl'>Dashboard</p>
@@ -52,7 +64,7 @@ export default function DashboardTab() {
                     <p className='font-Inter-Regular text-xs '>NGN: N12,293,299</p>
                 </div>
             </div>
-            <div className='w-auto h-auto dashboardslide flex flex-row pt-8 px-2 pb-44 lg:pb-6' >
+            <div className='w-auto h-auto dashboardslide flex flex-row pt-8 px-2 pb-48 lg:pb-6' >
                 <div className='w-full items-center justify-center flex flex-col pr-0 lg:pr-14' >
                     <p className='font-Inter-SemiBold hidden text-sm lg:flex  ' >Buy Cryptocurrency</p>
                     <div className='w-full rounded flex flex-row lg:hidden justify-center items-center' >
@@ -64,19 +76,19 @@ export default function DashboardTab() {
                         </div>
                     </div>
                     <div className={tab === 0 ? activeTab : inactiveTab} >
-                        <div onClick={()=> ClickHandler('BTC')} className=' w-full bg-white flex lg:flex-col py-4 px-4 lg:px-10 my-2 lg:my-0 rounded-md items-center' >
+                        <div onClick={()=> ClickHandlerBC('BTC')} className=' w-full bg-white flex lg:flex-col py-4 px-4 lg:px-10 my-2 lg:my-0 rounded-md items-center' >
                             <img src='/assets/images/BTC.png' className='w-12 h-12' />
                             <p className='text-xs font-Inter-SemiBold my-2 ml-4 lg:ml-0' >Bitcoin</p>
                             <div className='w-full lg:w-auto flex flex-1' />
                             <p style={{color:'#1526A7', backgroundColor: '#1526A70D'}} className='lg:w-24 items-center justify-center text-xs font-Inter-Medium py-1 px-4 rounded-full' >Buy BTC</p>
                         </div>
-                        <div onClick={()=> ClickHandler('ETH')} className='w-full bg-white flex lg:flex-col py-4 lg:ml-8 my-2 lg:my-0 px-4 lg:px-10 rounded-md items-center' >
+                        <div onClick={()=> ClickHandlerBC('ETH')} className='w-full bg-white flex lg:flex-col py-4 lg:ml-8 my-2 lg:my-0 px-4 lg:px-10 rounded-md items-center' >
                             <img src='/assets/images/ethereum.png' className='w-12 h-12' />
                             <p className='text-xs font-Inter-SemiBold my-2 ml-4 lg:ml-0' >Ethereum</p>
                             <div className='w-full lg:w-auto flex flex-1' />
                             <p style={{color:'#1526A7', backgroundColor: '#1526A70D'}} className='lg:w-24 items-center justify-center text-xs font-Inter-Medium py-1 px-4 rounded-full' >Buy ETH</p>
                         </div>
-                        <div onClick={()=> ClickHandler('USDT')} className='w-full bg-white flex lg:flex-col py-4 lg:ml-8 my-2 lg:my-0 px-4 lg:px-10 rounded-md items-center' >
+                        <div onClick={()=> ClickHandlerBC('USDT')} className='w-full bg-white flex lg:flex-col py-4 lg:ml-8 my-2 lg:my-0 px-4 lg:px-10 rounded-md items-center' >
                             <img src='/assets/images/tether.png' className='w-12 h-12' />
                             <p className='text-xs font-Inter-SemiBold my-2 ml-4 lg:ml-0' >Tether</p>
                             <div className='w-full lg:w-auto flex flex-1' />
@@ -85,19 +97,19 @@ export default function DashboardTab() {
                     </div> 
                     <p className='font-Inter-SemiBold hidden text-sm mt-12 lg:flex' >Sell Cryptocurrency</p>
                     <div className={tab === 1 ? activeTab : inactiveTab} >
-                        <div className='w-full bg-white flex lg:flex-col py-4 my-2 lg:my-0 px-4 lg:px-10 rounded-md items-center' >
+                        <div onClick={()=> ClickHandlerSC('BTC')}  className='w-full bg-white flex lg:flex-col py-4 my-2 lg:my-0 px-4 lg:px-10 rounded-md items-center' >
                             <img src='/assets/images/BTC.png' className='w-12 h-12' />
                             <p className='text-xs font-Inter-SemiBold my-2 ml-4 lg:ml-0' >Bitcoin</p>
                             <div className='w-full lg:w-auto flex flex-1' />
                             <p style={{color:'#1526A7', backgroundColor: '#1526A70D'}} className='lg:w-24 items-center justify-center text-xs font-Inter-Medium py-1 px-4 rounded-full' >Sell BTC</p>
                         </div>
-                        <div className='w-full bg-white flex lg:flex-col py-4 lg:ml-8 my-2 lg:my-0 px-4 lg:px-10 rounded-md items-center' >
+                        <div onClick={()=> ClickHandlerSC('ETH')}  className='w-full bg-white flex lg:flex-col py-4 lg:ml-8 my-2 lg:my-0 px-4 lg:px-10 rounded-md items-center' >
                             <img src='/assets/images/ethereum.png' className='w-12 h-12' />
                             <p className='text-xs font-Inter-SemiBold my-2 ml-4 lg:ml-0' >Ethereum</p>
                             <div className='w-full lg:w-auto flex flex-1' />
                             <p style={{color:'#1526A7', backgroundColor: '#1526A70D'}} className='lg:w-24 items-center justify-center text-xs font-Inter-Medium py-1 px-4 rounded-full' >Sell ETH</p>
                         </div>
-                        <div className='w-full bg-white flex lg:flex-col py-4 lg:ml-8 my-2 lg:my-0 px-4 lg:px-10 rounded-md items-center' >
+                        <div onClick={()=> ClickHandlerSC('USDT')} className='w-full bg-white flex lg:flex-col py-4 lg:ml-8 my-2 lg:my-0 px-4 lg:px-10 rounded-md items-center' >
                             <img src='/assets/images/tether.png' className='w-12 h-12' />
                             <p className='text-xs font-Inter-SemiBold my-2 ml-4 lg:ml-0' >Tether</p>
                             <div className='w-full lg:w-auto flex flex-1' />
@@ -110,6 +122,17 @@ export default function DashboardTab() {
                 </div>
             </div>
         </div>
+
+        {sellCoinModal ? 
+            (
+                <>
+                    <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed pb-4 px-4 inset-0 z-50 outline-none focus:outline-none"> 
+                        <SellCoin type={coinType} set={setCoinType} next={setSellInstructionModal} close={setSellCoinModal} />
+                    </div> 
+                    <div className="opacity-75 fixed flex flex-1 inset-0 z-40 bg-black"/>
+                </>
+            ) : null} 
+        
         {buyCoinModal ? 
             (
                 <>
@@ -119,6 +142,16 @@ export default function DashboardTab() {
                     <div className="opacity-75 fixed flex flex-1 inset-0 z-40 bg-black"/>
                 </>
             ) : null} 
+        
+        {sellInstructionModal ? 
+            (
+                <>
+                    <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed pb-4 px-4 inset-0 z-50 outline-none focus:outline-none"> 
+                        <SellCoinInstruction type={coinType} next={setSellPaymentModal} back={setSellCoinModal} close={setSellInstructionModal} />
+                    </div> 
+                    <div className="opacity-75 fixed flex flex-1 inset-0 z-40 bg-black"/>
+                </>
+            ) : null}  
         
         {instructionModal ? 
             (
@@ -139,6 +172,16 @@ export default function DashboardTab() {
                     <div className="opacity-75 fixed flex flex-1 inset-0 z-40 bg-black"/>
                 </>
             ) : null} 
+        
+        {sellPaymentModal ? 
+            (
+                <>
+                    <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed pb-4 px-4 inset-0 z-50 outline-none focus:outline-none"> 
+                        <SellPaymentProof close={setSellPaymentModal} next={setTransactionModal} back={setSellInstructionModal} />
+                    </div> 
+                    <div className="opacity-75 fixed flex flex-1 inset-0 z-40 bg-black"/>
+                </>
+            ) : null}
         
         {transactionModal ? 
             (

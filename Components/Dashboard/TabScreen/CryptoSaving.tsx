@@ -6,7 +6,7 @@ export default function CryptoSaving() {
     const ItemArray = ['Completed', 'Completed', 'Completed', 'Completed' ]
 
     return (
-        <div className='w-full h-screen pt-16 px-4 lg:px-10 overflow-auto'  >
+        <div className='w-full h-screen pt-8 lg:pt-16 px-4 lg:px-10 overflow-auto'  >
             <div className='w-full flex flex-row items-center' >
                 <div className='flex flex-col' >
                     <p className='font-Inter-Bold text-xl'>Crypto Savings</p>
@@ -17,7 +17,7 @@ export default function CryptoSaving() {
                     <IoIosNotificationsOutline style={{color:'#3B4FE6D5'}} className='w-7 h-6' />
                 </div>
             </div> 
-            <div className='w-full h-auto flex flex-col bg-white rounded-md my-8 lg:pb-0 pb-32 px-2 lg:px-6' >
+            <div className='w-full h-auto flex flex-col bg-white rounded-md my-8 lg:pb-0 pb-36 px-2 lg:px-6' >
                 <div className='lg:w-full dashboardslide w-auto flex overflow-x-auto flex flex-row py-10 ' >
                     <div style={{backgroundColor:'#1526A7'}} className='relative h-44 lg:h-auto w-full rounded-md text-white ' >
                         <img src='/assets/images/CryptoBg.png' style={{width: '106px'}} className=' absolute lg:h-full w-full object-cover mt-4  z-20  right-0 ' />
