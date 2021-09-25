@@ -1,4 +1,5 @@
 import React from 'react'
+import { IoIosNotificationsOutline } from 'react-icons/io';
 import PersonalInformatio from '../Components/PersonalInformatio';
 import WalletAndBank from '../Components/WalletAndBank';
 
@@ -8,11 +9,15 @@ export default function Profile() {
 
     return (
         <div className='w-full h-screen lg:pt-16 px-0 lg:px-10 overflow-auto'  >
-            <div className='w-full lg:flex hidden flex-row' >
+            <div className='w-full items-center lg:flex hidden flex-row' >
                 <div className='flex flex-col' >
                     <p className='font-Inter-Bold text-xl'>Profile</p>
                     <p style={{color:'#02142FA6'}} className='font-Inter-Regular text-xs'>Manage Your Heritage Xchange Profile Here</p>
-                </div>  
+                </div> 
+                <div className='w-full flex flex-1' />
+                <div style={{backgroundColor:'#FFF'}}  className='w-auto hidden lg:flex mr-2 relative cursor-pointer h-auto p-3 rounded-full' >
+                    <IoIosNotificationsOutline style={{color:'#3B4FE6D5'}} className='w-7 h-6' />
+                </div>
             </div>    
             <div className='w-full bg-white flex flex-col lg:my-8 lg:rounded-md' >
                 <div className='w-full h-72 lg:h-252px relative ' > 
