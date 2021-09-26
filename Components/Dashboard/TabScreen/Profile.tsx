@@ -8,7 +8,7 @@ export default function Profile(props: any) {
     const [tab, setTab] = React.useState(0);
 
     return (
-        <div className='w-full h-screen pt-8 lg:pt-16 px-0 lg:px-10 overflow-auto'  >
+        <div className='lg:w-full w-screen h-screen lg:pt-16 px-0 lg:px-10 overflow-auto'  >
             <div className='w-full items-center lg:flex hidden flex-row' >
                 <div className='flex flex-col' >
                     <p className='font-Inter-Bold text-xl'>Profile</p>
