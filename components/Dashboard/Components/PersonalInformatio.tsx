@@ -20,10 +20,10 @@ export default function PersonalInformatio() {
                         <p className='font-Inter-SemiBold text-xs pb-2' >Last Name</p>
                         <Input placeholder='' variant="filled" fontSize='sm' size="lg" /> 
                     </div> 
-                    <div className='w-full flex flex-col py-3 ' > 
+                    {/* <div className='w-full flex flex-col py-3 ' > 
                         <p className='font-Inter-SemiBold text-xs pb-2' >Phone Number</p>
                         <Input variant="filled" fontSize='sm' size="lg" />
-                    </div> 
+                    </div>  */}
                 </div>  
             </div>     
             <button className='font-Inter-SemiBold text-xs h-10 text-white mt-8 bg-heritagebutton rounded px-6' >Update</button>

@@ -1,12 +1,12 @@
 // import type { NextPage } from 'next'
 import Head from 'next/head' 
-import AboutPage from '../Components/SalesPage/AboutPage'
-import AppFeature from '../Components/SalesPage/AppFeatures'
-import AppStore from '../Components/SalesPage/AppStore'
-import Footer from '../Components/SalesPage/Footer'
-import Navbar from '../Components/SalesPage/Navbar'   
-import SecondFeature from '../Components/SalesPage/SecondFeatures'
-import ThirdFeatures from '../Components/SalesPage/ThirdFeatures'
+import AboutPage from '../components/SalesPage/AboutPage'
+import AppFeature from '../components/SalesPage/AppFeatures'
+import AppStore from '../components/SalesPage/AppStore'
+import Footer from '../components/SalesPage/Footer'
+import Navbar from '../components/SalesPage/Navbar'   
+import SecondFeature from '../components/SalesPage/SecondFeatures'
+import ThirdFeatures from '../components/SalesPage/ThirdFeatures'
 
 export default function index() {
   return (

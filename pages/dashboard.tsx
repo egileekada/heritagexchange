@@ -1,17 +1,31 @@
 import React from 'react'
-import DashboardTab from '../Components/Dashboard/TabScreen/DashboardTab'
-import SideBar from '../Components/Dashboard/Components/SideBar'
-import TranscationTab from '../Components/Dashboard/TabScreen/TranscationTab'
-import CryptoSaving from '../Components/Dashboard/TabScreen/CryptoSaving'
-import Profile from '../Components/Dashboard/TabScreen/Profile'
-import Settings from '../Components/Dashboard/TabScreen/Settings'
-import NavbarBottom from '../Components/Dashboard/Components/NavbarBottom'
-import NavbarTop from '../Components/Dashboard/Components/NavbarTop'
-import Notification from '../Components/Dashboard/TabScreen/Notification'
+import DashboardTab from '../components/Dashboard/TabScreen/DashboardTab'
+import SideBar from '../components/Dashboard/Components/SideBar'
+import TranscationTab from '../components/Dashboard/TabScreen/TranscationTab'
+import CryptoSaving from '../components/Dashboard/TabScreen/CryptoSaving'
+import Profile from '../components/Dashboard/TabScreen/Profile'
+import Settings from '../components/Dashboard/TabScreen/Settings'
+import NavbarBottom from '../components/Dashboard/Components/NavbarBottom'
+import NavbarTop from '../components/Dashboard/Components/NavbarTop'
+import Notification from '../components/Dashboard/TabScreen/Notification'
+import { IUser, UserContext } from '../context/UserContext';
+import Router from 'next/router'
 
 export default function Dashboard() {
 
     const [tab, setTab] = React.useState('Dashboard')
+    const userContext: IUser = React.useContext(UserContext); 
+
+    React.useEffect(() => { 
+        const token = localStorage.getItem('token') 
+        const details = JSON.parse(localStorage.getItem('details') as string) 
+
+        userContext.setUserData(details)
+
+        if(!token ){
+            Router.push('/login')
+        }
+    }); 
 
     return ( 
         <div className='w-full relative flex flex-col h-screen overflow-hidden' style={{backgroundColor:'#EFF7FF'}}  >

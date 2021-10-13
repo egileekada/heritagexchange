@@ -1,5 +1,6 @@
 import React from 'react'
 import SideBarIcons from '../../Icons/SideBarIcons';
+import Router from 'next/router'
 
 export default function SideBar(props: any) {
 
@@ -13,6 +14,11 @@ export default function SideBar(props: any) {
         setTabName(name);
         console.log(tab)
         props.tab(tab)
+    }
+
+    const LogOut =()=> {
+        localStorage.clear(); 
+        Router.push('/login'); 
     }
 
     const TabArray = [
@@ -85,7 +91,7 @@ export default function SideBar(props: any) {
             </div>
             <div className='w-full h-full flex items-end ' >  
             {/* <button>Log out</button> */}
-                <div className=' w-full h-auto py-6 pl-12 items-center flex flex-row text-xs cursor-pointer' style={{backgroundColor:'#0A198E'}} >
+                <div onClick={()=> LogOut()} className=' w-full h-auto py-6 pl-12 items-center flex flex-row text-xs cursor-pointer' style={{backgroundColor:'#0A198E'}} >
                     <SideBarIcons  name='LogIn' />
                     <p className='w-full flex flex-1 text-activetabtext ml-4 ' >Log out</p>
                     <div style={{width:'1.7px'}} className='h-full bg-white mr-1'/>

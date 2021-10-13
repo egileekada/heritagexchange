@@ -29,6 +29,7 @@ module.exports = {
       cancelcolor: '#D52C60',
       pendingcolor: '#C97C16',
       completecolor: '#148B3E',
+      errorRed: '#F34423',
 
       // 4554BB, 979ED4 inacti
       // 717BCD FFFFFF
@@ -77,6 +78,7 @@ module.exports = {
       56: '14rem',
       60: '15rem',
       64: '16rem',
+      70: '17rem',
       72: '18rem',
       80: '20rem',
       84: '21.5rem',

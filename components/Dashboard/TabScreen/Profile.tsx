@@ -1,11 +1,13 @@
 import React from 'react'
-import { IoIosNotificationsOutline } from 'react-icons/io';
+import { IoIosNotificationsOutline, IoMdContact } from 'react-icons/io';
 import PersonalInformatio from '../Components/PersonalInformatio';
 import WalletAndBank from '../Components/WalletAndBank';
+import { IUser, UserContext } from '../../../context/UserContext';
 
 export default function Profile(props: any) { 
 
     const [tab, setTab] = React.useState(0);
+    const userContext: IUser = React.useContext(UserContext); 
 
     return (
         <div className='lg:w-full w-screen h-screen lg:pt-16 px-0 lg:px-10 overflow-auto'  >
@@ -20,22 +22,22 @@ export default function Profile(props: any) {
                 </div>
             </div>    
             <div className='w-full bg-white flex flex-col lg:my-8 lg:rounded-md' >
-                <div className='w-full h-72 lg:h-252px relative ' > 
-                    <img src='/assets/images/ProfileBg.png' className=' absolute w-full h-full z-10 object-cover lg:rounded-t-md' />
-                    <div className='absolute w-full h-full z-20 lg:rounded-t-md' style={{backgroundColor:'#0D0D0DD5'}} />
+                <div style={{backgroundColor: '#1123AB'}} className='w-full h-72 lg:h-252px relative rounded-t-md ' > 
+                    {/* <img src='/assets/images/ProfileBg.png' className=' absolute w-full h-full z-10 object-cover lg:rounded-t-md' /> */}
+                    <div className='absolute w-full h-full z-20 lg:rounded-t-md' style={{backgroundColor:'#1123AB'}} />
                     <div className=' absolute z-30 h-full px-4 lg:px-12  w-full flex flex-col lg:flex-row text-white justify-center items-center rounded-t-md' > 
                         
                         <div className='w-full flex flex-row items-center' >
-                            <img className=' w-16 h-16 lg:w-28 lg:h-28 lg:rounded-full' src='/assets/images/Profile.png' /> 
+                            <IoMdContact className=' w-16 h-16 lg:w-28 lg:h-28 lg:rounded-full'  /> 
                             <div className='ml-4' >
                                 <p className='w-56 text-base lg:text-2xl font-Inter-Bold '>Kelechi Onye-Highway</p>
-                                <p className='text-xs font-Inter-Regular' >kessi@heritage.xchange</p>
+                                <p className='text-xs font-Inter-Regular' >{userContext.userData.email}</p>
                             </div>
                         </div>
                         <div className='w-full flex lg:flex-1' />
                         <div className=' lg:w-auto w-full p-4 border rounded lg:mt-0 mt-8 lg:mr-8' >
                             <p className='font-Inter-SemiBold text-sm' >Referral Code</p>
-                            <p className='font-Inter-Bold text-lg' >263278</p>
+                            <p className='font-Inter-Bold text-lg' >{userContext.userData._id}</p>
                             <p className=' w-full lg:w-48 font-Inter-Regular text-xs'>Refer new user to join using your code</p>
                         </div>
                     </div>
