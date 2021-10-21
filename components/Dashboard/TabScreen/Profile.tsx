@@ -1,6 +1,6 @@
 import React from 'react'
 import { IoIosNotificationsOutline, IoMdContact } from 'react-icons/io';
-import PersonalInformatio from '../Components/PersonalInformatio';
+import PersonalInformation from '../Components/PersonalInformation';
 import WalletAndBank from '../Components/WalletAndBank';
 import { IUser, UserContext } from '../../../context/UserContext';
 
@@ -22,7 +22,7 @@ export default function Profile(props: any) {
                 </div>
             </div>    
             <div className='w-full bg-white flex flex-col lg:my-8 lg:rounded-md' >
-                <div style={{backgroundColor: '#1123AB'}} className='w-full h-72 lg:h-252px relative rounded-t-md ' > 
+                <div style={{backgroundColor: '#1123AB'}} className='w-full h-72 mt-8 lg:mt-0 lg:h-252px relative rounded-t-md ' > 
                     {/* <img src='/assets/images/ProfileBg.png' className=' absolute w-full h-full z-10 object-cover lg:rounded-t-md' /> */}
                     <div className='absolute w-full h-full z-20 lg:rounded-t-md' style={{backgroundColor:'#1123AB'}} />
                     <div className=' absolute z-30 h-full px-4 lg:px-12  w-full flex flex-col lg:flex-row text-white justify-center items-center rounded-t-md' > 
@@ -30,7 +30,7 @@ export default function Profile(props: any) {
                         <div className='w-full flex flex-row items-center' >
                             <IoMdContact className=' w-16 h-16 lg:w-28 lg:h-28 lg:rounded-full'  /> 
                             <div className='ml-4' >
-                                <p className='w-56 text-base lg:text-2xl font-Inter-Bold '>Kelechi Onye-Highway</p>
+                                <p className='w-56 text-base lg:text-2xl font-Inter-Bold '>{userContext.userData.first_name} {userContext.userData.last_name}</p>
                                 <p className='text-xs font-Inter-Regular' >{userContext.userData.email}</p>
                             </div>
                         </div>
@@ -52,7 +52,7 @@ export default function Profile(props: any) {
                 </div> 
                 <div className='w-full px-4 lg:px-10 py-5 lg:pb-6 pb-56' >
                     {
-                        tab === 1 ? <WalletAndBank /> : <PersonalInformatio/>
+                        tab === 1 ? <WalletAndBank /> : <PersonalInformation/>
                     }
                 </div>
             </div> 

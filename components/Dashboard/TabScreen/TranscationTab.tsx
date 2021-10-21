@@ -10,7 +10,7 @@ export default function TranscationTab(props: any) {
     const ItemArray = ['Cancelled', 'Pending', 'Completed', 'Cancelled' ]
 
     return (
-        <div className='w-full h-screen pt-8 lg:pt-16 px-4 lg:pb-0 pb-40 lg:px-10 overflow-auto'  >
+        <div className='w-screen lg:w-full h-screen pt-8 lg:pt-16 px-4 lg:pb-0 pb-28 lg:px-10 overflow-auto'  >
             <div className='w-full flex flex-row items-center' >
                 <div className=' flex flex-col' >
                     <p className='font-Inter-Bold text-xl'>Transaction History</p>

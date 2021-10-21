@@ -9,27 +9,27 @@ import NavbarBottom from '../components/Dashboard/Components/NavbarBottom'
 import NavbarTop from '../components/Dashboard/Components/NavbarTop'
 import Notification from '../components/Dashboard/TabScreen/Notification'
 import { IUser, UserContext } from '../context/UserContext';
-import Router from 'next/router'
+import Router from 'next/router' 
 
 export default function Dashboard() {
 
-    const [tab, setTab] = React.useState('Dashboard')
-    const userContext: IUser = React.useContext(UserContext); 
+    const [tab, setTab] = React.useState('Dashboard') 
+    const userContext: IUser = React.useContext(UserContext);  
 
     React.useEffect(() => { 
         const token = localStorage.getItem('token') 
         const details = JSON.parse(localStorage.getItem('details') as string) 
 
-        userContext.setUserData(details)
+        userContext.setUserData(details) 
 
         if(!token ){
             Router.push('/login')
         }
-    }); 
+    });  
 
     return ( 
         <div className='w-full relative flex flex-col h-screen overflow-hidden' style={{backgroundColor:'#EFF7FF'}}  >
-            <div className='w-full lg:hidden h-auto' >
+            <div className='w-full pb-8 lg:hidden h-auto' >
                 <NavbarTop tab={setTab} />
             </div>
             <div className='flex flex-1 overflow-hidden' >

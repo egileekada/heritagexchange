@@ -17,8 +17,8 @@ export default function SideBar(props: any) {
     }
 
     const LogOut =()=> {
-        localStorage.clear(); 
         Router.push('/login'); 
+        localStorage.setItem('token', '')
     }
 
     const TabArray = [

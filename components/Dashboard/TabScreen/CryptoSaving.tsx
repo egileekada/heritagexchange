@@ -24,7 +24,7 @@ export default function CryptoSaving(props: any) {
     } 
 
     return (
-        <div className='w-full h-screen pt-8 lg:pt-16 px-4 lg:px-10 overflow-auto'  >
+        <div className='w-screen lg:w-full h-screen pt-8 lg:pt-16 px-4 lg:px-10 overflow-auto'  >
             <div className='w-full flex flex-row items-center' >
                 <div className='flex flex-col' >
                     <p className='font-Inter-Bold text-xl'>Crypto Savings</p>
@@ -35,7 +35,7 @@ export default function CryptoSaving(props: any) {
                     <IoIosNotificationsOutline style={{color:'#3B4FE6D5'}} className='w-7 h-6' />
                 </div>
             </div> 
-            <div className='w-full h-auto flex flex-col bg-white rounded-md my-8 lg:pb-0 pb-36 px-2 lg:px-6' >
+            <div className='w-full h-auto flex flex-col bg-white rounded-md my-8 lg:pb-0 pb-28 px-2 lg:px-6' >
                 <div className='lg:w-full dashboardslide w-auto flex overflow-x-auto flex flex-row py-10 ' >
                     <div style={{backgroundColor:'#1526A7'}} className='relative h-44 lg:h-auto w-full rounded-md text-white ' >
                         <img src='/assets/images/CryptoBg.png' style={{width: '106px'}} className=' absolute lg:h-full lg:w-auto w-full object-cover mt-4 z-10 right-0 ' />
@@ -77,7 +77,7 @@ export default function CryptoSaving(props: any) {
                         </div>
                     </div>
                 </div>
-                <div className='pb-6' > 
+                <div className='pb-4' > 
                     <p className='font-Inter-SemiBold text-lg' >History</p> 
                     {ItemArray.map((item:any, index: any)=> {
                         return( 

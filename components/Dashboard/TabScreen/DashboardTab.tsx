@@ -7,6 +7,8 @@ import SellCoin from '../DashboardModal.tsx/SellCoin';
 import SellCoinInstruction from '../DashboardModal.tsx/SellCoinInstruction';
 import SellPaymentProof from '../DashboardModal.tsx/SellPaymentProof';
 import Transaction from '../DashboardModal.tsx/Transaction';
+import { IUser, UserContext } from '../../../context/UserContext';
+// import { CyptoRate } from '../../../connections/CyptoRate';
 
 export default function DashboardTab(props: any) {
 
@@ -19,9 +21,14 @@ export default function DashboardTab(props: any) {
     const [paymentModal, setPaymentModal] = React.useState(false); 
     const [sellPaymentModal, setSellPaymentModal] = React.useState(false); 
     const [transactionModal, setTransactionModal] = React.useState(false); 
+    const userContext: IUser = React.useContext(UserContext); 
 
     const activeTab = 'w-full flex items-center justify-center flex-col lg:flex-row mt-2 py-4'
     const inactiveTab = 'w-full hidden items-center justify-center lg:flex flex-col lg:flex-row mt-2 py-4'
+    const [btc, setBtc] = React.useState('' as any)
+    const [ethereum, setEthereum] = React.useState('' as any)
+    const NairaBtc = btc * 550
+    const NairaEthereum = ethereum * 550
 
     const ClickHandlerBC =(type: any)=> {
         setBuyCoinModal(true);
@@ -33,14 +40,36 @@ export default function DashboardTab(props: any) {
         setCoinType(type);
     } 
 
+    React.useEffect(() => {
+        // GET request using fetch inside useEffect React hook
+        // if(picName === ''){
+
+            // setData()
+            fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd', {
+                method: 'GET', // or 'PUT'
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                setBtc(data[0].current_price)  
+                setEthereum(data[1].current_price)  
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            }); 
+
+    // empty dependency array means this effect will only run once (like componentDidMount in classes)
+    }, [btc, ethereum]); 
 
     return ( 
-    <div className='w-full h-screen overflow-y-auto overflow-x-hidden'> 
+    <div className='w-screen lg:w-full h-screen overflow-y-auto overflow-x-hidden'> 
         <div className='w-full h-screen pt-8 lg:pt-16 px-4 lg:px-10 '  >
             <div className='w-full flex flex-row items-center' >
                 <div className='flex flex-col' >
                     <p className='font-Inter-Bold text-xl'>Dashboard</p>
-                    <p style={{color:'#02142FA6'}} className='font-Inter-Regular text-xs'>Hi Michael, Welcome Back</p>
+                    <p style={{color:'#02142FA6'}} className='font-Inter-Regular text-xs'>Hi {userContext.userData.first_name}, Welcome Back</p>
                 </div> 
                 <div className='w-full flex flex-1' />
                 <div onClick={()=> props.tab('Notify')} style={{backgroundColor:'#FFF'}}  className='w-auto hidden lg:flex mr-2 relative cursor-pointer h-auto p-3 rounded-full' >
@@ -50,21 +79,21 @@ export default function DashboardTab(props: any) {
             <div className='lg:w-full dashboardslide w-auto flex overflow-x-auto flex-row lg:overflow-x-hidden py-10' >
                 <div style={{backgroundColor:'#1526A7'}} className=' lg:w-full flex flex-col p-6 rounded-md text-white ' >
                     <p className='font-Inter-Medium text-sm w-48' >Today’s Rate</p>
-                    <p className='font-Inter-Bold text-2xl py-2'>₦500/$</p>
+                    <p className='font-Inter-Bold text-2xl py-2'>₦550/$</p>
                     <p className='font-Inter-Regular text-xs '>Rates are updated daily</p>
                 </div>
                 <div style={{backgroundColor:'#111E7E'}} className='w-full flex flex-col ml-4 lg:ml-8 p-6 rounded-md text-white ' >
                     <p className='font-Inter-Medium text-sm w-48' >BTC Value</p>
-                    <p className='font-Inter-Bold text-2xl py-2'>$34,002</p>
-                    <p className='font-Inter-Regular text-xs '>NGN: N12,293,299</p>
+                    <p className='font-Inter-Bold text-2xl py-2'>${btc.toLocaleString('en', {useGrouping:true})}</p>
+                    <p className='font-Inter-Regular text-xs '>NGN: N{NairaBtc.toLocaleString('en', {useGrouping:true})}</p>
                 </div>
                 <div style={{backgroundColor:'#1B2364'}} className='w-full flex flex-col ml-4 lg:ml-8 p-6 rounded-md text-white ' >
                     <p className='font-Inter-Medium text-sm w-48' >Ethereum Value</p>
-                    <p className='font-Inter-Bold text-2xl py-2'>$192,923</p>
-                    <p className='font-Inter-Regular text-xs '>NGN: N12,293,299</p>
+                    <p className='font-Inter-Bold text-2xl py-2'>${ethereum.toLocaleString('en', {useGrouping:true})}</p>
+                    <p className='font-Inter-Regular text-xs '>NGN: N{NairaEthereum.toLocaleString('en', {useGrouping:true})}</p>
                 </div>
             </div>
-            <div className='w-auto h-auto dashboardslide flex flex-row pt-8 px-2 pb-48 lg:pb-6' >
+            <div className='w-auto h-auto dashboardslide flex flex-row pt-8 px-2 pb-28 lg:pb-6' >
                 <div className='w-full items-center justify-center flex flex-col pr-0 lg:pr-14' >
                     <p className='font-Inter-SemiBold hidden text-sm lg:flex  ' >Buy Cryptocurrency</p>
                     <div className='w-full rounded flex flex-row lg:hidden justify-center items-center' >
@@ -76,44 +105,44 @@ export default function DashboardTab(props: any) {
                         </div>
                     </div>
                     <div className={tab === 0 ? activeTab : inactiveTab} >
-                        <div onClick={()=> ClickHandlerBC('BTC')} className=' w-full cursor-pointer bg-white flex lg:flex-col py-4 px-4 lg:px-10 my-2 lg:my-0 rounded-md items-center' >
+                        <div className=' w-full bg-white flex lg:flex-col py-4 px-4 lg:px-10 my-2 lg:my-0 rounded-md items-center' >
                             <img src='/assets/images/BTC.png' className='w-12 h-12' />
                             <p className='text-xs font-Inter-SemiBold my-2 ml-4 lg:ml-0' >Bitcoin</p>
                             <div className='w-full lg:w-auto flex flex-1' />
-                            <p style={{color:'#1526A7', backgroundColor: '#1526A70D'}} className='lg:w-24 items-center justify-center text-xs font-Inter-Medium py-1 px-4 rounded-full' >Buy BTC</p>
+                            <p onClick={()=> ClickHandlerBC('BTC')} style={{color:'#1526A7', backgroundColor: '#1526A70D'}} className='lg:w-24 cursor-pointer items-center justify-center text-xs font-Inter-Medium py-1 px-4 rounded-full' >Buy BTC</p>
                         </div>
-                        <div onClick={()=> ClickHandlerBC('ETH')} className='w-full cursor-pointer bg-white flex lg:flex-col py-4 lg:ml-8 my-2 lg:my-0 px-4 lg:px-10 rounded-md items-center' >
+                        <div className='w-full bg-white flex lg:flex-col py-4 lg:ml-8 my-2 lg:my-0 px-4 lg:px-10 rounded-md items-center' >
                             <img src='/assets/images/ethereum.png' className='w-12 h-12' />
                             <p className='text-xs font-Inter-SemiBold my-2 ml-4 lg:ml-0' >Ethereum</p>
                             <div className='w-full lg:w-auto flex flex-1' />
-                            <p style={{color:'#1526A7', backgroundColor: '#1526A70D'}} className='lg:w-24 items-center justify-center text-xs font-Inter-Medium py-1 px-4 rounded-full' >Buy ETH</p>
+                            <p onClick={()=> ClickHandlerBC('ETH')} style={{color:'#1526A7', backgroundColor: '#1526A70D'}} className='lg:w-24 cursor-pointer items-center justify-center text-xs font-Inter-Medium py-1 px-4 rounded-full' >Buy ETH</p>
                         </div>
-                        <div onClick={()=> ClickHandlerBC('USDT')} className='w-full cursor-pointer bg-white flex lg:flex-col py-4 lg:ml-8 my-2 lg:my-0 px-4 lg:px-10 rounded-md items-center' >
+                        <div className='w-full bg-white flex lg:flex-col py-4 lg:ml-8 my-2 lg:my-0 px-4 lg:px-10 rounded-md items-center' >
                             <img src='/assets/images/tether.png' className='w-12 h-12' />
                             <p className='text-xs font-Inter-SemiBold my-2 ml-4 lg:ml-0' >Tether</p>
                             <div className='w-full lg:w-auto flex flex-1' />
-                            <p style={{color:'#1526A7', backgroundColor: '#1526A70D'}} className='lg:w-24 items-center justify-center text-xs font-Inter-Medium py-1 px-4 rounded-full' >Buy USDT</p>
+                            <p onClick={()=> ClickHandlerBC('USDT')} style={{color:'#1526A7', backgroundColor: '#1526A70D'}} className='lg:w-24 cursor-pointer  items-center justify-center text-xs font-Inter-Medium py-1 px-4 rounded-full' >Buy USDT</p>
                         </div>
                     </div> 
                     <p className='font-Inter-SemiBold hidden text-sm mt-12 lg:flex' >Sell Cryptocurrency</p>
                     <div className={tab === 1 ? activeTab : inactiveTab} >
-                        <div onClick={()=> ClickHandlerSC('BTC')}  className='w-full cursor-pointer bg-white flex lg:flex-col py-4 my-2 lg:my-0 px-4 lg:px-10 rounded-md items-center' >
+                        <div className='w-full bg-white flex lg:flex-col py-4 my-2 lg:my-0 px-4 lg:px-10 rounded-md items-center' >
                             <img src='/assets/images/BTC.png' className='w-12 h-12' />
                             <p className='text-xs font-Inter-SemiBold my-2 ml-4 lg:ml-0' >Bitcoin</p>
                             <div className='w-full lg:w-auto flex flex-1' />
-                            <p style={{color:'#1526A7', backgroundColor: '#1526A70D'}} className='lg:w-24 items-center justify-center text-xs font-Inter-Medium py-1 px-4 rounded-full' >Sell BTC</p>
+                            <p onClick={()=> ClickHandlerSC('BTC')}  style={{color:'#1526A7', backgroundColor: '#1526A70D'}} className='lg:w-24 cursor-pointer items-center justify-center text-xs font-Inter-Medium py-1 px-4 rounded-full' >Sell BTC</p>
                         </div>
-                        <div onClick={()=> ClickHandlerSC('ETH')}  className='w-full cursor-pointer bg-white flex lg:flex-col py-4 lg:ml-8 my-2 lg:my-0 px-4 lg:px-10 rounded-md items-center' >
+                        <div className='w-full bg-white flex lg:flex-col py-4 lg:ml-8 my-2 lg:my-0 px-4 lg:px-10 rounded-md items-center' >
                             <img src='/assets/images/ethereum.png' className='w-12 h-12' />
                             <p className='text-xs font-Inter-SemiBold my-2 ml-4 lg:ml-0' >Ethereum</p>
                             <div className='w-full lg:w-auto flex flex-1' />
-                            <p style={{color:'#1526A7', backgroundColor: '#1526A70D'}} className='lg:w-24 items-center justify-center text-xs font-Inter-Medium py-1 px-4 rounded-full' >Sell ETH</p>
+                            <p onClick={()=> ClickHandlerSC('ETH')}  style={{color:'#1526A7', backgroundColor: '#1526A70D'}} className='lg:w-24 cursor-pointer items-center justify-center text-xs font-Inter-Medium py-1 px-4 rounded-full' >Sell ETH</p>
                         </div>
-                        <div onClick={()=> ClickHandlerSC('USDT')} className='w-full cursor-pointer bg-white flex lg:flex-col py-4 lg:ml-8 my-2 lg:my-0 px-4 lg:px-10 rounded-md items-center' >
+                        <div className='w-full bg-white flex lg:flex-col py-4 lg:ml-8 my-2 lg:my-0 px-4 lg:px-10 rounded-md items-center' >
                             <img src='/assets/images/tether.png' className='w-12 h-12' />
                             <p className='text-xs font-Inter-SemiBold my-2 ml-4 lg:ml-0' >Tether</p>
                             <div className='w-full lg:w-auto flex flex-1' />
-                            <p style={{color:'#1526A7', backgroundColor: '#1526A70D'}} className='lg:w-24 items-center justify-center text-xs font-Inter-Medium py-1 px-4 rounded-full' >Sell USDT</p>
+                            <p onClick={()=> ClickHandlerSC('USDT')} style={{color:'#1526A7', backgroundColor: '#1526A70D'}} className='lg:w-24 cursor-pointer cursor-pointer items-center justify-center text-xs font-Inter-Medium py-1 px-4 rounded-full' >Sell USDT</p>
                         </div>
                     </div>
                 </div> 

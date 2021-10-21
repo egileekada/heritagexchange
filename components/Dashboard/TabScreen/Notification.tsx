@@ -14,7 +14,7 @@ export default function Notification() {
                     <IoIosNotificationsOutline style={{color:'#3B4FE6D5'}} className='w-7 h-6 -rotate-12 transform' />
                 </div>
             </div>  
-            <div className='w-full mt-6 pb-48 lg:pb-4 ' >
+            <div className='w-full mt-10 pb-32 lg:pb-4 ' >
                 <div className='w-full bg-heritagebutton pl-1 my-3 rounded' >
                     <div className='w-full bg-white px-6 py-8 rounded' >
                         <p className='text-sm font-Inter-Medium' >Your Transaction is processing. This might take a couple of minutes</p>

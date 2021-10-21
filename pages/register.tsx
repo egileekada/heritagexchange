@@ -23,15 +23,15 @@ export default function register() {
     });
 
     const loginSchema = yup.object({
-        firstname: yup.string().required('Your FirstName is required'),
-        lastname: yup.string().required('Your LastName is required'),
+        first_name: yup.string().required('Your FirstName is required'),
+        last_name: yup.string().required('Your LastName is required'),
         email: yup.string().email('This email is not valid').required('Your email is required'),
         password: yup.string().required('Your password is required').min(8, 'A minimium of 8 characters')
     }) 
 
     // formik
     const formik = useFormik({
-        initialValues: {firstname: '', lastname: '', email: '', password: ''},
+        initialValues: {first_name: '', last_name: '', email: '', password: ''},
         validationSchema: loginSchema,
         onSubmit: () => {},
     }); 
@@ -58,14 +58,25 @@ export default function register() {
     
             if (request.status === 200) {   
                 localStorage.setItem('token', json.data.token); 
+                localStorage.setItem('id', json.data.user._id); 
+                localStorage.setItem('details', JSON.stringify(json.data.user))
                 setLoading(false);
                 console.log(json)
                 const t1 = setTimeout(() => { 
-                    // Router.push('/dashboard'); 
+                    Router.push('/dashboard'); 
                     clearTimeout(t1);
                 }, 3000); 
   
                 setLoading(false);
+
+
+                await fetch(`https://heritage-server.herokuapp.com/auth/verify/${json.data.user._id}`, {
+                    method: 'GET',
+                    headers: {
+                    'Content-Type': 'application/json',
+                    }, 
+                });
+
             }else {
                 alert(json.message);
                 setLoading(false);
@@ -98,21 +109,21 @@ export default function register() {
                             <div className='relative w-full flex font-Inter-Regular flex-col py-2 ' > 
                                 <p className='font-Inter-Medium text-xs' >First Name</p>
                                 <Input 
-                                    name="firstname"
+                                    name="first_name"
                                     onChange={formik.handleChange}
                                     onFocus={() =>
-                                        formik.setFieldTouched("firstname", true, true)
+                                        formik.setFieldTouched("first_name", true, true)
                                     }  
                                     placeholder="First Name" size="lg" className=' mt-2 bg-gray_bg border-gray_bg text-primary '  bg="#F6F6F6" focusBorderColor='white' fontSize='xs' borderColor="#F6F6F6" color="#200E32"/>
                                 
                                 <div className="w-full h-auto pt-2">
-                                    {formik.touched.firstname && formik.errors.firstname && (
+                                    {formik.touched.first_name && formik.errors.first_name && (
                                         <motion.p
                                             initial={{ y: -100, opacity: 0 }}
                                             animate={{ y: 0, opacity: 1 }}
                                             className="text-xs font-Inter-Regular text-errorRed"
                                         >
-                                            {formik.errors.firstname}
+                                            {formik.errors.first_name}
                                         </motion.p>
                                     )}
                                 </div>
@@ -121,21 +132,21 @@ export default function register() {
                             <div className='relative w-full flex font-Inter-Regular flex-col py-2 ' > 
                                 <p className='font-Inter-Medium text-xs' >Last Name</p>
                                 <Input 
-                                    name="lastname"
+                                    name="last_name"
                                     onChange={formik.handleChange}
                                     onFocus={() =>
-                                        formik.setFieldTouched("lastname", true, true)
+                                        formik.setFieldTouched("last_name", true, true)
                                     }  
                                     placeholder="Last Name" size="lg" className=' mt-2 bg-gray_bg border-gray_bg text-primary '  bg="#F6F6F6" focusBorderColor='white' fontSize='xs' borderColor="#F6F6F6" color="#200E32"/>
                                 
                                 <div className="w-full h-auto pt-2">
-                                    {formik.touched.lastname && formik.errors.lastname && (
+                                    {formik.touched.last_name && formik.errors.last_name && (
                                         <motion.p
                                             initial={{ y: -100, opacity: 0 }}
                                             animate={{ y: 0, opacity: 1 }}
                                             className="text-xs font-Inter-Regular text-errorRed"
                                         >
-                                            {formik.errors.lastname}
+                                            {formik.errors.last_name}
                                         </motion.p>
                                     )}
                                 </div>
