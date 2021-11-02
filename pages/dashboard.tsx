@@ -26,10 +26,10 @@ export default function Dashboard() {
         const token = localStorage.getItem('token') 
         const details = JSON.parse(localStorage.getItem('details') as string) 
 
-        {isLoading ?   
-            userContext.setUserData(details):   
-            userContext.setUserData(data.data.user)
-        }
+        // {isLoading ?   
+            userContext.setUserData(details)
+        //     userContext.setUserData(data.data.user)
+        // }
 
         if(!token ){
             Router.push('/login')
