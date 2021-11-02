@@ -28,6 +28,11 @@ export default function NavbarTop(props: any) {
         }
     }
 
+    const TabClick =()=> {
+        props.tab('Profile')
+        setShow(false)
+    }
+
     return (
         <div style={{backgroundColor: '#1123AB'}} className='w-full fixed top-0 z-50 flex items-center justify-center text-white flex-row py-8 px-4' >
             <p className='font-Inter-Bold text-lg ' >Heritage <span className='font-Inter-Regular' >Exchange</span></p>
@@ -35,7 +40,7 @@ export default function NavbarTop(props: any) {
             <IoIosMenu onClick={()=> ClickHandler()} className='w-8 h-10 rounded-full mr-2' />
             {show ? 
                 <div className=' fixed top-20 rounded py-4 px-4 right-8 bg-white' >
-                    <div onClick={()=>props.tab('Profile')} className='flex items-center mb-4' >
+                    <div onClick={()=> TabClick()} className='flex items-center mb-4' >
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
                             {/* <defs><style>.a,.b{fill:rgba(240,240,240,0.6);}.b{opacity:0.4;}</style></defs> */}
                             <g transform="translate(3.333 1.666)">
