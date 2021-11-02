@@ -1,4 +1,5 @@
 import { Input } from '@chakra-ui/react'
+import Router from "next/router";
 import React from 'react'
 import { IUser, UserContext } from '../../../context/UserContext';
 
@@ -7,11 +8,13 @@ export default function PersonalInformation() {
     const userContext: IUser = React.useContext(UserContext); 
     const [firstName, setFirstName] = React.useState(userContext.userData.first_name);
     const [lastName, setLastName] = React.useState(userContext.userData.last_name);  
+    const [loading, setLoading] = React.useState(false);
 
     // console.log(firstName)
 
     const submit = async () => {
-        const request = await fetch(`https://heritage-server.herokuapp.com/user/edit/names/${localStorage.getItem('id')}`, {
+        setLoading(true)
+        await fetch(`https://heritage-server.herokuapp.com/user/edit/names/${localStorage.getItem('id')}`, {
             method: 'PUT',
             headers: {
             'Content-Type': 'application/json',
@@ -21,10 +24,9 @@ export default function PersonalInformation() {
                 last_name: lastName 
             }),
         });
-
-        const json = await request.json();
-        // localStorage.setItem('details', JSON.stringify(json.data.user))
-        console.log(json)
+        
+        setLoading(false)
+        Router.reload()
     }
 
     return (
@@ -51,7 +53,16 @@ export default function PersonalInformation() {
                     </div>  */}
                 </div>  
             </div>     
-            <button onClick={()=> submit()} className='font-Inter-SemiBold text-xs h-10 text-white mt-8 bg-heritagebutton rounded px-6' >Update</button>
+            <button onClick={()=> submit()} className='font-Inter-SemiBold flex items-center text-xs h-10 text-white mt-8 bg-heritagebutton rounded px-6' >
+                {!loading ? 
+                    <div className='py-1' >
+                        UPDATE
+                    </div>:
+                    <>
+                        <div className="animate-spin rounded-full h-6 w-6 mr-4 border-t-2 border-b-2 border-white"></div>
+                        LOADING
+                    </>
+                } </button>
         </div>
     )
 }

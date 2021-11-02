@@ -40,11 +40,7 @@ export default function DashboardTab(props: any) {
         setCoinType(type);
     } 
 
-    React.useEffect(() => {
-        // GET request using fetch inside useEffect React hook
-        // if(picName === ''){
-
-            // setData()
+    React.useEffect(() => { 
             fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd', {
                 method: 'GET', // or 'PUT'
                 headers: {
