@@ -54,9 +54,9 @@ export default function CoinInstruction(props: any) {
                 <div className='w-full flex flex-col ' >
                     <p className='font-Inter-SemiBold text-xs mt-4 mb-2'>Payment Instructions</p>  
                     <p className=' w-full lg:w-84 font-Inter-Regular my-2 text-xs'>Send money to the account below and use the transaction reference - <span className='font-Inter-Bold' >DAYYSABS</span></p>  
-                    <p className='font-Inter-Bold my-2 text-xs' >Account No: <span className='font-Inter-Regular'>0237941112</span></p>
-                    <p className='font-Inter-Bold my-2 text-xs' >Bank: <span className='font-Inter-Regular'>Wema Bank</span></p>
-                    <p className='font-Inter-Bold my-2 text-xs' >Account Name: <span className='font-Inter-Regular'>HeritageXchange</span></p>
+                    <p className='font-Inter-Bold my-2 text-xs' >Account No: <span className='font-Inter-Regular'>2212043451</span></p>
+                    <p className='font-Inter-Bold my-2 text-xs' >Bank: <span className='font-Inter-Regular'>Zenith Bank</span></p>
+                    <p className='font-Inter-Bold my-2 text-xs' >Account Name: <span className='font-Inter-Regular'>Uche heritage</span></p>
                     <button onClick={()=> NextPage()} style={{backgroundColor:'#1526A7'}} className='w-full py-4 my-6 font-Inter-Medium rounded text-xs text-white' >Upload Payment Proof</button>
                 </div>
             </div>
