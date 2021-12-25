@@ -1,4 +1,5 @@
 // import type { NextPage } from 'next'
+import React from 'react'
 import Head from 'next/head' 
 import AboutPage from '../components/SalesPage/AboutPage'
 import AppFeature from '../components/SalesPage/AppFeatures'
@@ -7,8 +8,17 @@ import Footer from '../components/SalesPage/Footer'
 import Navbar from '../components/SalesPage/Navbar'   
 import SecondFeature from '../components/SalesPage/SecondFeatures'
 import ThirdFeatures from '../components/SalesPage/ThirdFeatures'
+import Router from 'next/router'
 
-export default function index() {
+export default function index() { 
+
+  React.useEffect(() => { 
+      const token = localStorage.getItem('token')
+      if(token ){
+          Router.push('/dashboard')
+      }
+  });
+  
   return (
     <div className='w-full h-full overflow-x-hidden ' >
       <Head>

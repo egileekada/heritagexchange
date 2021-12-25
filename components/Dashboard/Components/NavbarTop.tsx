@@ -53,8 +53,8 @@ export default function NavbarTop(props: any) {
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
                             {/* <defs><style>.a,.b{fill:rgba(240,240,240,0.94);}.a{opacity:0.4;}</style></defs> */}
                             <g transform="translate(2.5 2)">
-                                <path className={tabName === 'Profile' ? activebglow : inactivebglow} d="M0,4.446A4.526,4.526,0,0,1,4.591,0H9.624A4.515,4.515,0,0,1,14.2,4.436V15.552A4.526,4.526,0,0,1,9.613,20H4.581A4.517,4.517,0,0,1,0,15.562V4.446Z" transform="translate(4.796)"/>
-                                <path className={tabName === 'Profile' ? activebghigh : inactivebghigh}  d="M13.537,3.134,10.569.225a.79.79,0,0,0-1.106,0,.762.762,0,0,0,0,1.089l1.625,1.593H.782a.77.77,0,1,0,0,1.54H11.091L9.465,6.043a.762.762,0,0,0,0,1.089.79.79,0,0,0,1.106,0l2.968-2.909a.761.761,0,0,0,0-1.091" transform="translate(0 6.32)"/>
+                                <path className={tabName === 'LogOut' ? activebglow : inactivebglow} d="M0,4.446A4.526,4.526,0,0,1,4.591,0H9.624A4.515,4.515,0,0,1,14.2,4.436V15.552A4.526,4.526,0,0,1,9.613,20H4.581A4.517,4.517,0,0,1,0,15.562V4.446Z" transform="translate(4.796)"/>
+                                <path className={tabName === 'LogOut' ? activebghigh : inactivebghigh}  d="M13.537,3.134,10.569.225a.79.79,0,0,0-1.106,0,.762.762,0,0,0,0,1.089l1.625,1.593H.782a.77.77,0,1,0,0,1.54H11.091L9.465,6.043a.762.762,0,0,0,0,1.089.79.79,0,0,0,1.106,0l2.968-2.909a.761.761,0,0,0,0-1.091" transform="translate(0 6.32)"/>
                             </g>
                         </svg>
                         <p className='font-Inter-Medium text-xs text-heritagecolor ml-2 ' >LogOut</p> 

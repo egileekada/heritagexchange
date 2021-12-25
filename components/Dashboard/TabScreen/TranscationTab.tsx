@@ -9,6 +9,25 @@ export default function TranscationTab(props: any) {
 
     const ItemArray = ['Cancelled', 'Pending', 'Completed', 'Cancelled' ]
 
+
+    React.useEffect(() => { 
+        fetch(`https://heritage-server.herokuapp.com/transaction/all/${localStorage.getItem('id')}`, {
+            method: 'GET', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+        .then(response => response.json())
+        .then(data => { 
+            console.log(data)
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        }); 
+
+// empty dependency array means this effect will only run once (like componentDidMount in classes)
+},);  
+
     return (
         <div className='w-screen lg:w-full h-screen pt-8 lg:pt-16 px-4 lg:pb-0 pb-28 lg:px-10 overflow-auto'  >
             <div className='w-full flex flex-row items-center' >

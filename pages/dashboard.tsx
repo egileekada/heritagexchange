@@ -18,7 +18,7 @@ export default function Dashboard() {
     const userContext: IUser = React.useContext(UserContext);  
     const { isLoading, error, data } = useQuery('repoData', () =>
         fetch(`https://heritage-server.herokuapp.com/user/${localStorage.getItem('id')}`).then(res =>
-        res.json()
+            res.json()
         )
     )
 
@@ -26,16 +26,14 @@ export default function Dashboard() {
         const token = localStorage.getItem('token') 
         const details = JSON.parse(localStorage.getItem('details') as string) 
 
-        // {isLoading ?   
-            userContext.setUserData(details)
-        //     userContext.setUserData(data.data.user)
-        // }
+        {!isLoading ?    
+            userContext.setUserData(data.data.user)
+        :null}
 
         if(!token ){
             Router.push('/login')
         }
     });   
-
 
     return ( 
         <div className='w-full relative flex flex-col h-screen overflow-hidden' style={{backgroundColor:'#EFF7FF'}}  >
@@ -51,22 +49,31 @@ export default function Dashboard() {
                         <NavbarBottom check={tab} tab={setTab} />
                     </div> 
                     <div className='w-full h-full'>
-                        {tab === 'Dashboard' ?
-                            <DashboardTab tab={setTab} />  :
-                        tab === 'Transactions' ?
-                            <TranscationTab tab={setTab} /> :
-                        tab === 'Crypto Savings' || tab === 'Savings' ?
-                            <CryptoSaving tab={setTab} /> : 
-                        tab === 'Profile' ?
-                            <Profile tab={setTab} /> :
-                        tab === 'Settings' ? 
-                            <Settings tab={setTab} />
+
+                    {isLoading ? 
+                        <div className='w-full h-screen flex justify-center items-center' >
+                            <div className="animate-spin rounded-full h-12 w-12 mr-4 border-t-2 border-b-2 border-heritagecolor"></div>
+                        </div>
                         :
-                           <Notification /> 
-                        }
+                        <>
+                            {tab === 'Dashboard' ?
+                                <DashboardTab tab={setTab} />  :
+                            tab === 'Transactions' ?
+                                <TranscationTab tab={setTab} /> :
+                            tab === 'Crypto Savings' || tab === 'Savings' ?
+                                <CryptoSaving tab={setTab} /> : 
+                            tab === 'Profile' ?
+                                <Profile tab={setTab} /> :
+                            tab === 'Settings' ? 
+                                <Settings tab={setTab} />
+                            :
+                            <Notification /> 
+                            }
+                        </>
+                    }
                     </div>
                 </div>
             </div>
-        </div>  
+        </div>   
     )
 }

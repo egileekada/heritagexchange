@@ -6,8 +6,10 @@ export default function PaymentProof(props:any) {
 
     // const [coinType, setCoinType] = React.useState('BTC') 
     const [ selectedFiles, setSelectedFiles ] = React.useState([]);
-    const [ imageFiles, setImageFiles ] = React.useState([]  as Array<string>);
+    const [ imageFiles, setImageFiles ] = React.useState([]  as Array<any>);
     const [show, setShow] = React.useState(false)
+    const [loading, setLoading] = React.useState(false);
+    let formData = new FormData()
 
 
     const PreviousPage =()=> {
@@ -25,6 +27,7 @@ export default function PaymentProof(props:any) {
 		if (e.target.files) {
 			const filesArray: any = Array.from(e.target.files).map((file) => URL.createObjectURL(file)); 
             const fileName = Array.from(e.target.files).map((file) => file);  
+
 
             setImageFiles((prevImages: any) => prevImages.concat(fileName));
 			setSelectedFiles((prevImages: any) => prevImages.concat(filesArray));
@@ -55,6 +58,34 @@ export default function PaymentProof(props:any) {
         }
     };
 
+
+    const submit = async () => {  
+
+
+        imageFiles.map((item: any) => 
+            formData.append('paymentproof', item)
+        );
+        
+        setLoading(true) 
+            const request = await fetch(`https://heritage-server.herokuapp.com/transaction/uploadfiles/${localStorage.getItem('tid')}`, {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(
+                    { 
+                        formData
+                    }
+                ),
+            });
+
+            // const json = await request.json(); 
+
+            setLoading(false)
+            props.close(false);
+            props.next(true);
+    } 
+
     function handleRemove(id: any, file: any) {
         const newList = selectedFiles.filter((item: any) => item !== id);
         const clone = [...imageFiles];
@@ -64,12 +95,15 @@ export default function PaymentProof(props:any) {
         if(Object.keys(newList).length === 0){                   
             setShow(prev => !prev);
         }
-            setSelectedFiles(newList); 
-      }
+        setSelectedFiles(newList); 
+    }
 
     // React.useEffect(() => {
     //     setCoinType(props.type)
     // },)
+    const ClickHandler =()=> {
+        
+    }
 
     return (
         <div className='lg:w-auto w-full h-auto px-6 py-3 rounded bg-white' >
@@ -93,7 +127,7 @@ export default function PaymentProof(props:any) {
                             <img src='/assets/images/file.png' className='w-6 h-6 ' />
                             <p className='font-Inter-SemiBold text-xs ml-4' >TranactionReceipt.PDF</p>
                             <div className='w-full flex flex-1' /> 
-                            <IoIosClose style={{backgroundColor: '#EA15362F', color:'#EA1536'}} className='w-6 h-6 m-1 cursor-pointer rounded-full' />
+                            <IoIosClose onClick={()=> ClickHandler()} style={{backgroundColor: '#EA15362F', color:'#EA1536'}} className='w-6 h-6 m-1 cursor-pointer rounded-full' />
                         </div>  
                         <label >
                             <input style={{display:'none'}} type="file" onChange={handleImage} accept="image/*" id="input" />
@@ -105,7 +139,18 @@ export default function PaymentProof(props:any) {
                         <div style={{backgroundColor:'#1526A717'}} className='rounded p-3 mt-10  '  >
                             <p className=' lg:w-72 font-Inter-Regular text-xs'>To add another receiving address to your account please go to Profile{' > '}Wallets</p>
                         </div>
-                        <button onClick={()=> NextPage()} style={{backgroundColor:'#1526A7'}} className='w-full py-4 mt-6 font-Inter-Medium rounded text-xs text-white' >Submit</button> 
+                        <button onClick={()=> submit()} className='w-full py-3 flex justify-center items-center text-white font-Inter-Bold text-xs mr-2 mt-4 bg-heritagebutton rounded-md' >
+                            {!loading ? 
+                                <div className='py-1' >
+                                    Submit
+                                </div>:
+                                <>
+                                    <div className="animate-spin rounded-full h-6 w-6 mr-4 border-t-2 border-b-2 border-white"></div>
+                                    LOADING
+                                </>
+                            } 
+                        </button>
+                        {/* <button onClick={()=> submit()} style={{backgroundColor:'#1526A7'}} className='w-full py-4 mt-6 font-Inter-Medium rounded text-xs text-white' >Submit</button>  */}
                     </div>
                 }
             </div>

@@ -1,24 +1,91 @@
 import { Input } from '@chakra-ui/input'
 import { Select } from '@chakra-ui/select'
+import { motion } from 'framer-motion'; 
+import * as yup from 'yup'
+import { useFormik } from 'formik'; 
 import React from 'react'
 import { IoIosCloseCircleOutline } from 'react-icons/io'
 
 export default function BuyCoin(props: any) { 
 
     const [coinType, setCoinType] = React.useState('BTC')
+    const [coinIndex, setCoinIndex] = React.useState(1)
+    const [coinAmount, setCoinAmount] = React.useState(0)
+    const [loading, setLoading] = React.useState(false);
 
     const OnChangeHandler =(e: any)=>{
         setCoinType(e.target.value) 
         props.set(e.target.value)
     }
 
-    const NextPage =()=> {
-        props.close(false);
-        props.next(true);
-    }
+    const loginSchema = yup.object({  
+        amount: yup.string().required('Your Amount is required')
+    }) 
 
-    React.useEffect(() => {
+    // formik
+    const formik = useFormik({
+        initialValues: {amount: 0},
+        validationSchema: loginSchema,
+        onSubmit: () => {},
+    });  
+
+    const submit = async () => { 
+        setLoading(true)
+        if (!formik.dirty) {
+          alert('You have to fill in th form to continue');
+          return;
+        }else if (!formik.isValid) {
+          alert('You have to fill in the form correctly to continue');
+          return;
+        }else {
+            setLoading(true);
+            const request = await fetch(`https://heritage-server.herokuapp.com/transaction/create/${localStorage.getItem('id')}`, {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(
+                    {
+                        amount: formik.values.amount,
+                        coin_amount: coinAmount, 
+                        type: 1,
+                        coin_type: coinIndex
+                      }
+                ),
+            });
+
+            const json = await request.json();
+    
+            if (request.status === 200) {    
+                localStorage.setItem('tid', json.data._id);  
+                setLoading(false);
+                // console.log(json)  
+
+            }else {
+                alert(json.message); 
+            }
+
+            setLoading(false)
+            props.close(false);
+            props.next(true); 
+        }
+    } 
+
+    React.useEffect(() => {  
         setCoinType(props.type)
+        props.amount(formik.values.amount)
+        {coinType === 'BTC' ?
+            setCoinAmount(formik.values.amount/props.nairabtc)
+        :
+            setCoinAmount(formik.values.amount/props.NairaEthereum)}
+        {coinType === 'BTC' ?
+            setCoinIndex(1)
+        :
+            setCoinIndex(2)
+        }
+        // 61c647c891479c09c5a3e2f5
+
+            console.log(coinAmount) 
     },)
 
     return (
@@ -49,9 +116,30 @@ export default function BuyCoin(props: any) {
                 <div className='w-full flex flex-col ' >
                     <p className='font-Inter-SemiBold text-xs mt-4'>Amount</p>
                     <div className='flex flex-row my-2' > 
-                        <div className=' w-full lg:w-56 mr-2'>
+                        <div className='w-full flex-col lg:w-56 mr-2 flex font-Inter-Regular ' >  
+                            <Input 
+                                name="amount"
+                                onChange={formik.handleChange}
+                                onFocus={() =>
+                                    formik.setFieldTouched("amount", true, true)
+                                }  
+                                placeholder="1.0000000000" size="md" className='bg-gray_bg border-gray_bg text-primary '  bg="#F6F6F6" focusBorderColor='white' fontSize='xs' borderColor="#F6F6F6" color="#200E32"/>
+                    
+                            <div className="w-full h-auto pt-2">
+                                {formik.touched.amount && formik.errors.amount && (
+                                    <motion.p
+                                        initial={{ y: -100, opacity: 0 }}
+                                        animate={{ y: 0, opacity: 1 }}
+                                        className="text-xs font-Inter-Regular text-errorRed"
+                                    >
+                                        {formik.errors.amount}
+                                    </motion.p>
+                                )}
+                            </div>
+                        </div> 
+                        {/* <div className=' w-full lg:w-56 mr-2'>
                             <Input size='md' fontSize='xs' placeholder='1.0000000000' />
-                        </div>
+                        </div> */}
                         <div className='w-32 bg-white text-xs ml-2'>
                             <Select value={coinType} onChange={(e)=> OnChangeHandler(e) } size='md' fontSize='xs' >
                                 <option>BTC</option>
@@ -61,18 +149,27 @@ export default function BuyCoin(props: any) {
                         </div>
                     </div>
                     <div className='w-full py-4 flex flex-row' >
-                        <p className='font-Inter-SemiBold text-xs flex'>NGN:<p className='font-Inter-Regular ml-2'> 13,002,382</p></p>
-                        <p className='font-Inter-SemiBold text-xs ml-4 flex'>USD:<p className='font-Inter-Regular ml-2'> 34,000</p></p>
+                        <p className='font-Inter-SemiBold text-xs flex'>NGN:<p className='font-Inter-Regular ml-2'>{coinType === 'BTC' ? props.nairabtc.toLocaleString('en', {useGrouping:true}): props.NairaEthereum.toLocaleString('en', {useGrouping:true})}</p></p>
+                        <p className='font-Inter-SemiBold text-xs ml-4 flex'>USD:<p className='font-Inter-Regular ml-2'>{coinType === 'BTC' ? (props.nairabtc/550).toLocaleString('en', {useGrouping:true}): (props.NairaEthereum/550).toLocaleString('en', {useGrouping:true})}</p></p>
                     </div>
-                    <button  onClick={()=> NextPage()} style={{backgroundColor:'#1526A7'}} className='w-full py-4 my-6 font-Inter-Medium rounded text-xs text-white' >Buy 1.0
-                    {coinType === 'BTC' 
-                        ?
-                            ' BTC':
-                        coinType === 'ETH' ?
-                            ' ETH'
-                        :
-                            ' USDT'
-                    }
+                    <button  onClick={()=> submit()} style={{backgroundColor:'#1526A7'}} className='w-full py-4 flex items-center justify-center my-6 font-Inter-Medium rounded text-xs text-white' >
+                    {!loading ? 
+                        <div className='' >
+                            Buy
+                            {coinType === 'BTC' 
+                                ?
+                                    ' BTC':
+                                coinType === 'ETH' ?
+                                    ' ETH'
+                                :
+                                    ' USDT'
+                            }
+                        </div>:
+                        <>
+                            <div className="animate-spin rounded-full h-6 w-6 mr-4 border-t-2 border-b-2 border-white"></div>
+                            LOADING
+                        </>
+                    } 
                     </button>
                 </div>
             </div>

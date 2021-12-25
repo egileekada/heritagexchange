@@ -40,11 +40,11 @@ export default function Navbar() {
             <div className='w-full absolute top-9 flex pr-12 justify-end'> 
                 {!menu 
                     ?
-                        <button onClick={()=> setMenu(true)} className="xl:hidden sm:flex sm:justify-end sm:w-auto sm:h-auto  text-center my-auto font-Heebo-Regular">
+                        <button onClick={()=> setMenu(true)} className="xl:hidden lg:hidden sm:flex sm:justify-end sm:w-auto sm:h-auto  text-center my-auto font-Heebo-Regular">
                             <FiMenu size={24} color="white" />
                         </button>
                     :
-                        <button onClick={()=> setMenu(false)} className="xl:hidden sm:flex sm:justify-end sm:w-auto sm:h-auto text-center font-Heebo-Regular"> 
+                        <button onClick={()=> setMenu(false)} className="xl:hidden lg:hidden sm:flex sm:justify-end sm:w-auto sm:h-auto text-center font-Heebo-Regular"> 
                             <IoMdClose  size={24} color="white"/>
                         </button>
                 }

@@ -25,6 +25,7 @@ export default function DashboardTab(props: any) {
 
     const activeTab = 'w-full flex items-center justify-center flex-col lg:flex-row mt-2 py-4'
     const inactiveTab = 'w-full hidden items-center justify-center lg:flex flex-col lg:flex-row mt-2 py-4'
+    const [amount, setAmount] = React.useState()
     const [btc, setBtc] = React.useState('' as any)
     const [ethereum, setEthereum] = React.useState('' as any)
     const NairaBtc = btc * 550
@@ -152,7 +153,7 @@ export default function DashboardTab(props: any) {
             (
                 <>
                     <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed pb-4 px-4 inset-0 z-50 outline-none focus:outline-none"> 
-                        <SellCoin type={coinType} set={setCoinType} next={setSellInstructionModal} close={setSellCoinModal} />
+                        <SellCoin nairabtc={NairaBtc} NairaEthereum={NairaEthereum} amount={setAmount} type={coinType} set={setCoinType} next={setSellInstructionModal} close={setSellCoinModal} />
                     </div> 
                     <div className="opacity-75 fixed flex flex-1 inset-0 z-40 bg-black"/>
                 </>
@@ -162,7 +163,7 @@ export default function DashboardTab(props: any) {
             (
                 <>
                     <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed pb-4 px-4 inset-0 z-50 outline-none focus:outline-none"> 
-                        <BuyCoin type={coinType} set={setCoinType} next={setInstructionModal} close={setBuyCoinModal} />
+                        <BuyCoin nairabtc={NairaBtc} NairaEthereum={NairaEthereum} amount={setAmount} type={coinType} set={setCoinType} next={setInstructionModal} close={setBuyCoinModal} />
                     </div> 
                     <div className="opacity-75 fixed flex flex-1 inset-0 z-40 bg-black"/>
                 </>
@@ -182,7 +183,7 @@ export default function DashboardTab(props: any) {
             (
                 <>
                     <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed pb-4 px-4 inset-0 z-50 outline-none focus:outline-none"> 
-                        <CoinInstruction type={coinType} next={setPaymentModal} back={setBuyCoinModal} close={setInstructionModal} />
+                        <CoinInstruction nairabtc={NairaBtc} NairaEthereum={NairaEthereum}  type={coinType} next={setPaymentModal}  amount={amount} back={setBuyCoinModal} close={setInstructionModal} />
                     </div> 
                     <div className="opacity-75 fixed flex flex-1 inset-0 z-40 bg-black"/>
                 </>
