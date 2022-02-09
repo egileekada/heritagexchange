@@ -56,7 +56,7 @@ export default function CoinInstruction(props: any) {
                             <img src='/assets/images/tether.png' className='w-14 h-14' /> 
                     }
                     <div className='ml-4' >
-                        <p className='font-Inter-Bold text-2xl' >{coinType === 'BTC' ? props.amount/props.nairabtc: props.amount/props.NairaEthereum} {coinType === 'BTC' ? 'BTC':'ETH'}</p>
+                        <p className='font-Inter-Bold text-lg w-auto lg:w-full lg:text-2xl' >{coinType === 'BTC' ? props.amount/props.nairabtc: props.amount/props.NairaEthereum} {coinType === 'BTC' ? 'BTC':'ETH'}</p>
                         <p className='font-Inter-SemiBold text-xs ml-2'>NGN: <span className='font-Inter-Regular'>{props.amount.toLocaleString('en', {useGrouping:true})}</span></p>
                     </div>
                 </div>
@@ -70,6 +70,9 @@ export default function CoinInstruction(props: any) {
                             <p className='font-Inter-Bold my-2 text-xs' >Account Name: <span className='font-Inter-Regular'>{data.data.bank.account_name}</span></p>
                         </>
                     :null}
+                    {/* <p className='font-Inter-Bold my-2 text-xs' >Account No: <span className='font-Inter-Regular'>2212043451</span></p>
+                    <p className='font-Inter-Bold my-2 text-xs' >Bank: <span className='font-Inter-Regular'>Zenith Bank</span></p>
+                    <p className='font-Inter-Bold my-2 text-xs' >Account Name: <span className='font-Inter-Regular'>Uche heritage</span></p> */}
                     <button onClick={()=> NextPage()} style={{backgroundColor:'#1526A7'}} className='w-full py-4 my-6 font-Inter-Medium rounded text-xs text-white' >Upload Payment Proof</button>
                 </div>
             </div>
