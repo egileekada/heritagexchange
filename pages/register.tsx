@@ -94,14 +94,24 @@ export default function register() {
             </div> */}
             <div className='w-screen lg:h-screen flex flex-row bg-white' >
                 <div className=' bg-heritagecolor w-full h-full lg:flex text-white flex-col pt-20 px-10  hidden' >
-                    <p className='font-Inter-ExtraBold text-3xl'>HX</p>
+                    <div className='flex items-center' >
+                        <svg onClick={()=> Router.push('/')} className='mr-4 cursor-pointer' width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 1L1 8L8 15" stroke="#FFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <p className='font-Inter-ExtraBold text-3xl'>HX</p>
+                    </div>
                     <p className='font-Inter-ExtraBold text-3xl mt-8' >Buy, Sell And Save <span style={{color: '#617DEA'}} >Crypto</span></p>
                     <p className='font-Inter-Regular text-xs my-3 '>Heritage Exchange offers you a seamless, simple and secure way to buy, sell and<br/> save cryptocurrency</p>
                     <img src='/assets/images/LoginBg.png' alt='login' style={{width: '450px'}} />
                 </div>
                 <div className='w-full h-auto overflow-y-auto ' >
                     <div className='bg-white w-full h-auto flex justify-center flex-col py-20  py-14 px-6 lg:px-40 rounded-lg' >
-                        <p className='font-Inter-ExtraBold text-2xl text-esdiac_text flex lg:hidden mb-8'>HX</p>
+                        <div className='flex items-center mb-8' >
+                            <svg onClick={()=> Router.push('/')} className='mr-4 cursor-pointer flex lg:hidden' width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 1L1 8L8 15" stroke="#192F5D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <p className='font-Inter-ExtraBold text-2xl text-esdiac_text flex lg:hidden'>HX</p>
+                        </div>
                         <p className='font-Inter-SemiBold text-xl text-esdiac_text' >Create Your Account</p>
                         <p className='font-Inter-Regular my-2 text-xs text-esdiac_text' >Sign In To Your Account To Continue</p>
                         <div className='w-full flex flex-col py-4 ' > 

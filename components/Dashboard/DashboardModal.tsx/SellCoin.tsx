@@ -48,8 +48,10 @@ export default function SellCoin(props: any) {
                         amount: formik.values.amount,
                         coin_amount: coinAmount, 
                         type: 2,
-                        coin_type: coinIndex
-                      }
+                        coin_type: coinIndex,
+                        USD: formik.values.amount/props.rate+'',
+                        rate: props.rate
+                    }
                 ),
             });
 
@@ -79,8 +81,10 @@ export default function SellCoin(props: any) {
             setCoinAmount(formik.values.amount/props.NairaEthereum)}
         {coinType === 'BTC' ?
             setCoinIndex(1)
-        :
+        :coinType === 'ETH' ?
             setCoinIndex(2)
+        :
+            setCoinIndex(3)
         }
         // 61c647c891479c09c5a3e2f5
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import { IoIosArrowDropleft, IoIosCloseCircleOutline, IoIosCopy } from 'react-icons/io'
+import { useQuery } from 'react-query'
 
 export default function SellCoinInstruction(props: any) {
     
@@ -18,6 +19,14 @@ export default function SellCoinInstruction(props: any) {
         props.close(false);
         props.next(true);
     }
+ 
+    const { isLoading, data } = useQuery('details', () =>
+        fetch(`https://heritage-server.herokuapp.com/paypoint`).then(res =>
+            res.json()
+        )
+    )
+
+    console.log(data)
 
     return (
         <div className='lg:w-auto w-full h-auto px-6 py-3 rounded bg-white' >
@@ -47,7 +56,7 @@ export default function SellCoinInstruction(props: any) {
                             <img src='/assets/images/tether.png' className='w-14 h-14' /> 
                     }
                     <div className='ml-4' >
-                        <p className='font-Inter-Bold text-2xl' >1.0 ETH</p>
+                        <p className='font-Inter-Bold text-2xl' >{props.type === 'BTC' ? props.amount/props.nairabtc: props.amount/props.NairaEthereum} {props.type === 'BTC' ? 'BTC':'ETH'}</p>
                         <p className='font-Inter-SemiBold text-xs ml-2'>NGN:<span className='font-Inter-Regular'> 13,002,382</span></p>
                     </div>
                 </div>
@@ -58,7 +67,9 @@ export default function SellCoinInstruction(props: any) {
                         <div className='w-28 h-28 bg-gray-300' />
                     </div>
                     <p className='font-Inter-SemiBold text-xs mt-2 mb-2'>Address</p>  
-                    <p className=' w-full lg:w-84 flex font-Inter-Regular my-2 text-xs'>0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7<span><IoIosCopy style={{color: '#1526A7'}} className=' ml-2 cursor-pointer w-4 h-4' /></span></p> 
+                    {!isLoading ?  
+                        <p className=' w-full lg:w-84 flex font-Inter-Regular my-2 text-xs'>{props.type === 'BTC' ? data.data.bitcoin_wallet :props.type === 'ETH' ? data.data.bitcoin_wallet :  data.data.bitcoin_wallet}<span><IoIosCopy style={{color: '#1526A7'}} className=' ml-2 cursor-pointer w-4 h-4' /></span></p> 
+                    :null}
                     <button onClick={()=> NextPage()} style={{backgroundColor:'#1526A7'}} className='w-full py-4 my-6 font-Inter-Medium rounded text-xs text-white' >Upload Payment Proof</button>
                 </div>
             </div>

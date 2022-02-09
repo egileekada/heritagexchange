@@ -29,19 +29,19 @@ export default function index() {
       <div className='w-full h-auto flex flex-col bg-heritagecolor' >  
         <div className='w-full h-auto fixed z-50' >
           <Navbar/>
-        </div>
-        <AppFeature />
+        </div> 
+          <AppFeature /> 
       </div>
-      <div className='w-full h-full' >
+      <div  id='feature' className='w-full h-full' >
         <SecondFeature />
       </div>
       <div className='w-full h-full'>
         <ThirdFeatures />
       </div>
-      <div className='w-full h-full'>
+      <div id='testimony' className='w-full  pt-16 h-full'>
         <AboutPage />
       </div>
-      <div className='w-full h-full'>
+      <div  id='store' className='w-full h-full pt-16 '>
         <AppStore />
       </div>
       <div>

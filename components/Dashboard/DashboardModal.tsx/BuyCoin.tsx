@@ -29,8 +29,7 @@ export default function BuyCoin(props: any) {
         onSubmit: () => {},
     });  
 
-    const submit = async () => { 
-        setLoading(true)
+    const submit = async () => {  
         if (!formik.dirty) {
           alert('You have to fill in th form to continue');
           return;
@@ -49,7 +48,9 @@ export default function BuyCoin(props: any) {
                         amount: formik.values.amount,
                         coin_amount: coinAmount, 
                         type: 1,
-                        coin_type: coinIndex
+                        coin_type: coinIndex,
+                        USD: formik.values.amount/props.rate+'',
+                        rate: props.rate
                       }
                 ),
             });
@@ -80,8 +81,10 @@ export default function BuyCoin(props: any) {
             setCoinAmount(formik.values.amount/props.NairaEthereum)}
         {coinType === 'BTC' ?
             setCoinIndex(1)
-        :
+        :coinType === 'ETH' ?
             setCoinIndex(2)
+        :
+            setCoinIndex(3)
         }
         // 61c647c891479c09c5a3e2f5
 

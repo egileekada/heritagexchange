@@ -68,15 +68,8 @@ export default function PaymentProof(props:any) {
         
         setLoading(true) 
             const request = await fetch(`https://heritage-server.herokuapp.com/transaction/uploadfiles/${localStorage.getItem('tid')}`, {
-                method: 'POST',
-                headers: {
-                'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(
-                    { 
-                        formData
-                    }
-                ),
+                method: 'POST', 
+                body: formData 
             });
 
             // const json = await request.json(); 

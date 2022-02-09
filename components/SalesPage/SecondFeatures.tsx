@@ -3,7 +3,7 @@ import { IoMdArrowDown, IoMdArrowUp } from "react-icons/io";
 
 export default function SecondFeature() {
     return (
-        <div className='w-full flex flex-col justify-center items-center py-14' >
+        <div className='w-full flex flex-col justify-center items-center pt-32 py-14' >
             <p style={{color:'#050505'}} className='font-Inter-Bold lg:text-3xl text-xl' >Features we’ve built just <span style={{color:'#091BAAF2'}} className='font-Inter-Medium' >for you</span></p>
             <div className='w-full flex flex-col py-8 justify-center items-center' >
                 <div className='w-full flex flex-col lg:flex-row justify-center items-center' >

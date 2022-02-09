@@ -16,13 +16,13 @@ export default function Navbar() {
                 <Link href='#' >
                     <p className='mx-6 cursor-pointer ' >Home</p> 
                 </Link>
-                <Link href='#' >
+                <Link href='#feature' >
                     <p className='mx-6 cursor-pointer ' >Features</p> 
                 </Link>
-                <Link href='#' >
+                <Link href='#testimony' >
                     <p className='mx-6 cursor-pointer ' >Testimonials</p> 
                 </Link>
-                <Link href='#' >
+                <Link href='#store' >
                     <p className='mx-6 cursor-pointer ' >Get The App</p> 
                 </Link>
                 <Link href='#' >
@@ -55,23 +55,23 @@ export default function Navbar() {
                         <Link href='#' >
                             <p className='py-2 cursor-pointer ' >Home</p> 
                         </Link>
-                        <Link href='#' >
-                            <p className='py-2 cursor-pointer ' >Features</p> 
+                        <Link  href='#feature' >
+                            <p onClick={()=> setMenu(false)} className='py-2 cursor-pointer ' >Features</p> 
+                        </Link>
+                        <Link href='#testimony' >
+                            <p onClick={()=> setMenu(false)} className='py-2 cursor-pointer ' >Testimonials</p> 
+                        </Link>
+                        <Link href='#store' >
+                            <p onClick={()=> setMenu(false)} className='py-2 cursor-pointer ' >Get The App</p> 
                         </Link>
                         <Link href='#' >
-                            <p className='py-2 cursor-pointer ' >Testimonials</p> 
-                        </Link>
-                        <Link href='#' >
-                            <p className='py-2 cursor-pointer ' >Get The App</p> 
-                        </Link>
-                        <Link href='#' >
-                            <p className='py-2 cursor-pointer ' >Support</p> 
+                            <p onClick={()=> setMenu(false)} className='py-2 cursor-pointer ' >Support</p> 
                         </Link>
                         <Link href='/register' >
-                                <a  className='py-2 cursor-pointer ' >Create Account</a> 
+                            <a onClick={()=> setMenu(false)} className='py-2 cursor-pointer ' >Create Account</a> 
                         </Link>
                         <Link href='/login'>
-                            <p className='py-2 cursor-pointer ' >Log In</p> 
+                            <p onClick={()=> setMenu(false)} className='py-2 cursor-pointer ' >Log In</p> 
                         </Link>
                         {/* <Link href="/">
                             <p onClick={()=>setMenu(false)} className="text-sm py-2 cursor-pointer ">Home</p>

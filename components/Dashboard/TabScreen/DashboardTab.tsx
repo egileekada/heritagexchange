@@ -8,6 +8,7 @@ import SellCoinInstruction from '../DashboardModal.tsx/SellCoinInstruction';
 import SellPaymentProof from '../DashboardModal.tsx/SellPaymentProof';
 import Transaction from '../DashboardModal.tsx/Transaction';
 import { IUser, UserContext } from '../../../context/UserContext';
+import { useQuery } from 'react-query';
 // import { CyptoRate } from '../../../connections/CyptoRate';
 
 export default function DashboardTab(props: any) {
@@ -58,7 +59,13 @@ export default function DashboardTab(props: any) {
             }); 
 
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
-    }, [btc, ethereum]); 
+    },[btc, ethereum]);  
+ 
+    const { isLoading, data } = useQuery('details', () =>
+        fetch(`https://heritage-server.herokuapp.com/paypoint`).then(res =>
+            res.json()
+        )
+    )
 
     return ( 
     <div className='w-screen lg:w-full h-screen overflow-y-auto overflow-x-hidden'> 
@@ -76,7 +83,9 @@ export default function DashboardTab(props: any) {
             <div className='lg:w-full dashboardslide w-auto flex overflow-x-auto flex-row lg:overflow-x-hidden py-10' >
                 <div style={{backgroundColor:'#1526A7'}} className=' lg:w-full flex flex-col p-6 rounded-md text-white ' >
                     <p className='font-Inter-Medium text-sm w-48' >Today’s Rate</p>
-                    <p className='font-Inter-Bold text-2xl py-2'>₦550/$</p>
+                    {!isLoading ?
+                        <p className='font-Inter-Bold text-2xl py-2'>₦{data.data.rate}/$</p>
+                    :null}
                     <p className='font-Inter-Regular text-xs '>Rates are updated daily</p>
                 </div>
                 <div style={{backgroundColor:'#111E7E'}} className='w-full flex flex-col ml-4 lg:ml-8 p-6 rounded-md text-white ' >
@@ -153,7 +162,7 @@ export default function DashboardTab(props: any) {
             (
                 <>
                     <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed pb-4 px-4 inset-0 z-50 outline-none focus:outline-none"> 
-                        <SellCoin nairabtc={NairaBtc} NairaEthereum={NairaEthereum} amount={setAmount} type={coinType} set={setCoinType} next={setSellInstructionModal} close={setSellCoinModal} />
+                        <SellCoin nairabtc={NairaBtc} rate={data.data.rate} NairaEthereum={NairaEthereum} amount={setAmount} type={coinType} set={setCoinType} next={setSellInstructionModal} close={setSellCoinModal} />
                     </div> 
                     <div className="opacity-75 fixed flex flex-1 inset-0 z-40 bg-black"/>
                 </>
@@ -163,7 +172,7 @@ export default function DashboardTab(props: any) {
             (
                 <>
                     <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed pb-4 px-4 inset-0 z-50 outline-none focus:outline-none"> 
-                        <BuyCoin nairabtc={NairaBtc} NairaEthereum={NairaEthereum} amount={setAmount} type={coinType} set={setCoinType} next={setInstructionModal} close={setBuyCoinModal} />
+                        <BuyCoin nairabtc={NairaBtc} rate={data.data.rate} NairaEthereum={NairaEthereum} amount={setAmount} type={coinType} set={setCoinType} next={setInstructionModal} close={setBuyCoinModal} />
                     </div> 
                     <div className="opacity-75 fixed flex flex-1 inset-0 z-40 bg-black"/>
                 </>
@@ -173,7 +182,7 @@ export default function DashboardTab(props: any) {
             (
                 <>
                     <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed pb-4 px-4 inset-0 z-50 outline-none focus:outline-none"> 
-                        <SellCoinInstruction type={coinType} next={setSellPaymentModal} back={setSellCoinModal} close={setSellInstructionModal} />
+                        <SellCoinInstruction type={coinType} nairabtc={NairaBtc} NairaEthereum={NairaEthereum} next={setSellPaymentModal} back={setSellCoinModal} amount={amount} close={setSellInstructionModal} />
                     </div> 
                     <div className="opacity-75 fixed flex flex-1 inset-0 z-40 bg-black"/>
                 </>
@@ -203,7 +212,7 @@ export default function DashboardTab(props: any) {
             (
                 <>
                     <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed pb-4 px-4 inset-0 z-50 outline-none focus:outline-none"> 
-                        <SellPaymentProof close={setSellPaymentModal} next={setTransactionModal} back={setSellInstructionModal} />
+                        <SellPaymentProof close={setSellPaymentModal}  next={setTransactionModal} back={setSellInstructionModal} />
                     </div> 
                     <div className="opacity-75 fixed flex flex-1 inset-0 z-40 bg-black"/>
                 </>
@@ -213,7 +222,7 @@ export default function DashboardTab(props: any) {
             (
                 <>
                     <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed pb-4 px-4 inset-0 z-50 outline-none focus:outline-none"> 
-                        <Transaction close={setTransactionModal} />
+                        <Transaction close={setTransactionModal} amount={amount} nairabtc={NairaBtc} NairaEthereum={NairaEthereum}  coinType={coinType} />
                     </div> 
                     <div className="opacity-75 fixed flex flex-1 inset-0 z-40 bg-black"/>
                 </>

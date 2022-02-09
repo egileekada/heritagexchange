@@ -16,12 +16,12 @@ export default function login() {
         setShowpass(prev => !prev);
     } 
 
-    React.useEffect(() => { 
-        const token = localStorage.getItem('token')
-        if(token ){
-            Router.push('/dashboard')
-        }
-    });
+    // React.useEffect(() => { 
+    //     const token = localStorage.getItem('token')
+    //     if(token ){
+    //         Router.push('/dashboard')
+    //     }
+    // });
 
     const loginSchema = yup.object({ 
         email: yup.string().email('This email is not valid').required('Your email is required'),
@@ -65,9 +65,7 @@ export default function login() {
                 const t1 = setTimeout(() => { 
                     Router.push('/dashboard'); 
                     clearTimeout(t1);
-                }, 3000); 
-  
-                setLoading(false);
+                }, 3000);  
             }else {
                 alert(json.message);
                 setLoading(false);
@@ -85,7 +83,12 @@ export default function login() {
             </div> */}
             <div className='w-full h-screen flex flex-row bg-white' >
                 <div className=' bg-heritagecolor w-full h-screen lg:flex text-white flex-col pt-20 px-10  hidden' >
-                    <p className='font-Inter-ExtraBold text-3xl'>HX</p>
+                    <div className='flex items-center' >
+                        <svg onClick={()=> Router.push('/')} className='mr-4 cursor-pointer' width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 1L1 8L8 15" stroke="#FFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <p className='font-Inter-ExtraBold text-3xl'>HX</p>
+                    </div>
                     <p className='font-Inter-ExtraBold text-3xl mt-8' >Buy, Sell And Save <span style={{color: '#617DEA'}} >Crypto</span></p>
                     <p className='font-Inter-Regular text-xs my-3 '>Heritage Exchange offers you a seamless, simple and secure way to buy, sell and<br/> save cryptocurrency</p>
                     <div className='w-full flex justify-center items-center' >
@@ -94,7 +97,12 @@ export default function login() {
                 </div>
                 <div className='w-full h-full flex justify-center items-center ' >
                     <div className='bg-white w-full h-full flex justify-center flex-col py-24  py-14 px-6 lg:px-40 rounded-lg' >
-                        <p className='font-Inter-ExtraBold text-2xl text-esdiac_text flex lg:hidden mb-8'>HX</p>
+                        <div className='flex items-center mb-8' >
+                            <svg onClick={()=> Router.push('/')} className='mr-4 cursor-pointer flex lg:hidden' width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 1L1 8L8 15" stroke="#192F5D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <p className='font-Inter-ExtraBold text-2xl text-esdiac_text flex lg:hidden'>HX</p>
+                        </div>
                         <p className='font-Inter-SemiBold text-xl text-esdiac_text' >Glad To See You Back</p>
                         <p className='font-Inter-Regular my-2 text-xs text-esdiac_text' >Sign In To Your Account To Continue</p>
                         <div className='w-full flex flex-col py-4' >  

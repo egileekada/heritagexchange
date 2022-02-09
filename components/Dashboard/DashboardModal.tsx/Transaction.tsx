@@ -13,7 +13,7 @@ export default function Transaction(props: any) {
                 <p className='font-Inter-SemiBold text-xs' >Transaction Processing</p>  
                 <IoIosCheckmarkCircle className='w-20 h-28 text-heritagebutton my-3' />
                 {/* <img src='/assets/images/BTC.png' className='w-14 h-14 my-3' />  */} 
-                <p className='lg:w-84 text-center font-Inter-Regular text-xs mb-7'>Thank your for your transaction. Your transaction is being processed. You would receive 1.0 ETH once processing is complete. This typically takes a couple of minutes</p> 
+                <p className='lg:w-84 text-center font-Inter-Regular text-xs mb-7'>Thank your for your transaction. Your transaction is being processed. You would receive {props.coinType === 'BTC' ? props.amount/props.nairabtc: props.amount/props.NairaEthereum} {props.coinType === 'BTC' ? 'BTC':'ETH'} once processing is complete. This typically takes a couple of minutes</p> 
             </div>
         </div>
     )

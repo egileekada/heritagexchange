@@ -1,5 +1,6 @@
 import React from 'react'
 import { IoIosArrowDropleft, IoIosCloseCircleOutline } from 'react-icons/io'
+import { useQuery } from 'react-query'
 
 export default function CoinInstruction(props: any) {
     
@@ -18,6 +19,14 @@ export default function CoinInstruction(props: any) {
         props.close(false);
         props.next(true);
     }
+ 
+    const { isLoading, data } = useQuery('transcation', () =>
+        fetch(`https://heritage-server.herokuapp.com/paypoint`).then(res =>
+            res.json()
+        )
+    )
+
+    console.log(data)
 
     return (
         <div className='lg:w-auto w-full h-auto px-6 py-3 rounded bg-white' >
@@ -54,9 +63,13 @@ export default function CoinInstruction(props: any) {
                 <div className='w-full flex flex-col ' >
                     <p className='font-Inter-SemiBold text-xs mt-4 mb-2'>Payment Instructions</p>  
                     <p className=' w-full lg:w-84 font-Inter-Regular my-2 text-xs'>Send money to the account below and use the transaction reference - <span className='font-Inter-Bold' >DAYYSABS</span></p>  
-                    <p className='font-Inter-Bold my-2 text-xs' >Account No: <span className='font-Inter-Regular'>0237941112</span></p>
-                    <p className='font-Inter-Bold my-2 text-xs' >Bank: <span className='font-Inter-Regular'>Wema Bank</span></p>
-                    <p className='font-Inter-Bold my-2 text-xs' >Account Name: <span className='font-Inter-Regular'>HeritageXchange</span></p>
+                    {!isLoading ? 
+                        <>
+                            <p className='font-Inter-Bold my-2 text-xs' >Account No: <span className='font-Inter-Regular'>{data.data.bank.account_number}</span></p>
+                            <p className='font-Inter-Bold my-2 text-xs' >Bank: <span className='font-Inter-Regular'>{data.data.bank.bank_name}</span></p>
+                            <p className='font-Inter-Bold my-2 text-xs' >Account Name: <span className='font-Inter-Regular'>{data.data.bank.account_name}</span></p>
+                        </>
+                    :null}
                     <button onClick={()=> NextPage()} style={{backgroundColor:'#1526A7'}} className='w-full py-4 my-6 font-Inter-Medium rounded text-xs text-white' >Upload Payment Proof</button>
                 </div>
             </div>
