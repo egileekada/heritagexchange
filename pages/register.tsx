@@ -85,7 +85,7 @@ export default function register() {
     }
 
     return (
-        <div className=' w-full h-full flex flex-col flex-1' >
+        <div className=' w-full h-full overflow-x-hidden flex flex-col flex-1' >
             <Head>
                 <title>HX - Register</title>
             </Head>

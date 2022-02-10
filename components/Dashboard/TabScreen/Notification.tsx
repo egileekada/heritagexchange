@@ -1,7 +1,15 @@
 import React from 'react'
 import { IoIosNotificationsOutline } from 'react-icons/io'
+import { useQuery } from 'react-query'
 
-export default function Notification() {
+export default function Notification() { 
+      
+    const { isLoading, data } = useQuery('notify', () =>
+        fetch(`https://heritage-server.herokuapp.com/notifications/user/${localStorage.getItem('id')}`).then(res =>
+            res.json()
+        )
+    )
+
     return (
         <div className='w-screen lg:w-full h-screen pt-8 lg:pt-16 px-2 lg:px-10 overflow-auto'  >
             <div className='w-full items-center flex flex-row' >
@@ -15,6 +23,33 @@ export default function Notification() {
                 </div>
             </div>  
             <div className='w-full mt-10 pb-32 lg:pb-4 ' >
+                {!isLoading ?
+                    <>
+                        {data.data.map((item: any, index: any)=> {
+                            return(
+                                <div key={index} className='w-full bg-heritagebutton pl-1 my-3 rounded' >
+                                    <div className='w-full bg-white px-6 py-8 rounded' >
+                                        <p className='text-sm font-Inter-Medium' >{item.message}</p>
+                                        <p className='text-xs font-Inter-Regular text-gray-300 mt-2' >{item.createdAt}</p>
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </>
+                :
+                'You Have No Notification'}
+                {/* <div className='w-full bg-heritagebutton pl-1 my-3 rounded' >
+                    <div className='w-full bg-white px-6 py-8 rounded' >
+                        <p className='text-sm font-Inter-Medium' >Your transaction has been processed successfully</p>
+                        <p className='text-xs font-Inter-Regular text-gray-300 mt-2' >7.30PM | June 21, 2021</p>
+                    </div>
+                </div>
+                <div className='w-full bg-heritagebutton pl-1 my-3 rounded' >
+                    <div className='w-full bg-white px-6 py-8 rounded' >
+                        <p className='text-sm font-Inter-Medium' >Your transaction failed. Tap Here To Contact Support to resolve this issue.</p>
+                        <p className='text-xs font-Inter-Regular text-gray-300 mt-2' >7.30PM | June 21, 2021</p>
+                    </div>
+                </div>
                 <div className='w-full bg-heritagebutton pl-1 my-3 rounded' >
                     <div className='w-full bg-white px-6 py-8 rounded' >
                         <p className='text-sm font-Inter-Medium' >Your Transaction is processing. This might take a couple of minutes</p>
@@ -32,25 +67,7 @@ export default function Notification() {
                         <p className='text-sm font-Inter-Medium' >Your transaction failed. Tap Here To Contact Support to resolve this issue.</p>
                         <p className='text-xs font-Inter-Regular text-gray-300 mt-2' >7.30PM | June 21, 2021</p>
                     </div>
-                </div>
-                <div className='w-full bg-heritagebutton pl-1 my-3 rounded' >
-                    <div className='w-full bg-white px-6 py-8 rounded' >
-                        <p className='text-sm font-Inter-Medium' >Your Transaction is processing. This might take a couple of minutes</p>
-                        <p className='text-xs font-Inter-Regular text-gray-300 mt-2' >7.30PM | June 21, 2021</p>
-                    </div>
-                </div>
-                <div className='w-full bg-heritagebutton pl-1 my-3 rounded' >
-                    <div className='w-full bg-white px-6 py-8 rounded' >
-                        <p className='text-sm font-Inter-Medium' >Your transaction has been processed successfully</p>
-                        <p className='text-xs font-Inter-Regular text-gray-300 mt-2' >7.30PM | June 21, 2021</p>
-                    </div>
-                </div>
-                <div className='w-full bg-heritagebutton pl-1 my-3 rounded' >
-                    <div className='w-full bg-white px-6 py-8 rounded' >
-                        <p className='text-sm font-Inter-Medium' >Your transaction failed. Tap Here To Contact Support to resolve this issue.</p>
-                        <p className='text-xs font-Inter-Regular text-gray-300 mt-2' >7.30PM | June 21, 2021</p>
-                    </div>
-                </div>
+                </div> */}
             </div>
         </div>
     )

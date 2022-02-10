@@ -9,13 +9,11 @@ export default function TranscationTab(props: any) {
 
     const ItemArray = ['Cancelled', 'Pending', 'Completed', 'Cancelled' ] 
       
-    const { isLoading, error, data } = useQuery('transcations', () =>
-        fetch(`https://heritage-server.herokuapp.com/transcations/${localStorage.getItem('id')}`).then(res =>
+    const { isLoading, data } = useQuery('trans', () =>
+        fetch(`https://heritage-server.herokuapp.com/transaction/all/${localStorage.getItem('id')}`).then(res =>
             res.json()
         )
-    )
-
-    console.log(data)  
+    ) 
 
     return (
         <div className='w-screen lg:w-full h-screen pt-8 lg:pt-16 px-4 lg:pb-0 pb-28 lg:px-10 overflow-auto'  >
@@ -64,20 +62,24 @@ export default function TranscationTab(props: any) {
                     </div> 
                     {tab === 0 ? 
                         <>
-                            {ItemArray.map((item:any, index: any)=> {
-                                return( 
-                                    <div key={index} className='w-full my-4 flex text-sm flex-row items-center rounded-md p-5' style={{backgroundColor:'#F9FAFA'}} >
-                                        <div className='flex flex-col' >
-                                            <p className='font-Inter-SemiBold text-sm' >0.05 ETH</p>
-                                            <p className='font-Inter-Regular text-xs mt-1' >June 21, 2021 : 7.00 AM</p>
-                                        </div>
-                                        <div className='w-full flex flex-1' />
-                                        <div className={item === 'Completed' ? 'border border-completecolor rounded w-24 flex justify-center cursor-pointer py-1 text-completecolor': item === 'Pending' ? 'border border-pendingcolor rounded w-24 flex justify-center cursor-pointer py-1 text-pendingcolor': 'border border-cancelcolor rounded w-24 flex justify-center cursor-pointer py-1 text-cancelcolor'} >
-                                            <p>{item}</p>
-                                        </div>
-                                    </div>
-                                )
-                            })}
+                            {!isLoading ? 
+                                <>
+                                    {data.data.map((item:any, index: any)=> {
+                                        return( 
+                                            <div key={index} className='w-full my-4 flex text-sm flex-row items-center rounded-md p-5' style={{backgroundColor:'#F9FAFA'}} >
+                                                <div className='flex flex-col' >
+                                                    <p className='font-Inter-SemiBold text-sm' >{item.coin_amount} {item.type === 1 ? 'BTC' : 'ETH'}</p>
+                                                    <p className='font-Inter-Regular text-xs mt-1' >{item.createdAt}</p>
+                                                </div>
+                                                <div className='w-full flex flex-1' />
+                                                <div className={item.status === 2 ? 'border border-completecolor rounded w-24 flex justify-center cursor-pointer py-1 text-completecolor': item.status === 1 ? 'border border-pendingcolor rounded w-24 flex justify-center cursor-pointer py-1 text-pendingcolor': 'border border-cancelcolor rounded w-24 flex justify-center cursor-pointer py-1 text-cancelcolor'} >
+                                                    <p>{item.status === 2 ? 'Approved' : item.status === 1 ? 'Pending': 'Declined'}</p>
+                                                </div>
+                                            </div>
+                                        )
+                                    })}
+                                </>
+                            :null}
                         </> :
                         <>
                             {ItemArray.map((item:any, index: any)=> {
