@@ -59,7 +59,6 @@ export default function login() {
                 localStorage.setItem('token', json.data.token); 
                 localStorage.setItem('id', json.data.user._id); 
                 localStorage.setItem('details', JSON.stringify(json.data.user))
-                setLoading(false);
                 // console.log(json)
     
                 const t1 = setTimeout(() => { 

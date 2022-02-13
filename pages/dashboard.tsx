@@ -35,8 +35,10 @@ export default function Dashboard() {
         if(!token ){
             Router.push('/login')
         }
-    },[]);   
+    },);   
 
+
+    console.log(data)
     return ( 
         <div className='w-full relative flex flex-col h-screen overflow-hidden' style={{backgroundColor:'#EFF7FF'}}  >
             {isLoading ? 
