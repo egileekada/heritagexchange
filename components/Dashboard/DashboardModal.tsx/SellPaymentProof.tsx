@@ -2,6 +2,7 @@ import { Input, Select } from '@chakra-ui/react';
 import React from 'react'
 import * as axios from 'axios'   
 import { IoIosArrowDropleft, IoIosCloseCircleOutline, IoIosClose } from 'react-icons/io';
+import { IUser, UserContext } from '../../../context/UserContext';
 
 export default function SellPaymentProof(props:any) {
 
@@ -10,8 +11,10 @@ export default function SellPaymentProof(props:any) {
     const [ imageFiles, setImageFiles ] = React.useState([]  as Array<string>);
     const [show, setShow] = React.useState(false)
     const [loading, setLoading] = React.useState(false);
+    const userContext: IUser = React.useContext(UserContext); 
     let formData = new FormData()
 
+    console.log(userContext.userData)
 
     const PreviousPage =()=> {
         props.close(false);
@@ -37,11 +40,8 @@ export default function SellPaymentProof(props:any) {
         }
         setShow(prev => !prev); 
     }; 
-
-
-
-    const submit = async () => {  
-
+ 
+    const submit = async () => {   
 
         imageFiles.map((item: any) => 
             formData.append('paymentproof', item)
@@ -57,7 +57,7 @@ export default function SellPaymentProof(props:any) {
             setLoading(false)
             props.close(false);
             props.next(true);
-    }  
+    } 
 
     // console.log('h'+imageFiles[0].name)
 
@@ -104,7 +104,7 @@ export default function SellPaymentProof(props:any) {
             </div>
             <div className='w-full flex flex-col justify-center items-center py-1' >
                 <p className='font-Inter-SemiBold text-xs' >Upload Payment Proof</p> 
-                {!show ? 
+                {selectedFiles.length === 0 ? 
                     <label className='w-72 border-dashed h-64 flex flex-col border cursor-pointer justify-center items-center mx-4 my-6 rounded'>
                         <input style={{display:'none'}} type="file" onChange={handleImageChange} multiple accept="image/*" id="input" />
                         <img src='/assets/images/upload.png' className='w-14 h-14 my-1' />
@@ -113,19 +113,23 @@ export default function SellPaymentProof(props:any) {
                     </label>
                 :
                     <div className='w-full py-6' >
-                        <div className='w-full flex flex-row items-center py-4 px-4 rounded' style={{backgroundColor:'#8F9BB321'}} >
-                            <img src='/assets/images/file.png' className='w-6 h-6 ' />
-                            <p className='font-Inter-SemiBold text-xs ml-4' >TranactionReceipt.PDF</p>
-                            <div className='w-full flex flex-1' /> 
-                            <IoIosClose style={{backgroundColor: '#EA15362F', color:'#EA1536'}} className='w-6 h-6 m-1 cursor-pointer rounded-full' />
-                        </div>  
+                        {selectedFiles.map((item: any, index: any)=> {
+                            return(
+                                <div className='w-full flex flex-row items-center py-4 px-4 rounded' style={{backgroundColor:'#8F9BB321'}} >
+                                    <img src={item} className='w-6 h-6 ' />
+                                    <p className='font-Inter-SemiBold text-xs ml-4' >TranactionReceipt{index}</p>
+                                    <div className='w-full flex flex-1' /> 
+                                    <IoIosClose onClick={()=> handleRemove(item, imageFiles[index])} style={{backgroundColor: '#EA15362F', color:'#EA1536'}} className='w-6 h-6 m-1 cursor-pointer rounded-full' />
+                                </div>  
+                            ) })
+                        } 
                         <label >
                             <input style={{display:'none'}} type="file" onChange={handleImage} accept="image/*" id="input" />
                             <p className=' text-heritagebutton cursor-pointer font-Inter-SemiBold text-xs text-right mt-2' >+ Add Another Screenshot</p>
                         </label>
                         <p className='font-Inter-SemiBold mt-10 text-xs' >Receiving Address</p>
-                        <Input placeholder='Wema Bank - 18209102929' fontSize='xs' className='my-2 ' />
-                        <p className='font-Inter-Bold my-2 text-xs' >Account Name :<span className='font-Inter-Regular'> John Nnamdi</span></p>
+                        <Input value={userContext.userData.bank_name+' - '+userContext.userData.account_number} placeholder='Wema Bank - 18209102929' fontSize='xs' className='my-2 ' />
+                        <p className='font-Inter-Bold my-2 text-xs' >Account Name :<span className='font-Inter-Regular'>{userContext.userData.account_name}</span></p>
                         <div style={{backgroundColor:'#1526A717'}} className='rounded p-3 mt-10  '  >
                             <p className=' lg:w-72 font-Inter-Regular text-xs'>To add another bank account to your account please go to Profile{' > '}Banks</p>
                         </div>

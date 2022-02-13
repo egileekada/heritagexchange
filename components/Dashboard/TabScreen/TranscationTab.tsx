@@ -67,21 +67,27 @@ export default function TranscationTab(props: any) {
                             {!isLoading ? 
                                 <>
                                     {data.data.map((item:any, index: any)=> {
-                                        return( 
-                                            <div key={index} className='w-full my-4 flex text-sm flex-row items-center rounded-md p-5' style={{backgroundColor:'#F9FAFA'}} >
-                                                <div className='flex flex-col' >
-                                                    <p className='font-Inter-SemiBold text-sm' >{item.coin_amount} {item.coin_type === 1 ? 'BTC' : item.coin_type === 2 ? 'ETH' :'USDT'}</p>
-                                                    <p className='font-Inter-Regular text-xs mt-1' >{item.createdAt}</p>
+                                        if(data.data.length === 0){
+                                            return(
+                                                'You Have No Notification'
+                                            )
+                                        } else{ 
+                                            return( 
+                                                <div key={index} className='w-full my-4 flex text-sm flex-row items-center rounded-md p-5' style={{backgroundColor:'#F9FAFA'}} >
+                                                    <div className='flex flex-col' >
+                                                        <p className='font-Inter-SemiBold text-sm' >{item.coin_amount} {item.coin_type === 1 ? 'BTC' : item.coin_type === 2 ? 'ETH' :'USDT'}</p>
+                                                        <p className='font-Inter-Regular text-xs mt-1' >{item.createdAt}</p>
+                                                    </div>
+                                                    <div className='w-full flex flex-1' />
+                                                    <div className={item.status === 2 ? 'border border-completecolor rounded w-24 flex justify-center cursor-pointer py-1 text-completecolor': item.status === 1 ? 'border border-pendingcolor rounded w-24 flex justify-center cursor-pointer py-1 text-pendingcolor': 'border border-cancelcolor rounded w-24 flex justify-center cursor-pointer py-1 text-cancelcolor'} >
+                                                        <p>{item.status === 2 ? 'Approved' : item.status === 1 ? 'Pending': 'Declined'}</p>
+                                                    </div>
                                                 </div>
-                                                <div className='w-full flex flex-1' />
-                                                <div className={item.status === 2 ? 'border border-completecolor rounded w-24 flex justify-center cursor-pointer py-1 text-completecolor': item.status === 1 ? 'border border-pendingcolor rounded w-24 flex justify-center cursor-pointer py-1 text-pendingcolor': 'border border-cancelcolor rounded w-24 flex justify-center cursor-pointer py-1 text-cancelcolor'} >
-                                                    <p>{item.status === 2 ? 'Approved' : item.status === 1 ? 'Pending': 'Declined'}</p>
-                                                </div>
-                                            </div>
-                                        )
+                                            )
+                                        }
                                     })}
                                 </>
-                            :null}
+                            :<div className="animate-spin rounded-full h-12 w-12 mx-auto border-t-2 border-b-2 border-heritagecolor"></div>}
                         </> :
                         <>
                             {ItemArray.map((item:any, index: any)=> {

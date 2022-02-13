@@ -6,12 +6,20 @@ import { useQuery } from 'react-query'
 export default function SellCoinInstruction(props: any) {
     
     const [coinType, setCoinType] = React.useState('BTC') 
-    const NaireBtc = props.nairabtc * props.rate
-    const NaireEth = props.NairaEthereum * props.rate
-    const NaireUsd = props.nairausd * props.rate
+    const [NaireBtc, setNaireBtc] = React.useState(0) 
+    const [NaireEth, setNaireEth] = React.useState(0) 
+    const [NaireUsd, setNaireUsd] = React.useState(0) 
+    // const NaireBtc = props.nairabtc * props.rate
+    // const NaireEth = props.NairaEthereum * props.rate
+    // const NaireUsd = props.nairausd * props.rate
+
+    console.log(NaireBtc)
 
     React.useEffect(() => {
         setCoinType(props.type)
+        setNaireBtc(props.nairabtc * props.rate)
+        setNaireEth(props.NairaEthereum * props.rate)
+        setNaireUsd(props.nairausd * props.rate)
     },)
 
     const PreviousPage =()=> {
@@ -28,10 +36,21 @@ export default function SellCoinInstruction(props: any) {
         fetch(`https://heritage-server.herokuapp.com/paypoint`).then(res =>
             res.json()
         )
-    )
+    ) 
 
-    console.log(data)
+    const [copySuccess, setCopySuccess] = React.useState('');
 
+    // your function to copy here
+    
+      const copyToClipBoard = async (copyMe: any) => {
+        try {
+          await navigator.clipboard.writeText(copyMe);
+          setCopySuccess('Copied!');
+        } catch (err) {
+          setCopySuccess('Failed to copy!');
+        }
+      };
+     
     return (
         <div className='lg:w-auto w-full h-auto px-6 py-3 rounded bg-white' >
             <div className='w-full flex flex-row' >
@@ -70,9 +89,10 @@ export default function SellCoinInstruction(props: any) {
                     <div className='w-full flex justify-center items-center my-2' >
                         <QRCode width='300px' height='300px' value={props.type === 'BTC' ? data.data.bitcoin_wallet :props.type === 'ETH' ? data.data.bitcoin_wallet :  data.data.bitcoin_wallet} />
                     </div>
-                    <p className='font-Inter-SemiBold text-xs mt-2 mb-2'>Address</p>  
+                    <p className='font-Inter-SemiBold text-xs mt-2 mb-2'>Address</p>   
                     {!isLoading ?  
-                        <p className=' w-full lg:w-84 flex font-Inter-Regular my-2 text-xs'>{props.type === 'BTC' ? data.data.bitcoin_wallet :props.type === 'ETH' ? data.data.bitcoin_wallet :  data.data.bitcoin_wallet}<span><IoIosCopy style={{color: '#1526A7'}} className=' ml-2 cursor-pointer w-4 h-4' /></span></p> 
+                        <p className=' w-full lg:w-84 flex font-Inter-Regular my-2 text-xs'>{props.type === 'BTC' ? data.data.bitcoin_wallet :props.type === 'ETH' ? data.data.etheruem_wallet :  data.data.usdt_wallet}<span><IoIosCopy onClick={() => copyToClipBoard(props.type === 'BTC' ? data.data.bitcoin_wallet :props.type === 'ETH' ? data.data.etheruem_wallet :  data.data.usdt_wallet)} style={{color: '#1526A7'}} className=' ml-2 cursor-pointer w-4 h-4' /></span>
+                        {copySuccess}</p> 
                     :null}
                     <button onClick={()=> NextPage()} style={{backgroundColor:'#1526A7'}} className='w-full py-4 my-6 font-Inter-Medium rounded text-xs text-white' >Upload Payment Proof</button>
                 </div>

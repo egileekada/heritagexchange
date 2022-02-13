@@ -44,7 +44,7 @@ export default function Notification() {
                         })}
                     </>
                 :
-                    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-heritagecolor"></div>
+                    <div className="animate-spin rounded-full h-12 w-12 mx-auto border-t-2 border-b-2 border-heritagecolor"></div>
                 }
                 {/* <div className='w-full bg-heritagebutton pl-1 my-3 rounded' >
                     <div className='w-full bg-white px-6 py-8 rounded' >

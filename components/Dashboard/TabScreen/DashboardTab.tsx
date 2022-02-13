@@ -70,15 +70,14 @@ export default function DashboardTab(props: any) {
             .then(data => {
                 setBtc(data[0].current_price)  
                 setEthereum(data[1].current_price)  
-                setUsd(data[4].current_price)  
-                console.log(data)
+                setUsd(data[4].current_price) 
             })
             .catch((error) => {
                 console.error('Error:', error);
             });  
 
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
-    },[btc, ethereum, data]);   
+    },[btc, ethereum, data]);    
 
     return ( 
     <div className='w-screen lg:w-full h-screen overflow-y-auto overflow-x-hidden'> 
@@ -199,7 +198,7 @@ export default function DashboardTab(props: any) {
             (
                 <>
                     <div className="h-full lg:w-98 mx-auto overflow-x-hidden overflow-y-auto fixed pb-4 px-4 pt-4 inset-0 z-50 outline-none focus:outline-none"> 
-                        <SellCoinInstruction nairausd={usd} type={coinType} nairabtc={btc} NairaEthereum={ethereum} next={setSellPaymentModal} back={setSellCoinModal} amount={amount} close={setSellInstructionModal} />
+                        <SellCoinInstruction nairausd={usd} nairabtc={btc}  rate={data.data.rate} type={coinType}  NairaEthereum={ethereum} next={setSellPaymentModal} back={setSellCoinModal} amount={amount} close={setSellInstructionModal} />
                     </div> 
                     <div className="opacity-75 fixed flex flex-1 inset-0 z-40 bg-black"/>
                 </>
@@ -209,7 +208,7 @@ export default function DashboardTab(props: any) {
             (
                 <>
                     <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed pb-4 px-4 inset-0 z-50 outline-none focus:outline-none"> 
-                        <CoinInstruction nairausd={usd}  nairabtc={btc} NairaEthereum={ethereum}  type={coinType} next={setPaymentModal}  amount={amount} back={setBuyCoinModal} close={setInstructionModal} />
+                        <CoinInstruction nairausd={usd}  nairabtc={btc}  rate={data.data.rate} NairaEthereum={ethereum}  type={coinType} next={setPaymentModal}  amount={amount} back={setBuyCoinModal} close={setInstructionModal} />
                     </div> 
                     <div className="opacity-75 fixed flex flex-1 inset-0 z-40 bg-black"/>
                 </>
@@ -219,7 +218,7 @@ export default function DashboardTab(props: any) {
             (
                 <>
                     <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed pb-4 px-4 inset-0 z-50 outline-none focus:outline-none"> 
-                        <PaymentProof close={setPaymentModal} next={setTransactionModal} back={setInstructionModal} />
+                        <PaymentProof type={coinType} close={setPaymentModal} next={setTransactionModal} back={setInstructionModal} />
                     </div> 
                     <div className="opacity-75 fixed flex flex-1 inset-0 z-40 bg-black"/>
                 </>
@@ -229,7 +228,7 @@ export default function DashboardTab(props: any) {
             (
                 <>
                     <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed pb-4 px-4 inset-0 z-50 outline-none focus:outline-none"> 
-                        <SellPaymentProof close={setSellPaymentModal}  next={setTransactionModal} back={setSellInstructionModal} />
+                        <SellPaymentProof type={coinType} close={setSellPaymentModal}  next={setSellTransactionModal} back={setSellInstructionModal} />
                     </div> 
                     <div className="opacity-75 fixed flex flex-1 inset-0 z-40 bg-black"/>
                 </>
@@ -249,7 +248,7 @@ export default function DashboardTab(props: any) {
             (
                 <>
                     <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed pb-4 px-4 inset-0 z-50 outline-none focus:outline-none"> 
-                        <Transaction rate={data.data.rate} close={setTransactionModal} sell={true} amount={amount} nairabtc={btc} NairaEthereum={ethereum}  nairausd={usd}  coinType={coinType} />
+                        <Transaction rate={data.data.rate} close={setSellTransactionModal} sell={true} amount={amount} nairabtc={btc} NairaEthereum={ethereum}  nairausd={usd}  coinType={coinType} />
                     </div> 
                     <div className="opacity-75 fixed flex flex-1 inset-0 z-40 bg-black"/>
                 </>

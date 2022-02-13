@@ -1,7 +1,9 @@
+import { Input } from '@chakra-ui/input';
 import { Select } from '@chakra-ui/select';
 import * as axios from 'axios'   
 import React from 'react'
 import { IoIosArrowDropleft, IoIosClose, IoIosCloseCircleOutline } from 'react-icons/io'
+import { IUser, UserContext } from '../../../context/UserContext';
 
 export default function PaymentProof(props:any) {
 
@@ -11,6 +13,7 @@ export default function PaymentProof(props:any) {
     const [show, setShow] = React.useState(false)
     const [loading, setLoading] = React.useState(false);
     let formData = new FormData()
+    const userContext: IUser = React.useContext(UserContext); 
 
 
     const PreviousPage =()=> {
@@ -18,10 +21,12 @@ export default function PaymentProof(props:any) {
         props.back(true);
     }
 
-    const NextPage =()=> {
-        props.close(false);
-        props.next(true);
-    }
+    // const NextPage =()=> {
+    //     props.close(false);
+    //     props.next(true);
+    // }
+
+    console.log(userContext.userData)
     
     const handleImageChange = (e:any) => {  
 
@@ -89,14 +94,7 @@ export default function PaymentProof(props:any) {
             setShow(prev => !prev);
         }
         setSelectedFiles(newList); 
-    }
-
-    // React.useEffect(() => {
-    //     setCoinType(props.type)
-    // },)
-    const ClickHandler =()=> {
-        
-    }
+    } 
 
     return (
         <div className='lg:w-auto w-full h-auto px-6 py-3 rounded bg-white' >
@@ -107,7 +105,7 @@ export default function PaymentProof(props:any) {
             </div>
             <div className='w-full flex flex-col justify-center items-center py-1' >
                 <p className='font-Inter-SemiBold text-xs' >Upload Payment Proof</p> 
-                {!show ? 
+                {selectedFiles.length === 0 ? 
                     <label className='w-72 border-dashed h-64 flex flex-col border cursor-pointer justify-center items-center mx-4 my-6 rounded'>
                         <input style={{display:'none'}} type="file" onChange={handleImageChange} multiple accept="image/*" id="input" />
                         <img src='/assets/images/upload.png' className='w-14 h-14 my-1' />
@@ -116,19 +114,30 @@ export default function PaymentProof(props:any) {
                     </label>
                 :
                     <div className='w-full py-6' >
-                        <div className='w-full flex flex-row items-center py-4 px-4 rounded' style={{backgroundColor:'#8F9BB321'}} >
-                            <img src='/assets/images/file.png' className='w-6 h-6 ' />
-                            <p className='font-Inter-SemiBold text-xs ml-4' >TranactionReceipt.PDF</p>
-                            <div className='w-full flex flex-1' /> 
-                            <IoIosClose onClick={()=> ClickHandler()} style={{backgroundColor: '#EA15362F', color:'#EA1536'}} className='w-6 h-6 m-1 cursor-pointer rounded-full' />
-                        </div>  
+                        {selectedFiles.map((item: any, index: any)=> {
+                            return(
+                                <div className='w-full flex flex-row items-center py-4 px-4 rounded' style={{backgroundColor:'#8F9BB321'}} >
+                                    <img src={item} className='w-6 h-6 ' />
+                                    <p className='font-Inter-SemiBold text-xs ml-4' >TranactionReceipt{index}.PDF</p>
+                                    <div className='w-full flex flex-1' /> 
+                                    <IoIosClose onClick={()=> handleRemove(item, imageFiles[index])} style={{backgroundColor: '#EA15362F', color:'#EA1536'}} className='w-6 h-6 m-1 cursor-pointer rounded-full' />
+                                </div>  
+                            )
+                        })}
                         <label >
                             <input style={{display:'none'}} type="file" onChange={handleImage} accept="image/*" id="input" />
                             <p className=' text-heritagebutton cursor-pointer font-Inter-SemiBold text-xs text-right mt-2' >+ Add Another Screenshot</p>
                         </label>
                         <p className='font-Inter-SemiBold mt-10 text-xs' >Receiving Address</p>
-                        <Select placeholder='Ethereum Address 1' fontSize='xs' className='my-2 ' />
-                        <p className='font-Inter-Regular text-xs'>0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7</p>
+                        <Input value={props.type === 'BTC' 
+                            ?
+                                ' Bitcoin Address':
+                            props.type === 'ETH' ?
+                                ' Ethereum Address'
+                            :
+                                ' Tether Address'
+                            }   fontSize='xs' className='my-2 ' />
+                        <p className='font-Inter-Regular text-xs'>{props.type === 'BTC' ? userContext.userData.bitcoin_wallet :props.type === 'ETH' ? userContext.userData.ethereum_wallet : userContext.userData.usdt_wallet}</p>
                         <div style={{backgroundColor:'#1526A717'}} className='rounded p-3 mt-10  '  >
                             <p className=' lg:w-72 font-Inter-Regular text-xs'>To add another receiving address to your account please go to Profile{' > '}Wallets</p>
                         </div>
