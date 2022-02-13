@@ -16,17 +16,15 @@ export default function Dashboard() {
 
     const [tab, setTab] = React.useState('Dashboard') 
     const userContext: IUser = React.useContext(UserContext);  
-    const { isLoading, error, data } = useQuery('repoData', () =>
+    const { isLoading, data } = useQuery('repoData', () =>
         fetch(`https://heritage-server.herokuapp.com/user/${localStorage.getItem('id')}`).then(res =>
             res.json()
         )
-    )
-
-
+    ) 
 
     React.useEffect(() => { 
         const token = localStorage.getItem('token') 
-        const details = JSON.parse(localStorage.getItem('details') as string) 
+        // const details = JSON.parse(localStorage.getItem('details') as string) 
 
         {!isLoading ?    
             userContext.setUserData(data.data.user)
@@ -36,9 +34,7 @@ export default function Dashboard() {
             Router.push('/login')
         }
     },);   
-
-
-    console.log(data)
+ 
     return ( 
         <div className='w-full relative flex flex-col h-screen overflow-hidden' style={{backgroundColor:'#EFF7FF'}}  >
             {isLoading ? 

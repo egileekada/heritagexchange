@@ -10,6 +10,9 @@ export default function register() {
 
     const [showpassword, setShowpass] = React.useState(false); 
     const [loading, setLoading] = React.useState(false);
+    const [modal, setShowModal] = React.useState(0) 
+    const [value, setValue] = React.useState('') 
+    const [newvalue, setNewValue] = React.useState('') 
 
     const handleShowpassword = () => {
         setShowpass(prev => !prev);
@@ -17,10 +20,18 @@ export default function register() {
 
     React.useEffect(() => { 
         const token = localStorage.getItem('token')
+            // localStorage.setItem('email', formik.values.email)
         if(token){
             Router.push('/dashboard')
         }
-    });
+
+        if(localStorage.getItem('email')){
+            setValue(localStorage.getItem('email')+'') 
+            // formik.setFieldValue('email', value)
+        }else {
+            setValue('')
+        } 
+    },[value]);
 
     const loginSchema = yup.object({
         first_name: yup.string().required('Your FirstName is required'),
@@ -39,11 +50,21 @@ export default function register() {
     const submit = async () => {
 
         if (!formik.dirty) {
-          alert('You have to fill in th form to continue');
+            setShowModal(3)
+            const t1 = setTimeout(() => {  
+                clearTimeout(t1);
+                setShowModal(0)
+            }, 1000); 
+            setLoading(false);
           return;
         }else if (!formik.isValid) {
-          alert('You have to fill in the form correctly to continue');
-          return;
+            setShowModal(3)
+            const t1 = setTimeout(() => {  
+                clearTimeout(t1);
+                setShowModal(0)
+            }, 1000); 
+            setLoading(false);
+            return;
         }else {
             setLoading(true);
             const request = await fetch(`https://heritage-server.herokuapp.com/auth/signup`, {
@@ -51,7 +72,7 @@ export default function register() {
                 headers: {
                 'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formik.values),
+                body: JSON.stringify({first_name: formik.values.first_name, last_name: formik.values.last_name, email: value, password: formik.values.password}),
             });
     
             const json = await request.json();
@@ -60,10 +81,11 @@ export default function register() {
                 localStorage.setItem('token', json.data.token); 
                 localStorage.setItem('id', json.data.user._id); 
                 localStorage.setItem('details', JSON.stringify(json.data.user))
-                setLoading(false);
-                console.log(json)
+                setLoading(false); 
+                setShowModal(1)
                 const t1 = setTimeout(() => { 
-                    Router.push('/dashboard'); 
+                    setShowModal(0)
+                    Router.push('/verify'); 
                     clearTimeout(t1);
                 }, 3000); 
   
@@ -78,11 +100,20 @@ export default function register() {
                 });
 
             }else {
-                alert(json.message);
+                setShowModal(2)
+                const t1 = setTimeout(() => { 
+                    setShowModal(0) 
+                    clearTimeout(t1);
+                }, 3000);  
                 setLoading(false);
             }
         }
-    }
+    } 
+
+    const OnchangeHandler =(e: any)=> {
+        localStorage.setItem('email', e.target.value)
+        // formik.handleChange(e)
+    } 
 
     return (
         <div className=' w-full h-full overflow-x-hidden flex flex-col flex-1' >
@@ -92,6 +123,53 @@ export default function register() {
             {/* <div className='w-full h-auto bg-white' >
                 <Navbar />
             </div> */}
+            {modal === 1 ? 
+                <motion.div
+                    initial={{ y: -100, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    className="h-12 flex justify-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none">
+                    <div className=' w-full bg-green-400 px-4 py-2 flex justify-center items-center ' > 
+                        <p style={{color: '#FFF', fontSize: '16px'}} className='font-Inter-Medium' >Login Successfull</p>
+                    </div>
+                </motion.div>
+            :null}
+            {modal === 2 ?  
+                <motion.div
+                    initial={{ y: -100, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    className="h-12 flex justify-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none">
+                    <div className=' w-full bg-red-500 px-4 py-2 flex justify-center items-center ' > 
+                        <p style={{color: '#FFF', fontSize: '16px'}} className='font-Inter-Bold' >Email Already Exist</p>
+                    </div>
+                </motion.div>
+            :null}
+            {modal === 3 ?  
+                <motion.div
+                    initial={{ y: -100, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    className="h-12 flex justify-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none">
+                    <div className=' w-full bg-red-500 px-4 py-2 flex justify-center items-center ' > 
+                        <p style={{color: '#FFF', fontSize: '16px'}} className='font-Inter-Bold' >Please Enter Your Email And Password</p>
+                    </div>
+                </motion.div>
+            :null}
+            {modal === 4 ? 
+                <> 
+                    <motion.div
+                        initial={{ y: -100, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        className="h-auto flex items-center justify-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none">
+                        <div className=' w-auto bg-white px-4 py-8 flex flex-col justify-center items-center ' > 
+                            <p style={{  fontSize: '16px'}} className='font-Inter-Bold' >Will You Like To Continue With This {newvalue}</p>
+                            <div className='flex items-center' >
+                                <button onClick={()=> setShowModal(0)}  className='w-24 py-3 flex justify-center items-center border border-black text-black font-Inter-Bold text-xs mr-2 mt-4 bg-white rounded-md' >No</button>
+                                <button onClick={()=> submit()}  className='w-24 py-3 flex justify-center items-center text-white font-Inter-Bold text-xs ml-2 mt-4 bg-heritagebutton rounded-md' >Yes</button>
+                            </div>
+                        </div>
+                    </motion.div>
+                    <div className="opacity-25 fixed flex flex-1 inset-0 z-40 bg-black"/>
+                </>
+            :null}
             <div className='w-screen lg:h-screen flex flex-row bg-white' >
                 <div className=' bg-heritagecolor w-full h-full lg:flex text-white flex-col pt-20 px-10  hidden' >
                     <div className='flex items-center' >
@@ -166,6 +244,7 @@ export default function register() {
                                 <Input 
                                     name="email"
                                     onChange={formik.handleChange}
+                                    // value={value}
                                     onFocus={() =>
                                         formik.setFieldTouched("email", true, true)
                                     }  

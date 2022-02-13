@@ -1,8 +1,23 @@
 import { Input, Link } from '@chakra-ui/react'
 import Head from 'next/head'
 import React from 'react'
+import { motion } from 'framer-motion'; 
+import * as yup from 'yup'
+import { useFormik } from 'formik'; 
 
 export default function recovery() {
+
+    const loginSchema = yup.object({
+        code: yup.string().required('Required'), 
+    }) 
+
+    // formik
+    const formik = useFormik({
+        initialValues: {code: ''},
+        validationSchema: loginSchema,
+        onSubmit: () => {},
+    }); 
+
     return (
         <div className=' w-full h-full flex flex-col flex-1' >
             <Head>
@@ -26,7 +41,25 @@ export default function recovery() {
                         <div className='w-full flex flex-col py-4' > 
                             <div className='relative w-full flex flex-col py-4 ' > 
                                 <p className='Inter-Medium text-xs' >Code</p>
-                                <Input size="lg" className=' mt-2 bg-gray_bg border-gray_bg text-primary '  bg="#F6F6F6" focusBorderColor='white' fontSize='sm' borderColor="#F6F6F6" color="#200E32"/>
+                                <Input 
+                                    name="code"
+                                    onChange={formik.handleChange}
+                                    onFocus={() =>
+                                        formik.setFieldTouched("code", true, true)
+                                    }  
+                                    size="lg" className=' mt-2 bg-gray_bg border-gray_bg text-primary '  bg="#F6F6F6" focusBorderColor='white' fontSize='sm' borderColor="#F6F6F6" color="#200E32"/>
+                            
+                                <div className="w-full h-auto pt-2">
+                                    {formik.touched.code && formik.errors.code && (
+                                        <motion.p
+                                            initial={{ y: -100, opacity: 0 }}
+                                            animate={{ y: 0, opacity: 1 }}
+                                            className="text-xs font-Inter-Regular text-errorRed"
+                                        >
+                                            {formik.errors.code}
+                                        </motion.p>
+                                    )}
+                                </div>
                             </div>  
                         </div> 
                         <Link href='/dashboard'>

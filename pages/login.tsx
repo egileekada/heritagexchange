@@ -11,6 +11,7 @@ export default function login() {
 
     const [showpassword, setShowpass] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
+    const [modal, setShowModal] = React.useState(0) 
 
     const handleShowpassword = () => {
         setShowpass(prev => !prev);
@@ -37,11 +38,21 @@ export default function login() {
 
     const submit = async () => {
 
-        if (!formik.dirty) {
-          alert('You have to fill in th form to continue');
+        if (!formik.dirty) { 
+            setShowModal(3)
+            const t1 = setTimeout(() => {  
+                clearTimeout(t1);
+                setShowModal(0)
+            }, 1000); 
+            setLoading(false);
           return;
-        }else if (!formik.isValid) {
-          alert('You have to fill in the form correctly to continue');
+        }else if (!formik.isValid) { 
+            setShowModal(3)
+            const t1 = setTimeout(() => {  
+                clearTimeout(t1);
+                setShowModal(0)
+            }, 1000); 
+            setLoading(false);
           return;
         }else {
             setLoading(true);
@@ -59,14 +70,19 @@ export default function login() {
                 localStorage.setItem('token', json.data.token); 
                 localStorage.setItem('id', json.data.user._id); 
                 localStorage.setItem('details', JSON.stringify(json.data.user))
-                // console.log(json)
-    
+                // console.log(json) 
+                setShowModal(1)
                 const t1 = setTimeout(() => { 
+                    setShowModal(0)
                     Router.push('/dashboard'); 
                     clearTimeout(t1);
                 }, 3000);  
             }else {
-                alert(json.message);
+                setShowModal(2)
+                const t1 = setTimeout(() => { 
+                    setShowModal(0) 
+                    clearTimeout(t1);
+                }, 3000);  
                 setLoading(false);
             }
         }
@@ -80,6 +96,36 @@ export default function login() {
             {/* <div className='w-full h-auto bg-white' >
                 <Navbar />
             </div> */}
+            {modal === 1 ? 
+                <motion.div
+                    initial={{ y: -100, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    className="h-12 flex justify-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none">
+                    <div className=' w-full bg-green-400 px-4 py-2 flex justify-center items-center ' > 
+                        <p style={{color: '#FFF', fontSize: '16px'}} className='font-Inter-Medium' >Login Successfull</p>
+                    </div>
+                </motion.div>
+            :null}
+            {modal === 2 ?  
+                <motion.div
+                    initial={{ y: -100, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    className="h-12 flex justify-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none">
+                    <div className=' w-full bg-red-500 px-4 py-2 flex justify-center items-center ' > 
+                        <p style={{color: '#FFF', fontSize: '16px'}} className='font-Inter-Bold' >Incorrect Email or Password</p>
+                    </div>
+                </motion.div>
+            :null}
+            {modal === 3 ?  
+                <motion.div
+                    initial={{ y: -100, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    className="h-12 flex justify-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none">
+                    <div className=' w-full bg-red-500 px-4 py-2 flex justify-center items-center ' > 
+                        <p style={{color: '#FFF', fontSize: '16px'}} className='font-Inter-Bold' >Please Enter Your Email And Password</p>
+                    </div>
+                </motion.div>
+            :null}
             <div className='w-full h-screen flex flex-row bg-white' >
                 <div className=' bg-heritagecolor w-full h-screen lg:flex text-white flex-col pt-20 px-10  hidden' >
                     <div className='flex items-center' >
