@@ -1,4 +1,5 @@
 import { Select } from '@chakra-ui/select';
+import * as axios from 'axios'   
 import React from 'react'
 import { IoIosArrowDropleft, IoIosClose, IoIosCloseCircleOutline } from 'react-icons/io'
 
@@ -67,9 +68,8 @@ export default function PaymentProof(props:any) {
         );
         
         setLoading(true) 
-            const request = await fetch(`https://heritage-server.herokuapp.com/transaction/uploadfiles/${localStorage.getItem('tid')}`, {
-                method: 'POST', 
-                body: formData 
+            await axios.default.post(`https://heritage-server.herokuapp.com/transaction/uploadfiles/${localStorage.getItem('tid')}`, formData,{
+                headers: { 'content-type': 'application/json'}
             });
 
             // const json = await request.json(); 

@@ -11,6 +11,9 @@ export default function SellCoin(props: any) {
     const [coinIndex, setCoinIndex] = React.useState(1)
     const [coinAmount, setCoinAmount] = React.useState(0)
     const [loading, setLoading] = React.useState(false);
+    const NaireBtc = props.nairabtc * props.rate
+    const NaireEth = props.NairaEthereum * props.rate
+    const NaireUsd = props.nairausd * props.rate
 
     const OnChangeHandler =(e: any)=>{
         setCoinType(e.target.value) 
@@ -76,19 +79,18 @@ export default function SellCoin(props: any) {
         setCoinType(props.type)
         props.amount(formik.values.amount)
         {coinType === 'BTC' ?
-            setCoinAmount(formik.values.amount/props.nairabtc)
+            setCoinAmount(formik.values.amount/NaireBtc)
+        :coinType === 'ETH' ?
+            setCoinAmount(formik.values.amount/NaireEth)
         :
-            setCoinAmount(formik.values.amount/props.NairaEthereum)}
+            setCoinAmount(formik.values.amount/NaireUsd)}
         {coinType === 'BTC' ?
             setCoinIndex(1)
         :coinType === 'ETH' ?
             setCoinIndex(2)
         :
             setCoinIndex(3)
-        }
-        // 61c647c891479c09c5a3e2f5
-
-            console.log(coinAmount) 
+        }  
     },)
 
 
@@ -153,8 +155,8 @@ export default function SellCoin(props: any) {
                         </div>
                     </div>
                     <div className='w-full py-4 flex flex-row' >
-                        <p className='font-Inter-SemiBold text-xs flex'>NGN:<p className='font-Inter-Regular ml-2'> 13,002,382</p></p>
-                        <p className='font-Inter-SemiBold text-xs ml-4 flex'>USD:<p className='font-Inter-Regular ml-2'> 34,000</p></p>
+                        <p className='font-Inter-SemiBold text-xs flex'>NGN:<p className='font-Inter-Regular ml-2'>{coinType === 'BTC' ? NaireBtc.toLocaleString('en', {useGrouping:true}): coinType === 'ETH' ? NaireEth.toLocaleString('en', {useGrouping:true}): NaireUsd.toLocaleString('en', {useGrouping:true})}</p></p>
+                        <p className='font-Inter-SemiBold text-xs ml-4 flex'>USD:<p className='font-Inter-Regular ml-2'>{coinType === 'BTC' ? (props.nairabtc).toLocaleString('en', {useGrouping:true}): coinType === 'ETH' ? (props.NairaEthereum).toLocaleString('en', {useGrouping:true}): (props.nairausd).toLocaleString('en', {useGrouping:true})}</p></p>
                     </div>
                     <button  onClick={()=> submit()} style={{backgroundColor:'#1526A7'}} className='w-full py-4 flex items-center justify-center my-6 font-Inter-Medium rounded text-xs text-white' >
                     {!loading ? 

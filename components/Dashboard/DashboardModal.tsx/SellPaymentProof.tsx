@@ -1,5 +1,6 @@
 import { Input, Select } from '@chakra-ui/react';
 import React from 'react'
+import * as axios from 'axios'   
 import { IoIosArrowDropleft, IoIosCloseCircleOutline, IoIosClose } from 'react-icons/io';
 
 export default function SellPaymentProof(props:any) {
@@ -8,6 +9,8 @@ export default function SellPaymentProof(props:any) {
     const [ selectedFiles, setSelectedFiles ] = React.useState([]);
     const [ imageFiles, setImageFiles ] = React.useState([]  as Array<string>);
     const [show, setShow] = React.useState(false)
+    const [loading, setLoading] = React.useState(false);
+    let formData = new FormData()
 
 
     const PreviousPage =()=> {
@@ -34,6 +37,27 @@ export default function SellPaymentProof(props:any) {
         }
         setShow(prev => !prev); 
     }; 
+
+
+
+    const submit = async () => {  
+
+
+        imageFiles.map((item: any) => 
+            formData.append('paymentproof', item)
+        );
+        
+        setLoading(true) 
+            await axios.default.post(`https://heritage-server.herokuapp.com/transaction/uploadfiles/${localStorage.getItem('tid')}`, formData,{
+                headers: { 'content-type': 'application/json'}
+            });
+
+            // const json = await request.json(); 
+
+            setLoading(false)
+            props.close(false);
+            props.next(true);
+    }  
 
     // console.log('h'+imageFiles[0].name)
 
@@ -105,7 +129,17 @@ export default function SellPaymentProof(props:any) {
                         <div style={{backgroundColor:'#1526A717'}} className='rounded p-3 mt-10  '  >
                             <p className=' lg:w-72 font-Inter-Regular text-xs'>To add another bank account to your account please go to Profile{' > '}Banks</p>
                         </div>
-                        <button onClick={()=> NextPage()} style={{backgroundColor:'#1526A7'}} className='w-full py-4 mt-6 font-Inter-Medium rounded text-xs text-white' >Submit</button> 
+                        <button onClick={()=> submit()} className='w-full py-3 flex justify-center items-center text-white font-Inter-Bold text-xs mr-2 mt-4 bg-heritagebutton rounded-md' >
+                            {!loading ? 
+                                <div className='py-1' >
+                                    Submit
+                                </div>:
+                                <>
+                                    <div className="animate-spin rounded-full h-6 w-6 mr-4 border-t-2 border-b-2 border-white"></div>
+                                    LOADING
+                                </>
+                            } 
+                        </button>
                     </div>
                 }
             </div>

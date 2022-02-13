@@ -15,6 +15,8 @@ export default function TranscationTab(props: any) {
         )
     ) 
 
+    console.log(data)
+
     return (
         <div className='w-screen lg:w-full h-screen pt-8 lg:pt-16 px-4 lg:pb-0 pb-28 lg:px-10 overflow-auto'  >
             <div className='w-full flex flex-row items-center' >
@@ -68,7 +70,7 @@ export default function TranscationTab(props: any) {
                                         return( 
                                             <div key={index} className='w-full my-4 flex text-sm flex-row items-center rounded-md p-5' style={{backgroundColor:'#F9FAFA'}} >
                                                 <div className='flex flex-col' >
-                                                    <p className='font-Inter-SemiBold text-sm' >{item.coin_amount} {item.type === 1 ? 'BTC' : 'ETH'}</p>
+                                                    <p className='font-Inter-SemiBold text-sm' >{item.coin_amount} {item.coin_type === 1 ? 'BTC' : item.coin_type === 2 ? 'ETH' :'USDT'}</p>
                                                     <p className='font-Inter-Regular text-xs mt-1' >{item.createdAt}</p>
                                                 </div>
                                                 <div className='w-full flex flex-1' />

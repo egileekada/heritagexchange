@@ -25,19 +25,27 @@ export default function Notification() {
             <div className='w-full mt-10 pb-32 lg:pb-4 ' >
                 {!isLoading ?
                     <>
+                        
                         {data.data.map((item: any, index: any)=> {
-                            return(
-                                <div key={index} className='w-full bg-heritagebutton pl-1 my-3 rounded' >
-                                    <div className='w-full bg-white px-6 py-8 rounded' >
-                                        <p className='text-sm font-Inter-Medium' >{item.message}</p>
-                                        <p className='text-xs font-Inter-Regular text-gray-300 mt-2' >{item.createdAt}</p>
+                            if(data.data.length === 0){
+                                return(
+                                    'You Have No Notification'
+                                )
+                            } else{
+                                return(
+                                    <div key={index} className='w-full bg-heritagebutton pl-1 my-3 rounded' >
+                                        <div className='w-full bg-white px-6 py-8 rounded' >
+                                            <p className='text-sm font-Inter-Medium' >{item.message}</p>
+                                            <p className='text-xs font-Inter-Regular text-gray-300 mt-2' >{item.createdAt}</p>
+                                        </div>
                                     </div>
-                                </div>
-                            )
+                                )
+                            }
                         })}
                     </>
                 :
-                'You Have No Notification'}
+                    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-heritagecolor"></div>
+                }
                 {/* <div className='w-full bg-heritagebutton pl-1 my-3 rounded' >
                     <div className='w-full bg-white px-6 py-8 rounded' >
                         <p className='text-sm font-Inter-Medium' >Your transaction has been processed successfully</p>
