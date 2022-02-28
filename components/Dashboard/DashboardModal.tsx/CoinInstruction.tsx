@@ -59,7 +59,7 @@ export default function CoinInstruction(props: any) {
                             <img src='/assets/images/tether.png' className='w-14 h-14' /> 
                     }
                     <div className='ml-4' >
-                        <p className='font-Inter-Bold text-lg w-auto lg:w-full lg:text-2xl' >{coinType === 'BTC' ? props.amount/NaireBtc: coinType === 'ETH' ? props.amount/NaireEth: props.amount/NaireUsd} {coinType === 'BTC' ? 'BTC': coinType === 'ETH' ? 'ETH':'USDT'}</p>
+                        <p className='font-Inter-Bold text-lg w-auto lg:w-full lg:text-2xl' >{coinType === 'BTC' ? props.amount/props.nairabtc: coinType === 'ETH' ? props.amount/props.NairaEthereum: props.amount/props.nairausd} {coinType === 'BTC' ? 'BTC': coinType === 'ETH' ? 'ETH':'USDT'}</p>
                         <p className='font-Inter-SemiBold text-xs ml-2'>NGN: <span className='font-Inter-Regular'>{props.amount.toLocaleString('en', {useGrouping:true})}</span></p>
                     </div>
                 </div>

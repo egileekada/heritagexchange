@@ -120,7 +120,7 @@ export default function SellCoin(props: any) {
                         <img src='/assets/images/tether.png' className='w-14 h-14 my-3' /> 
                 }
                 <div className='w-full flex flex-col ' >
-                    <p className='font-Inter-SemiBold text-xs mt-4'>Amount</p>
+                    <p className='font-Inter-SemiBold text-xs mt-4'>Amount in dollar</p>
                     <div className='flex flex-row my-2' > 
                         <div className='w-full flex-col lg:w-56 mr-2 flex font-Inter-Regular ' >  
                             <Input 
@@ -129,7 +129,7 @@ export default function SellCoin(props: any) {
                                 onFocus={() =>
                                     formik.setFieldTouched("amount", true, true)
                                 }  
-                                placeholder="1.0000000000" size="md" className='bg-gray_bg border-gray_bg text-primary '  bg="#F6F6F6" focusBorderColor='white' fontSize='xs' borderColor="#F6F6F6" color="#200E32"/>
+                                placeholder="$" size="md" className='bg-gray_bg border-gray_bg text-primary '  bg="#F6F6F6" focusBorderColor='white' fontSize='xs' borderColor="#F6F6F6" color="#200E32"/>
                     
                             <div className="w-full h-auto pt-2">
                                 {formik.touched.amount && formik.errors.amount && (

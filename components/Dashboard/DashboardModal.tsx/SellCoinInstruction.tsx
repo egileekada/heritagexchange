@@ -79,7 +79,7 @@ export default function SellCoinInstruction(props: any) {
                             <img src='/assets/images/tether.png' className='w-14 h-14' /> 
                     }
                     <div className='ml-4' >
-                        <p className='w-auto font-Inter-Bold lg:text-2xl' >{props.type === 'BTC' ? props.amount/NaireBtc :props.type === 'ETH' ? props.amount/NaireEth: props.amount/NaireUsd} {props.type === 'BTC' ? 'BTC':props.type === 'ETH' ? 'ETH':'USDT'}</p>
+                        <p className='w-auto font-Inter-Bold lg:text-2xl' >{props.type === 'BTC' ? props.amount/props.nairabtc  :props.type === 'ETH' ? props.amount/props.NairaEthereum: props.amount/props.nairausd} {props.type === 'BTC' ? 'BTC':props.type === 'ETH' ? 'ETH':'USDT'}</p>
                         <p className='font-Inter-SemiBold text-xs ml-2'>NGN:<span className='font-Inter-Regular'>{props.amount.toLocaleString('en', {useGrouping:true})}</span></p>
                     </div>
                 </div>
