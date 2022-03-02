@@ -3,7 +3,7 @@ import Router from 'next/router'
 
 export default function TermAndCondition() {
     return (
-        <div className='w-full h-full p-12' >
+        <div className='w-full h-full py-12 px-20' >
             <div className='flex items-center' >
                 <svg onClick={()=> Router.push('/')} className='mr-4 cursor-pointer' width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8 1L1 8L8 15" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -48,17 +48,4 @@ export default function TermAndCondition() {
             <p className='font-Inter-Regular text-lg mt-4'>By using service or other services provided by us, you acknowledge that you have read these terms of service and agree to be bound by them.</p> 
         </div>
     )
-} 
- 
-// 
-
-// 
-// 
-// 
-// 
-
-// 
-// 
-
-
-
+}  

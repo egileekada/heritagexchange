@@ -8,7 +8,7 @@ export default function Footer() {
             <div className='flex flex-row justify-between font-Inter-Regular text-sm text-white my-10' >
                 <p onClick={()=> Router.push('/termandcondition')} className='mx-2 lg:mx-8 cursor-pointer' >Terms of Service</p>
                 <p className='mx-2 lg:mx-8' >Privacy policy</p>
-                <p className='mx-2 lg:mx-8' >Support</p>
+                <p onClick={()=> Router.push('/support')} className='mx-2 lg:mx-8 cursor-pointer' >Support</p>
             </div>
             <p className='font-Inter-Regular text-xs text-white mt-16 mb-4' >Copyright © 2021</p>
         </div>

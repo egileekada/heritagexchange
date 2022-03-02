@@ -30,6 +30,7 @@ module.exports = {
       pendingcolor: '#C97C16',
       completecolor: '#148B3E',
       errorRed: '#F34423',
+      supportcolor: '#4594C014',
 
       // 4554BB, 979ED4 inacti
       // 717BCD FFFFFF

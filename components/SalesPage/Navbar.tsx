@@ -64,7 +64,7 @@ export default function Navbar() {
                         <Link href='#store' >
                             <p onClick={()=> setMenu(false)} className='py-2 cursor-pointer ' >Get The App</p> 
                         </Link>
-                        <Link href='#' >
+                        <Link href='/support' >
                             <p onClick={()=> setMenu(false)} className='py-2 cursor-pointer ' >Support</p> 
                         </Link>
                         <Link href='/register' >
