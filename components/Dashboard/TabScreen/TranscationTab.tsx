@@ -14,8 +14,15 @@ export default function TranscationTab(props: any) {
             res.json()
         )
     ) 
-
-    console.log(data)
+ 
+    const DateFormat =(item: any)=>{ 
+        var date = new Date(item);
+        let string = date+''
+        console.log(); 
+        return( 
+            <p className=' font-Montserrat-Medium text-xs' >{string.substr(4, 11)}</p>
+        )
+    } 
 
     return (
         <div className='w-screen lg:w-full h-screen pt-8 lg:pt-16 px-4 lg:pb-0 pb-28 lg:px-10 overflow-auto'  >
@@ -76,7 +83,7 @@ export default function TranscationTab(props: any) {
                                                 <div key={index} className='w-full my-4 flex text-sm flex-row items-center rounded-md p-5' style={{backgroundColor:'#F9FAFA'}} >
                                                     <div className='flex flex-col' >
                                                         <p className='font-Inter-SemiBold text-sm' >{item.coin_amount} {item.coin_type === 1 ? 'BTC' : item.coin_type === 2 ? 'ETH' :'USDT'}</p>
-                                                        <p className='font-Inter-Regular text-xs mt-1' >{item.createdAt}</p>
+                                                        <p className='font-Inter-Regular text-xs mt-1' >{DateFormat(item.createdAt)}</p>
                                                     </div>
                                                     <div className='w-full flex flex-1' />
                                                     <div className={item.status === 2 ? 'border border-completecolor rounded w-24 flex justify-center cursor-pointer py-1 text-completecolor': item.status === 1 ? 'border border-pendingcolor rounded w-24 flex justify-center cursor-pointer py-1 text-pendingcolor': 'border border-cancelcolor rounded w-24 flex justify-center cursor-pointer py-1 text-cancelcolor'} >

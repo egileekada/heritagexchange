@@ -2,7 +2,7 @@ import React from 'react'
 import { IoIosNotificationsOutline, IoMdContact } from 'react-icons/io';
 import PersonalInformation from '../Components/PersonalInformation';
 import WalletAndBank from '../Components/WalletAndBank';
-import { IUser, UserContext } from '../../../context/UserContext';
+import { IUser, UserContext } from '../../../context/UserContext'; 
 
 export default function Profile(props: any) { 
 

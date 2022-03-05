@@ -60,7 +60,7 @@ export default function CoinInstruction(props: any) {
                     }
                     <div className='ml-4' >
                         <p className='font-Inter-Bold text-lg w-auto lg:w-full lg:text-2xl' >{coinType === 'BTC' ? props.amount/props.nairabtc: coinType === 'ETH' ? props.amount/props.NairaEthereum: props.amount/props.nairausd} {coinType === 'BTC' ? 'BTC': coinType === 'ETH' ? 'ETH':'USDT'}</p>
-                        <p className='font-Inter-SemiBold text-xs ml-2'>NGN: <span className='font-Inter-Regular'>{props.amount.toLocaleString('en', {useGrouping:true})}</span></p>
+                        <p className='font-Inter-SemiBold text-xs ml-2'>USD: <span className='font-Inter-Regular'>{props.amount.toLocaleString('en', {useGrouping:true})}</span><span className='ml-3'>NGN: </span> <span className='font-Inter-Regular'>{(props.amount*props.rate).toLocaleString('en', {useGrouping:true})}</span></p>
                     </div>
                 </div>
                 <div className='w-full flex flex-col ' >

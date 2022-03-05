@@ -72,25 +72,7 @@ export default function Navbar() {
                         </Link>
                         <Link href='/login'>
                             <p onClick={()=> setMenu(false)} className='py-2 cursor-pointer ' >Log In</p> 
-                        </Link>
-                        {/* <Link href="/">
-                            <p onClick={()=>setMenu(false)} className="text-sm py-2 cursor-pointer ">Home</p>
-                        </Link>
-                        <Link href="/#HowItWorks">
-                            <p onClick={()=>setMenu(false)}  className="text-sm py-2  cursor-pointer ">How It Works</p>
-                        </Link>
-                        <Link href="/#BuyCredits">
-                            <p onClick={()=>setMenu(false)}  className="text-sm py-2  cursor-pointer ">Buy Credits</p>
-                        </Link>
-                        <Link href="/#CallRates" >
-                            <p onClick={()=>setMenu(false)}  className="text-sm py-2  cursor-pointer">Call Rates</p>
-                        </Link>
-                        <Link href="/#Support">
-                            <p onClick={()=>setMenu(false)}  className="text-sm py-2  cursor-pointer ">Supports</p>
-                        </Link>
-                        <Link href="/login">
-                            <p onClick={()=>setMenu(false)}  className="text-sm py-2  cursor-pointer ">My Account</p>
-                        </Link> */}
+                        </Link> 
                     </div>
             :null}
         </nav>
