@@ -60,7 +60,7 @@ export default function support() {
                 const t1 = setTimeout(() => { 
                     setShowModal(0)
                     setLoading(false);
-                    // Router.push('/dashboard'); 
+                    Router.push('/'); 
                     clearTimeout(t1);
                 }, 2000);  
             }else {
