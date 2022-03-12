@@ -4,8 +4,13 @@ import React from 'react'
 import { motion } from 'framer-motion'; 
 import * as yup from 'yup'
 import { useFormik } from 'formik'; 
+import Router from 'next/router'
 
 export default function recovery() {
+
+
+    const [modal, setShowModal] = React.useState(0) 
+    const [loading, setLoading] = React.useState(false);
 
     const loginSchema = yup.object({
         code: yup.string().required('Required'), 
@@ -17,6 +22,53 @@ export default function recovery() {
         validationSchema: loginSchema,
         onSubmit: () => {},
     }); 
+
+    const submit = async () => {
+
+            // if (!formik.dirty) { 
+            //     setShowModal(3)
+            //     const t1 = setTimeout(() => {  
+            //         clearTimeout(t1);
+            //         setShowModal(0)
+            //     }, 1000); 
+            //     setLoading(false);
+            //   return;
+            // }else if (!formik.isValid) { 
+            //     setShowModal(3)
+            //     const t1 = setTimeout(() => {  
+            //         clearTimeout(t1);
+            //         setShowModal(0)
+            //     }, 1000); 
+            //     setLoading(false);
+            //   return;
+            // }else {
+            //     setLoading(true);
+            //     const request = await fetch(`https://heritage-server.herokuapp.com/auth/verify`, {
+            //         method: 'POST',
+            //         headers: {
+            //         'Content-Type': 'application/json',
+            //         },
+            //         body: JSON.stringify(formik.values),
+            //     }); 
+        
+            //     if (request.status === 200) {    
+            //         // console.log(json) 
+            //         setShowModal(1)
+            //         const t1 = setTimeout(() => { 
+            //             setShowModal(0)
+            //             Router.push('/dashboard'); 
+            //             clearTimeout(t1);
+            //         }, 3000);  
+            //     }else {
+            //         setShowModal(2)
+            //         const t1 = setTimeout(() => { 
+            //             setShowModal(0) 
+            //             clearTimeout(t1);
+            //         }, 3000);  
+            //         setLoading(false);
+            //     } 
+            // }
+        }
 
     return (
         <div className=' w-full h-full flex flex-col flex-1' >
