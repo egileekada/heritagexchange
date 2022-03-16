@@ -27,9 +27,7 @@ export default function CoinInstruction(props: any) {
         fetch(`https://heritage-server.herokuapp.com/paypoint`).then(res =>
             res.json()
         )
-    )
-
-    console.log(data)
+    ) 
 
     return (
         <div className='lg:w-auto w-full h-auto px-6 py-3 rounded bg-white' >
@@ -59,13 +57,13 @@ export default function CoinInstruction(props: any) {
                             <img src='/assets/images/tether.png' className='w-14 h-14' /> 
                     }
                     <div className='ml-4' >
-                        <p className='font-Inter-Bold text-lg w-auto lg:w-full lg:text-2xl' >{coinType === 'BTC' ? props.amount/props.nairabtc: coinType === 'ETH' ? props.amount/props.NairaEthereum: props.amount/props.nairausd} {coinType === 'BTC' ? 'BTC': coinType === 'ETH' ? 'ETH':'USDT'}</p>
+                        <p className='font-Inter-Bold text-lg w-auto lg:w-full lg:text-2xl' >{coinType === 'BTC' ? (props.amount/props.nairabtc).toFixed(6): coinType === 'ETH' ? (props.amount/props.NairaEthereum).toFixed(6): (props.amount/props.nairausd).toFixed(6)} {coinType === 'BTC' ? 'BTC': coinType === 'ETH' ? 'ETH':'USDT'}</p>
                         <p className='font-Inter-SemiBold text-xs ml-2'>USD: <span className='font-Inter-Regular'>{props.amount.toLocaleString('en', {useGrouping:true})}</span><span className='ml-3'>NGN: </span> <span className='font-Inter-Regular'>{(props.amount*props.rate).toLocaleString('en', {useGrouping:true})}</span></p>
                     </div>
                 </div>
                 <div className='w-full flex flex-col ' >
                     <p className='font-Inter-SemiBold text-xs mt-4 mb-2'>Payment Instructions</p>  
-                    <p className=' w-full lg:w-84 font-Inter-Regular my-2 text-xs'>Send money to the account below and use the transaction reference - <span className='font-Inter-Bold' >DAYYSABS</span></p>  
+                    {/* <p className=' w-full lg:w-84 font-Inter-Regular my-2 text-xs'>Send money to the account below and use the transaction reference - <span className='font-Inter-Bold' >DAYYSABS</span></p>   */}
                     {!isLoading ? 
                         <>
                             <p className='font-Inter-Bold my-2 text-xs' >Account No: <span className='font-Inter-Regular'>{data.data.bank.account_number}</span></p>

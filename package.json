@@ -12,6 +12,7 @@
     "@chakra-ui/react": "^1.6.7",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "@lottiefiles/lottie-player": "^1.5.6",
     "axios": "^0.23.0",
     "css-loader": "^6.2.0",
     "formik": "^2.2.9",

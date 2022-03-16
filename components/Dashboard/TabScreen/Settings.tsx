@@ -67,7 +67,7 @@ export default function Settings(props: any) {
                     <IoIosNotificationsOutline style={{color:'#3B4FE6D5'}} className='w-7 h-6' />
                 </div>
             </div>  
-            <div className='w-full h-auto bg-white flex flex-col py-8 rounded-md px-4 lg:px-10 py-5' >
+            <div className='w-full h-auto bg-white flex flex-col py-8 rounded-md px-4 lg:px-10' >
                 <p className='font-Inter-Bold text-base py-2' >Change Password</p>
                 <div className='w-full flex flex-col lg:flex-row mt-4 py-2' >
                     <div className='w-full flex flex-col mr-4 ' >  

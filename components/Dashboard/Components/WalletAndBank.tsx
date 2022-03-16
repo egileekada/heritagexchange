@@ -21,8 +21,7 @@ export default function WalletAndBank() {
         ethereum_wallet: yup.string().required('Your Ethereum Address is required'),
         usdt_wallet: yup.string().required('Your USDT Address is required')
     }) 
-
-    console.log(userContext.userData.bank_name)
+ 
     // formik
     const formik = useFormik({
         initialValues: {

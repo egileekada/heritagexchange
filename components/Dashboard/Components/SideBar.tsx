@@ -11,8 +11,7 @@ export default function SideBar(props: any) {
     const ClickHandler =(index: any, subindex: any, tab: any, name: any)=> {
         setTab(subindex);
         setSection(index);
-        setTabName(name);
-        console.log(tab)
+        setTabName(name); 
         props.tab(tab)
     }
 

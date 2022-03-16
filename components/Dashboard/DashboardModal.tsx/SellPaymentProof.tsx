@@ -12,9 +12,7 @@ export default function SellPaymentProof(props:any) {
     const [show, setShow] = React.useState(false)
     const [loading, setLoading] = React.useState(false);
     const userContext: IUser = React.useContext(UserContext); 
-    let formData = new FormData()
-
-    console.log(userContext.userData)
+    let formData = new FormData() 
 
     const PreviousPage =()=> {
         props.close(false);
@@ -57,9 +55,7 @@ export default function SellPaymentProof(props:any) {
             setLoading(false)
             props.close(false);
             props.next(true);
-    } 
-
-    // console.log('h'+imageFiles[0].name)
+    }  
 
     const handleImage = (e:any) => {  
 

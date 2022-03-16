@@ -8,7 +8,7 @@ export default function AppStore() {
                     <p className='lg:text-4xl text-xl font-Inter-Bold'>Download our <span style={{color:'#091BAAF2'}} className='font-Inter-Medium' >mobile app</span></p>
                     <p className='lg:w-98 w-full text-xs my-6' style={{color:'#001A33'}}>Our app is available for iOS on Apple App Store and for Android on Google Play Store</p>
                     <div className='w-full flex flex-row justify-center items-center' >
-                        <div style={{backgroundColor:'#0F1542'}} className='lg:w-40 w-full py-1 flex justify-center items-center cursor-pointer mr-2 flex-row py-1  rounded-md' >
+                        <div style={{backgroundColor:'#0F1542'}} className='lg:w-40 w-full py-1 flex justify-center items-center cursor-pointer mr-2 flex-row rounded-md' >
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" className='mr-2' viewBox="0 0 32 32">
                                 {/* <defs><style>.a{fill:none;}.b{fill:#fff;}</style></defs> */}
                                 <rect className='fill-current text-transparent' width="32" height="32"/>

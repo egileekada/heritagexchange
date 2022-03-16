@@ -24,9 +24,7 @@ export default function PaymentProof(props:any) {
     // const NextPage =()=> {
     //     props.close(false);
     //     props.next(true);
-    // }
-
-    console.log(userContext.userData)
+    // } 
     
     const handleImageChange = (e:any) => {  
 
@@ -42,9 +40,7 @@ export default function PaymentProof(props:any) {
 			);
         }
         setShow(prev => !prev); 
-    }; 
-
-    // console.log('h'+imageFiles[0].name)
+    };  
 
     const handleImage = (e:any) => {  
 

@@ -62,8 +62,7 @@ export default function SellCoin(props: any) {
     
             if (request.status === 200) {    
                 localStorage.setItem('tid', json.data._id);  
-                setLoading(false);
-                // console.log(json)  
+                setLoading(false); 
 
             }else {
                 alert(json.message); 

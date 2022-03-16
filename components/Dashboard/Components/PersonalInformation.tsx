@@ -9,8 +9,7 @@ export default function PersonalInformation() {
     const [firstName, setFirstName] = React.useState(userContext.userData.first_name);
     const [lastName, setLastName] = React.useState(userContext.userData.last_name);  
     const [loading, setLoading] = React.useState(false);
-
-    // console.log(firstName)
+ 
 
     const submit = async () => {
         setLoading(true)

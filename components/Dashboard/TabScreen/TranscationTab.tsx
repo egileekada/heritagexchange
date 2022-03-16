@@ -17,8 +17,7 @@ export default function TranscationTab(props: any) {
  
     const DateFormat =(item: any)=>{ 
         var date = new Date(item);
-        let string = date+''
-        console.log(); 
+        let string = date+'' 
         return( 
             <p className=' font-Montserrat-Medium text-xs' >{string.substr(4, 11)}</p>
         )

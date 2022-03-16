@@ -11,9 +11,7 @@ export default function SellCoinInstruction(props: any) {
     const [NaireUsd, setNaireUsd] = React.useState(0) 
     // const NaireBtc = props.nairabtc * props.rate
     // const NaireEth = props.NairaEthereum * props.rate
-    // const NaireUsd = props.nairausd * props.rate
-
-    console.log(NaireBtc)
+    // const NaireUsd = props.nairausd * props.rate 
 
     React.useEffect(() => {
         setCoinType(props.type)

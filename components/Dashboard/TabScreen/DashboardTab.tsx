@@ -164,11 +164,11 @@ export default function DashboardTab(props: any) {
                             <img src='/assets/images/tether.png' className='w-12 h-12' />
                             <p className='text-xs font-Inter-SemiBold my-2 ml-4 lg:ml-0' >Tether</p>
                             <div className='w-full lg:w-auto flex flex-1' />
-                            <p onClick={()=> ClickHandlerSC('USDT')} style={{color:'#1526A7', backgroundColor: '#1526A70D'}} className='lg:w-24 cursor-pointer cursor-pointer items-center justify-center text-xs font-Inter-Medium py-1 px-4 rounded-full' >Sell USDT</p>
+                            <p onClick={()=> ClickHandlerSC('USDT')} style={{color:'#1526A7', backgroundColor: '#1526A70D'}} className='lg:w-24 cursor-pointer items-center justify-center text-xs font-Inter-Medium py-1 px-4 rounded-full' >Sell USDT</p>
                         </div>
                     </div>
                 </div> 
-                <div className=' w-full h-auto flex hidden lg:flex px-4 rounded-md bg-white ' >
+                <div className=' w-full h-auto hidden lg:flex px-4 rounded-md bg-white ' >
                     <img src='/assets/images/DashBg.png' className='mx-4 w-96 object-cover rounded-md' /> 
                 </div>
             </div>

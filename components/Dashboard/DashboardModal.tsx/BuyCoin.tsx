@@ -33,8 +33,7 @@ export default function BuyCoin(props: any) {
     });  
 
     const submit = async () => {  
-        let number = coinIndex
-        console.log(number)
+        let number = coinIndex 
         if (!formik.dirty) {
           alert('You have to fill in th form to continue');
           return;
@@ -64,8 +63,7 @@ export default function BuyCoin(props: any) {
     
             if (request.status === 200) {    
                 localStorage.setItem('tid', json.data._id);  
-                setLoading(false);
-                // console.log(json)  
+                setLoading(false); 
 
             }else {
                 alert(json.message); 
@@ -92,10 +90,7 @@ export default function BuyCoin(props: any) {
             setCoinIndex(2)
         :
             setCoinIndex(3)
-        }
-        // 61c647c891479c09c5a3e2f5
-
-            console.log(coinIndex) 
+        } 
     },)
 
     return (
