@@ -49,10 +49,7 @@ export default function Settings(props: any) {
                         confirmpassword: formik.values.newpassword
                     }
                 ),
-            });
-            
-            // setLoading(false)
-            // Router.reload()
+            }); 
         }
     }
     return (
