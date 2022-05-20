@@ -141,7 +141,7 @@ export default function login() {
                     </div>
                 </div>
                 <div className='w-full h-full flex justify-center items-center ' >
-                    <div className='bg-white w-full h-full flex justify-center flex-col py-24  py-14 px-6 lg:px-40 rounded-lg' >
+                    <div className='bg-white w-full h-full flex justify-center flex-col py-14 px-6 lg:px-40 rounded-lg' >
                         <div className='flex items-center mb-8' >
                             <svg onClick={()=> Router.push('/')} className='mr-4 cursor-pointer flex lg:hidden' width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M8 1L1 8L8 15" stroke="#192F5D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>

@@ -25,13 +25,15 @@ export default function register() {
             Router.push('/dashboard')
         }
 
-        if(localStorage.getItem('email')){
-            setValue(localStorage.getItem('email')+'') 
-            // formik.setFieldValue('email', value)
+        if(sessionStorage.getItem('email')){
+            setValue(sessionStorage.getItem('email')+'') 
+            formik.setFieldValue('email', value)
         }else {
             setValue('')
         } 
     },[value]);
+
+    console.log()
 
     const loginSchema = yup.object({
         first_name: yup.string().required('Your FirstName is required'),
@@ -183,7 +185,7 @@ export default function register() {
                     <img src='/assets/images/LoginBg.png' alt='login' style={{width: '450px'}} />
                 </div>
                 <div className='w-full h-auto overflow-y-auto ' >
-                    <div className='bg-white w-full h-auto flex justify-center flex-col py-20  py-14 px-6 lg:px-40 rounded-lg' >
+                    <div className='bg-white w-full h-auto flex justify-center flex-col py-14 px-6 lg:px-40 rounded-lg' >
                         <div className='flex items-center mb-8' >
                             <svg onClick={()=> Router.push('/')} className='mr-4 cursor-pointer flex lg:hidden' width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M8 1L1 8L8 15" stroke="#192F5D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -244,7 +246,7 @@ export default function register() {
                                 <Input 
                                     name="email"
                                     onChange={formik.handleChange}
-                                    // value={value}
+                                    value={formik.values.email}
                                     onFocus={() =>
                                         formik.setFieldTouched("email", true, true)
                                     }  
