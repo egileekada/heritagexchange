@@ -13,7 +13,7 @@ export default function Navbar() {
                 <p className='text-3xl text-white mt-1 font-Inter-ExtraBold' >HX</p>
             </div>
             <div className=' mt-2 hidden lg:flex xl:flex flex-row text-white  text-sm font-Inter-Medium mx-2' >
-                <Link href='#' >
+                <Link href='/#' >
                     <p className='mx-6 cursor-pointer ' >Home</p> 
                 </Link>
                 <Link href='#feature' >
@@ -25,7 +25,7 @@ export default function Navbar() {
                 <Link href='#store' >
                     <p className='mx-6 cursor-pointer ' >Get The App</p> 
                 </Link>
-                <Link href='#' >
+                <Link href='/support' >
                     <p className='mx-6 cursor-pointer ' >Support</p> 
                 </Link> 
             </div>

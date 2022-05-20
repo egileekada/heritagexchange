@@ -6,12 +6,21 @@ import * as yup from 'yup'
 import { useFormik } from 'formik'; 
 import {BASEURL} from '../../../global/URL'
 import { motion } from 'framer-motion'; 
+import { useQuery } from 'react-query';
 
 export default function WalletAndBank() {
 
     const userContext: IUser = React.useContext(UserContext);  
     const [loading, setLoading] = React.useState(false);
 
+    const { isLoading, data } = useQuery('AllBanks', () =>
+        fetch(`https://heritage-server.herokuapp.com/bank/all`).then(res =>
+            res.json()
+        )   
+    )
+
+    console.log(data);
+    
 
     const loginSchema = yup.object({  
         account_number: yup.string().required('Your Account Number is required').min(10, 'A minimium of 10 characters'),
@@ -142,13 +151,23 @@ export default function WalletAndBank() {
                 <div className='w-full flex flex-col mr-4 ' >  
                     <div className='w-full flex flex-col py-3 ' > 
                         <p className='font-Inter-SemiBold text-xs pb-2' >Enter Bank Name</p>
-                        <Input  
+                        <Select  
                             name="bank_name"
                             onChange={formik.handleChange}
                             onFocus={() =>
                                 formik.setFieldTouched("bank_name", true, true)
                             }  
-                            variant="filled" fontSize='sm' size="lg" placeholder={userContext.userData.bank_name} />
+                            variant="filled" fontSize='sm' size="lg" placeholder={userContext.userData.bank_name} >
+                            {!isLoading && (
+                                <>
+                                    {data.data.map((item: any)=> {
+                                        return(
+                                            <option>{item.name}</option>
+                                        )
+                                    })}
+                                </>
+                            )}
+                        </Select>
                         <div className="w-full h-auto pt-2">
                             {formik.touched.bank_name && formik.errors.bank_name && (
                                 <motion.p

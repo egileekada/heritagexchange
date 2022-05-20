@@ -40,7 +40,7 @@ export default function NavbarTop(props: any) {
             <IoIosMenu onClick={()=> ClickHandler()} className='w-8 h-10 rounded-full mr-2' />
             {show ? 
                 <div className=' fixed top-20 rounded py-4 px-4 right-8 bg-white' >
-                    <div onClick={()=> TabClick()} className='flex items-center mb-4' >
+                    <div onClick={()=> TabClick()} className='flex items-center mb-4 cursor-pointer' >
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
                             {/* <defs><style>.a,.b{fill:rgba(240,240,240,0.6);}.b{opacity:0.4;}</style></defs> */}
                             <g transform="translate(3.333 1.666)">
