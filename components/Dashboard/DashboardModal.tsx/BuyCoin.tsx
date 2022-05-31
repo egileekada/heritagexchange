@@ -155,7 +155,7 @@ export default function BuyCoin(props: any) {
                     </div>
                     <div className='w-full py-4 flex flex-row' >
                         <p className='font-Inter-SemiBold text-xs flex'>NGN:<p className='font-Inter-Regular ml-2'>{coinType === 'BTC' ? NaireBtc.toLocaleString('en', {useGrouping:true}): coinType === 'ETH' ? NaireEth.toLocaleString('en', {useGrouping:true}): NaireUsd.toLocaleString('en', {useGrouping:true})}</p></p>
-                        <p className='font-Inter-SemiBold text-xs ml-4 flex'>USD:<p className='font-Inter-Regular ml-2'>{coinType === 'BTC' ? (props.nairabtc).toLocaleString('en', {useGrouping:true}): coinType === 'ETH' ? (props.NairaEthereum).toLocaleString('en', {useGrouping:true}): (props.nairausd).toLocaleString('en', {useGrouping:true})}</p></p>
+                        <p className='font-Inter-SemiBold text-xs ml-4 flex'>USD:<p className='font-Inter-Regular ml-2'>{coinType === 'BTC' ? (props.nairabtc).toLocaleString('en', {useGrouping:true}): coinType === 'ETH' ? (props.NairaEthereum).toLocaleString('en', {useGrouping:true}): (props.rate).toLocaleString('en', {useGrouping:true})}</p></p>
                     </div>
                     <button  onClick={()=> submit()} style={{backgroundColor:'#1526A7'}} className='w-full py-4 flex items-center justify-center my-6 font-Inter-Medium rounded text-xs text-white' >
                     {!loading ? 

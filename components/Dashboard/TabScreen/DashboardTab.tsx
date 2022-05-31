@@ -49,6 +49,9 @@ export default function DashboardTab(props: any) {
         )   
     )
 
+    console.log(data);
+    
+
     const ClickHandlerBC =(type: any)=> {
         setBuyCoinModal(true);
         setCoinType(type);
@@ -71,6 +74,8 @@ export default function DashboardTab(props: any) {
                 setBtc(data[0].current_price)  
                 setEthereum(data[1].current_price)  
                 setUsd(data[4].current_price) 
+                console.log(data[4].current_price);
+                
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -92,11 +97,18 @@ export default function DashboardTab(props: any) {
                     <IoIosNotificationsOutline style={{color:'#3B4FE6D5'}} className='w-7 h-6' />
                 </div>
             </div>
-            <div className='lg:w-full dashboardslide w-auto flex overflow-x-auto flex-row lg:overflow-x-hidden py-10' >
+            <div className='  dashboardslide w-auto flex overflow-x-auto flex-row lg:overflow-x-hidden py-10' >
                 <div style={{backgroundColor:'#1526A7'}} className=' lg:w-full flex flex-col p-6 rounded-md text-white ' >
-                    <p className='font-Inter-Medium text-sm w-48' >Today’s Rate</p>
+                    <p className='font-Inter-Medium text-sm w-48' >Today’s Buying Rate</p>
                     {!isLoading ?
-                        <p className='font-Inter-Bold text-2xl py-2'>₦{data.data.rate}/$</p>
+                        <p className='font-Inter-Bold text-2xl py-2'>₦{data.data.buy_rate}/$</p>
+                    :null}
+                    <p className='font-Inter-Regular text-xs '>Rates are updated daily</p>
+                </div>
+                <div style={{backgroundColor:'#1526A7'}} className=' lg:w-full flex flex-col ml-4 lg:ml-8 p-6 rounded-md text-white ' >
+                    <p className='font-Inter-Medium text-sm w-48' >Today’s Sellng Rate</p>
+                    {!isLoading ?
+                        <p className='font-Inter-Bold text-2xl py-2'>₦{data.data.sell_rate}/$</p>
                     :null}
                     <p className='font-Inter-Regular text-xs '>Rates are updated daily</p>
                 </div>
@@ -107,7 +119,7 @@ export default function DashboardTab(props: any) {
                         <p className='font-Inter-Regular text-xs '>NGN: N{(btc* data.data.rate).toLocaleString('en', {useGrouping:true})}</p>
                     :null}
                 </div>
-                <div style={{backgroundColor:'#1B2364'}} className='w-full flex flex-col ml-4 lg:ml-8 p-6 rounded-md text-white ' >
+                <div style={{backgroundColor:'#1B2364'}} className='w-full lg:hidden flex flex-col ml-4 lg:ml-8 p-6 rounded-md text-white ' >
                     <p className='font-Inter-Medium text-sm w-48' >Ethereum Value</p>
                     <p className='font-Inter-Bold text-2xl py-2'>${ethereum.toLocaleString('en', {useGrouping:true})}</p>
                     {!isLoading ?
@@ -178,7 +190,7 @@ export default function DashboardTab(props: any) {
             (
                 <>
                     <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed pb-4 px-4 inset-0 z-50 outline-none focus:outline-none"> 
-                        <SellCoin nairausd={usd} nairabtc={btc} rate={data.data.rate} NairaEthereum={ethereum} amount={setAmount} type={coinType} set={setCoinType} next={setSellInstructionModal} close={setSellCoinModal} />
+                        <SellCoin nairausd={usd} nairabtc={btc} rate={data.data.sell_rate} NairaEthereum={ethereum} amount={setAmount} type={coinType} set={setCoinType} next={setSellInstructionModal} close={setSellCoinModal} />
                     </div> 
                     <div className="opacity-75 fixed flex flex-1 inset-0 z-40 bg-black"/>
                 </>
@@ -188,7 +200,7 @@ export default function DashboardTab(props: any) {
             (
                 <>
                     <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed pb-4 px-4 inset-0 z-50 outline-none focus:outline-none"> 
-                        <BuyCoin nairausd={usd} nairabtc={btc} rate={data.data.rate} NairaEthereum={ethereum} amount={setAmount} type={coinType} set={setCoinType} next={setInstructionModal} close={setBuyCoinModal} />
+                        <BuyCoin nairausd={usd} nairabtc={btc} rate={data.data.buy_rate} NairaEthereum={ethereum} amount={setAmount} type={coinType} set={setCoinType} next={setInstructionModal} close={setBuyCoinModal} />
                     </div> 
                     <div className="opacity-75 fixed flex flex-1 inset-0 z-40 bg-black"/>
                 </>
@@ -198,7 +210,7 @@ export default function DashboardTab(props: any) {
             (
                 <>
                     <div className="h-full lg:w-98 mx-auto overflow-x-hidden overflow-y-auto fixed pb-4 px-4 pt-4 inset-0 z-50 outline-none focus:outline-none"> 
-                        <SellCoinInstruction nairausd={usd} nairabtc={btc}  rate={data.data.rate} type={coinType}  NairaEthereum={ethereum} next={setSellPaymentModal} back={setSellCoinModal} amount={amount} close={setSellInstructionModal} />
+                        <SellCoinInstruction nairausd={usd} nairabtc={btc}  rate={data.data.sell_rate} type={coinType}  NairaEthereum={ethereum} next={setSellPaymentModal} back={setSellCoinModal} amount={amount} close={setSellInstructionModal} />
                     </div> 
                     <div className="opacity-75 fixed flex flex-1 inset-0 z-40 bg-black"/>
                 </>
@@ -208,7 +220,7 @@ export default function DashboardTab(props: any) {
             (
                 <>
                     <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed pb-4 px-4 inset-0 z-50 outline-none focus:outline-none"> 
-                        <CoinInstruction nairausd={usd}  nairabtc={btc}  rate={data.data.rate} NairaEthereum={ethereum}  type={coinType} next={setPaymentModal}  amount={amount} back={setBuyCoinModal} close={setInstructionModal} />
+                        <CoinInstruction nairausd={usd}  nairabtc={btc}  rate={data.data.buy_rate} NairaEthereum={ethereum}  type={coinType} next={setPaymentModal}  amount={amount} back={setBuyCoinModal} close={setInstructionModal} />
                     </div> 
                     <div className="opacity-75 fixed flex flex-1 inset-0 z-40 bg-black"/>
                 </>
@@ -238,7 +250,7 @@ export default function DashboardTab(props: any) {
             (
                 <>
                     <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed pb-4 px-4 inset-0 z-50 outline-none focus:outline-none"> 
-                        <Transaction rate={data.data.rate} close={setTransactionModal} amount={amount} nairabtc={btc} NairaEthereum={ethereum}  nairausd={usd}  coinType={coinType} />
+                        <Transaction rate={data.data.buy_rate} close={setTransactionModal} amount={amount} nairabtc={btc} NairaEthereum={ethereum}  nairausd={usd}  coinType={coinType} />
                     </div> 
                     <div className="opacity-75 fixed flex flex-1 inset-0 z-40 bg-black"/>
                 </>
@@ -248,7 +260,7 @@ export default function DashboardTab(props: any) {
             (
                 <>
                     <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed pb-4 px-4 inset-0 z-50 outline-none focus:outline-none"> 
-                        <Transaction rate={data.data.rate} close={setSellTransactionModal} sell={true} amount={amount} nairabtc={btc} NairaEthereum={ethereum}  nairausd={usd}  coinType={coinType} />
+                        <Transaction rate={data.data.sell_rate} close={setSellTransactionModal} sell={true} amount={amount} nairabtc={btc} NairaEthereum={ethereum}  nairausd={usd}  coinType={coinType} />
                     </div> 
                     <div className="opacity-75 fixed flex flex-1 inset-0 z-40 bg-black"/>
                 </>

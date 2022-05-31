@@ -178,7 +178,7 @@ export default function register() {
                         <svg onClick={()=> Router.push('/')} className='mr-4 cursor-pointer' width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M8 1L1 8L8 15" stroke="#FFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-                        <p className='font-Inter-ExtraBold text-3xl'>HX</p>
+                        <p className='font-Inter-ExtraBold text-3xl'>Heritage Exchange</p>
                     </div>
                     <p className='font-Inter-ExtraBold text-3xl mt-8' >Buy, Sell And Save <span style={{color: '#617DEA'}} >Crypto</span></p>
                     <p className='font-Inter-Regular text-xs my-3 '>Heritage Exchange offers you a seamless, simple and secure way to buy, sell and<br/> save cryptocurrency</p>
@@ -190,7 +190,7 @@ export default function register() {
                             <svg onClick={()=> Router.push('/')} className='mr-4 cursor-pointer flex lg:hidden' width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M8 1L1 8L8 15" stroke="#192F5D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
-                            <p className='font-Inter-ExtraBold text-2xl text-esdiac_text flex lg:hidden'>HX</p>
+                            <p className='font-Inter-ExtraBold text-2xl text-esdiac_text flex lg:hidden'>Heritage Exchange</p>
                         </div>
                         <p className='font-Inter-SemiBold text-xl text-esdiac_text' >Create Your Account</p>
                         <p className='font-Inter-Regular my-2 text-xs text-esdiac_text' >Sign In To Your Account To Continue</p>
