@@ -53,7 +53,7 @@ export default function BuyCoin(props: any) {
                         coin_amount: coinAmount, 
                         type: 1,
                         coin_type: coinIndex,
-                        USD: formik.values.amount/props.rate+'',
+                        USD: coinIndex === 3 ? formik.values.amount : formik.values.amount/props.rate+'',
                         rate: props.rate
                       }
                 ),
@@ -83,7 +83,7 @@ export default function BuyCoin(props: any) {
         :coinType === 'ETH' ?
             setCoinAmount(formik.values.amount/NaireEth)
         :
-            setCoinAmount(formik.values.amount/NaireUsd)}
+            setCoinAmount(formik.values.amount)}
         {coinType === 'BTC' ?
             setCoinIndex(1)
         :coinType === 'ETH' ?

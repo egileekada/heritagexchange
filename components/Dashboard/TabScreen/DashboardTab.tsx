@@ -49,7 +49,7 @@ export default function DashboardTab(props: any) {
         )   
     )
 
-    console.log(data);
+    console.log(amount);
     
 
     const ClickHandlerBC =(type: any)=> {

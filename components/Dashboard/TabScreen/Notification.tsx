@@ -34,7 +34,7 @@ export default function Notification() {
                 {!isLoading ?
                     <>
                         
-                        {data.data.map((item: any, index: any)=> {
+                        {[...(data.data)].reverse().map((item: any, index: any)=> {
                             if(data.data.length === 0){
                                 return(
                                     'You Have No Notification'

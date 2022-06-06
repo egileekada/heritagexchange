@@ -86,7 +86,7 @@ export default function recovery() {
                     <img src='/assets/images/LoginBg.png' alt='login' style={{width: '446px'}} className=' h-auto  ' />
                 </div>
                 <div className='w-full h-full flex justify-center items-center ' >
-                    <div className='bg-white w-full h-full flex justify-center flex-col py-24  py-14 px-6 lg:px-40 rounded-lg' >
+                    <div className='bg-white w-full h-full flex justify-center flex-col py-24 px-6 lg:px-40 rounded-lg' >
                         <p className='font-Inter-ExtraBold text-2xl text-esdiac_text flex lg:hidden mb-8'>HX</p>
                         <p className='font-Inter-SemiBold text-xl text-esdiac_text' >Verify Email Address</p>
                         <p className='font-Inter-Regular my-2 text-xs text-esdiac_text' >Enter the code sent to your email address</p>
@@ -114,9 +114,21 @@ export default function recovery() {
                                 </div>
                             </div>  
                         </div> 
-                        <Link href='/dashboard'>
+
+                        <button onClick={()=> submit()}  className='w-full h-12 flex justify-center items-center text-white font-Inter-Bold text-xs mr-2 mt-4 bg-heritagebutton rounded-md' >
+                            {!loading ? 
+                                <div className='py-1' >
+                                    Verify Email
+                                </div>:
+                                <>
+                                    <div className="animate-spin rounded-full h-6 w-6 mr-4 border-t-2 border-b-2 border-white"></div>
+                                    LOADING
+                                </>
+                            } 
+                        </button>
+                        {/* <Link href='/dashboard'>
                             <button className='w-full h-12 text-white font-Inter-Bold text-xs mr-2 mt-4 bg-heritagebutton rounded-md' >Send Reset Link</button>
-                        </Link> 
+                        </Link>  */}
  
                     </div>
                 </div> 

@@ -52,7 +52,7 @@ export default function SellCoin(props: any) {
                         coin_amount: coinAmount, 
                         type: 2,
                         coin_type: coinIndex,
-                        USD: formik.values.amount/props.rate+'',
+                        USD: coinIndex === 3 ? formik.values.amount : formik.values.amount/props.rate+'',
                         rate: props.rate
                     }
                 ),

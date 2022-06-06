@@ -19,7 +19,7 @@ export default function AppStore() {
                                 <p className='font-Inter-SemiBold text-sm'>App Store</p>
                             </div>
                         </div>
-                        <div style={{backgroundColor:'#0F1542'}} className='flex justify-center items-center cursor-pointer mx-2 flex-row lg:w-40 w-full py-1 rounded-md' >     
+                        <a href='https://play.google.com/store/apps/details?id=com.dandolla98.theheritageexchange' style={{backgroundColor:'#0F1542'}} className='flex justify-center items-center cursor-pointer mx-2 flex-row lg:w-40 w-full py-1 rounded-md' >     
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" className='mr-2' viewBox="0 0 32 32">
                                 <rect className='fill-current text-transparent' width="32" height="32"/>
                                 <path className='fill-current text-white' d="M1.723,26.664v0L13.742,13.9l3.632,3.805L2.052,26.5A2.666,2.666,0,0,1,1.723,26.664Zm-1.044,0h0a1.693,1.693,0,0,1-.564-1.454c0-.65-.029-6.1-.056-11.618C.031,8.01,0,2.369,0,1.585A1.522,1.522,0,0,1,.618.158l12.6,13.194L.68,26.662Zm17.374-9.344h0l-3.789-3.969L18.049,9.33l5.214,2.983c.489.28.737.606.737.969a1.347,1.347,0,0,1-.737,1.045l-5.209,2.991ZM13.739,12.8h0L1.517,0a1.485,1.485,0,0,1,.535.176l15.32,8.766L13.74,12.8Z" transform="translate(5.333 2.667)"/>
@@ -28,7 +28,7 @@ export default function AppStore() {
                                 <p className='font-Inter-Regular text-xs' >Get it on</p>
                                 <p className='font-Inter-SemiBold text-sm'>Google Play</p>
                             </div>
-                        </div>
+                        </a>
                     </div> 
                 {/* </div> */}
             </div>
