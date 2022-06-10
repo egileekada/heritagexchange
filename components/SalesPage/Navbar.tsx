@@ -10,7 +10,7 @@ export default function Navbar() {
     return (
         <nav className='bg-heritagecolor relative w-full h-auto px-12 py-6 flex lg:flex-row xl:flex-row items-center justify-center flex-col' >
             <div className='w-full flex flex-1' >
-                <p className='text-3xl text-white mt-1 font-Inter-ExtraBold' >HX</p>
+                <p className='lg:text-2xl text-xl  text-white mt-1 font-Inter-ExtraBold' >Heritage Exchange</p>
             </div>
             <div className=' mt-2 hidden lg:flex xl:flex flex-row text-white  text-sm font-Inter-Medium mx-2' >
                 <Link href='/#' >
