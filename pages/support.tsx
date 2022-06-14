@@ -196,7 +196,7 @@ export default function support() {
                     <p className='font-Inter-Medium ' >Support@heritagexchange.com</p>
                 </div>
                 <div style={{backgroundColor: '#F8F9FF'}} className='mt-3 py-8 rounded-md px-8' >
-                    <p className='font-Inter-Medium ' >+1 233 892 399 299</p>
+                    <p className='font-Inter-Medium ' >+234 913 414 9633</p>
                 </div>
             </div>
         </div>
