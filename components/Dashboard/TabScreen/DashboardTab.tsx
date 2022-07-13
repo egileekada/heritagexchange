@@ -32,24 +32,13 @@ export default function DashboardTab(props: any) {
     const [amount, setAmount] = React.useState()
     const [btc, setBtc] = React.useState('' as any)
     const [usd, setUsd] = React.useState('' as any)
-    const [ethereum, setEthereum] = React.useState('' as any)
-    // const [NairaBtc, setNairaBtc] = React.useState('' as any)
-    // const [NairaEthereum, setNairaEthereum] = React.useState('' as any)
-    // const [NairaUsd, setNairaUsd] = React.useState('' as any)
-
-    // const DataInfo =(data: any)=> { 
-    //     setNairaBtc(btc * data.data.rate)
-    //     setNairaEthereum(ethereum * data.data.rate)
-    //     setNairaUsd(usd * data.data.rate) 
-    // }
+    const [ethereum, setEthereum] = React.useState('' as any) 
 
     const { isLoading, data } = useQuery('details', () =>
         fetch(`https://heritage-server.herokuapp.com/paypoint`).then(res =>
             res.json()
         )   
-    )
-
-    console.log(amount);
+    ) 
     
 
     const ClickHandlerBC =(type: any)=> {
@@ -73,8 +62,7 @@ export default function DashboardTab(props: any) {
             .then(data => {
                 setBtc(data[0].current_price)  
                 setEthereum(data[1].current_price)  
-                setUsd(data[4].current_price) 
-                console.log(data[4].current_price);
+                setUsd(data[4].current_price)  
                 
             })
             .catch((error) => {
