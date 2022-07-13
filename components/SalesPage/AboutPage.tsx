@@ -24,7 +24,7 @@ export default function AboutPage() {
                     <div className=' w-full flex flex-col lg:flex-row pt-10' >
                             <p className='font-Inter-ExtraBold text-2xl text-esdiac_text flex'>HX</p>
                         <div className=' w-auto flex flex-col mt-4 lg:mt-0 lg:ml-8' >
-                            <p className=' lg:w-84 w-full font-Inter-Medium text-xs' >I have used this exchange to buy and sell cryptocurrency and it has been the best experience ever. I totally recommend you use this</p>
+                            <p className=' lg:w-84 w-full font-Inter-Medium text-xs' >Omg! I was so excited purchasing my first cryptocurrency ever, it was a perfect experience.</p>
                             <p className='font-Inter-SemiBold text-sm mt-2'>Laura Madueke</p>
                         </div>
                     </div>
