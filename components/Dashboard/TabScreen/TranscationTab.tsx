@@ -107,7 +107,7 @@ export default function TranscationTab(props: any) {
                             <option>Weeks</option>
                             <option>Months</option>
                         </Select>
-                        <div className='flex flex-row lg:w-72 justify-center items-center lg:ml-8 lg:py-0 lg:my-0 px-2 py-3 my-2  rounded-md' style={{backgroundColor:'#F9FAFA'}}  >
+                        {/* <div className='flex flex-row lg:w-72 justify-center items-center lg:ml-8 lg:py-0 lg:my-0 px-2 py-3 my-2  rounded-md' style={{backgroundColor:'#F9FAFA'}}  >
                             <svg xmlns="http://www.w3.org/2000/svg" width="16.5" height="18.167" viewBox="0 0 16.5 18.167">
                                 <g transform="translate(0.75 0.75)">
                                     <path style={{stroke:'#200e32', strokeLinecap:'round', strokeLinejoin: 'round', fill:'none', strokeWidth:'1.5px',}} d="M0,.473H14.853" transform="translate(0.077 5.697)"/>
@@ -123,7 +123,7 @@ export default function TranscationTab(props: any) {
                                 </g>
                             </svg>
                             <p className='ml-2 font-Inter-Regular text-xs mt-1' >19/06/2021 - 21/06/2021</p>
-                        </div> 
+                        </div>  */}
                     </div> 
                     {tab === 0 ? 
                         <>
