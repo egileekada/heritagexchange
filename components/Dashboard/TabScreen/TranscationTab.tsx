@@ -92,14 +92,14 @@ export default function TranscationTab(props: any) {
                 </div>
             </div>
             <div className='w-full h-auto flex flex-col bg-white rounded-md my-8' >
-                <div className='w-full flex flex-row border-b px-10' >
+                {/* <div className='w-full flex flex-row border-b px-10' >
                     <div onClick={()=> setTab(0)} className={tab === 0 ? 'py-5 mr-4 w-40 px-2 flex justify-center border-b-3 text-heritagebutton border-heritagebutton cursor-pointer':'py-5 w-40 px-2 flex justify-center text-transinactive cursor-pointer'} >
                         <p className='font-Inter-SemiBold text-sm' >Cryptocurrency</p>
                     </div> 
                     <div onClick={()=> setTab(1)} className={tab === 1 ? 'py-5 ml-4 w-40 px-2 flex justify-center border-b-3 text-heritagebutton border-heritagebutton cursor-pointer':'py-5 w-40 px-2 flex justify-center text-transinactive cursor-pointer'}  >
                         <p className='font-Inter-SemiBold text-sm ' >FIAT</p>
                     </div>
-                </div>
+                </div> */}
                 <div className='py-10 px-4 lg:px-8' > 
                     <div className='flex flex-col lg:flex-row pb-4' >
                         <Select onChange={(e)=> OnChangeHandler(e.target.value)} variant="filled" backgroundColor='#F9FAFA' className='font-Inter-Regular text-sm' size='lg' fontSize='xs'> 
