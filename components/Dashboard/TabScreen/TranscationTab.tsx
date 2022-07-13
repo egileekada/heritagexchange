@@ -242,7 +242,7 @@ export default function TranscationTab(props: any) {
                                                     return( 
                                                         <div key={index} className='w-full my-4 flex text-sm flex-row items-center rounded-md p-5' style={{backgroundColor:'#F9FAFA'}} >
                                                             <div className='flex flex-col' >
-                                                                <p className='font-Inter-SemiBold text-sm' >$ {item.coin_type === 3 ? (item.coin_amount).toFixed(2) :(item.coin_amount).toFixed(7)} {item.coin_type === 1 ? 'BTC' : item.coin_type === 2 ? 'ETH' :'USDT'}</p>
+                                                                <p className='font-Inter-SemiBold text-sm' >{item.coin_type === 3 ? (item.coin_amount).toFixed(2) :(item.coin_amount).toFixed(7)} {item.coin_type === 1 ? 'BTC' : item.coin_type === 2 ? 'ETH' :'USDT'}</p>
                                                                 <p className='font-Inter-Regular text-xs mt-1' >{DateFormat(item.createdAt)}</p>
                                                             </div>
                                                             <div className='w-full flex flex-1' />
