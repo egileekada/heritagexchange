@@ -78,11 +78,11 @@ export default function SellCoin(props: any) {
         setCoinType(props.type)
         props.amount(formik.values.amount)
         {coinType === 'BTC' ?
-            setCoinAmount(formik.values.amount/NaireBtc)
+            setCoinAmount(formik.values.amount/props.nairabtc)
         :coinType === 'ETH' ?
-            setCoinAmount(formik.values.amount/NaireEth)
+            setCoinAmount(formik.values.amount/props.NairaEthereum)
         :
-            setCoinAmount(formik.values.amount/NaireUsd)}
+            setCoinAmount(formik.values.amount)}
         {coinType === 'BTC' ?
             setCoinIndex(1)
         :coinType === 'ETH' ?

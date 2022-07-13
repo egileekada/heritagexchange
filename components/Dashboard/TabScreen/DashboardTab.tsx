@@ -38,8 +38,7 @@ export default function DashboardTab(props: any) {
         fetch(`https://heritage-server.herokuapp.com/paypoint`).then(res =>
             res.json()
         )   
-    ) 
-    
+    )  
 
     const ClickHandlerBC =(type: any)=> {
         setBuyCoinModal(true);
@@ -94,7 +93,7 @@ export default function DashboardTab(props: any) {
                     <p className='font-Inter-Regular text-xs '>Rates are updated daily</p>
                 </div>
                 <div style={{backgroundColor:'#1526A7'}} className=' lg:w-full flex flex-col ml-4 lg:ml-8 p-6 rounded-md text-white ' >
-                    <p className='font-Inter-Medium text-sm w-48' >Today’s Sellng Rate</p>
+                    <p className='font-Inter-Medium text-sm w-48' >Today’s Selling Rate</p>
                     {!isLoading ?
                         <p className='font-Inter-Bold text-2xl py-2'>₦{data.data.sell_rate}/$</p>
                     :null}
