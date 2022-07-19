@@ -74,7 +74,7 @@ export default function register() {
                 headers: {
                 'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({first_name: formik.values.first_name, last_name: formik.values.last_name, email: value, password: formik.values.password}),
+                body: JSON.stringify({first_name: formik.values.first_name, last_name: formik.values.last_name, email: formik.values.email, password: formik.values.password}),
             });
     
             const json = await request.json();

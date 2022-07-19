@@ -25,49 +25,54 @@ export default function recovery() {
 
     const submit = async () => {
 
-            // if (!formik.dirty) { 
-            //     setShowModal(3)
-            //     const t1 = setTimeout(() => {  
-            //         clearTimeout(t1);
-            //         setShowModal(0)
-            //     }, 1000); 
-            //     setLoading(false);
-            //   return;
-            // }else if (!formik.isValid) { 
-            //     setShowModal(3)
-            //     const t1 = setTimeout(() => {  
-            //         clearTimeout(t1);
-            //         setShowModal(0)
-            //     }, 1000); 
-            //     setLoading(false);
-            //   return;
-            // }else {
-            //     setLoading(true);
-            //     const request = await fetch(`https://heritage-server.herokuapp.com/auth/verify`, {
-            //         method: 'POST',
-            //         headers: {
-            //         'Content-Type': 'application/json',
-            //         },
-            //         body: JSON.stringify(formik.values),
-            //     }); 
+            if (!formik.dirty) { 
+                setShowModal(3)
+                const t1 = setTimeout(() => {  
+                    clearTimeout(t1);
+                    setShowModal(0)
+                }, 1000); 
+                setLoading(false);
+              return;
+            }else if (!formik.isValid) { 
+                setShowModal(3)
+                const t1 = setTimeout(() => {  
+                    clearTimeout(t1);
+                    setShowModal(0)
+                }, 1000); 
+                setLoading(false);
+              return;
+            }else {
+                setLoading(true);
+                const request = await fetch(`https://heritage-server.herokuapp.com/auth/verify/${formik.values.code}`, {
+                    method: 'GET',
+                    headers: {
+                    'Content-Type': 'application/json',
+                    },
+                    // body: JSON.stringify(formik.values),
+                }); 
+                const t1 = setTimeout(() => { 
+                    setShowModal(0)
+                    Router.push('/dashboard'); 
+                    clearTimeout(t1);
+                }, 3000);  
         
-            //     if (request.status === 200) {    
-            //         // console.log(json) 
-            //         setShowModal(1)
-            //         const t1 = setTimeout(() => { 
-            //             setShowModal(0)
-            //             Router.push('/dashboard'); 
-            //             clearTimeout(t1);
-            //         }, 3000);  
-            //     }else {
-            //         setShowModal(2)
-            //         const t1 = setTimeout(() => { 
-            //             setShowModal(0) 
-            //             clearTimeout(t1);
-            //         }, 3000);  
-            //         setLoading(false);
-            //     } 
-            // }
+                // if (request.status === 200) {    
+                //     // console.log(json) 
+                //     setShowModal(1)
+                //     const t1 = setTimeout(() => { 
+                //         setShowModal(0)
+                //         Router.push('/dashboard'); 
+                //         clearTimeout(t1);
+                //     }, 3000);  
+                // }else {
+                //     setShowModal(2)
+                //     const t1 = setTimeout(() => { 
+                //         setShowModal(0) 
+                //         clearTimeout(t1);
+                //     }, 3000);  
+                //     setLoading(false);
+                // } 
+            }
         }
 
     return (
