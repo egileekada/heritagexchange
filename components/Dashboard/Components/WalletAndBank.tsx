@@ -23,7 +23,7 @@ export default function WalletAndBank() {
     
 
     const loginSchema = yup.object({  
-        account_number: yup.string().required('Your Account Number is required').min(10, 'A minimium of 10 characters'),
+        account_number: yup.string().required('Your Account Number is required'),
         account_name: yup.string().required('Your Account Name is required').min(3, 'A minimium of 3 characters'),
         bank_name: yup.string().required('Your Bank Name is required').min(3, 'A minimium of 3 characters'),
         bitcoin_wallet: yup.string().required('Your bitcoin Address is required'),
