@@ -66,7 +66,7 @@ export default function WalletAndBank() {
                     ethereum_wallet: formik.values.ethereum_wallet,
                     usdt_wallet: formik.values.usdt_wallet,
                     account_name: formik.values.account_name,
-                    account_number: formik.values.account_number+'',
+                    account_number: formik.values.account_number,
                     bank_name: formik.values.bank_name 
                 }),
             });
@@ -183,12 +183,11 @@ export default function WalletAndBank() {
                     <div className='w-full flex flex-col py-3 ' > 
                         <p className='font-Inter-SemiBold text-xs pb-2' >Account Number</p>
                         <Input  
-                            name="account_number"
+                            name="account_number" 
                             onChange={formik.handleChange}
                             onFocus={() =>
                                 formik.setFieldTouched("account_number", true, true)
-                            }  
-                            type='number'
+                            }   
                             variant="filled" fontSize='sm' size="lg" placeholder={userContext.userData.account_number} />
                         <div className="w-full h-auto pt-2">
                             {formik.touched.account_number && formik.errors.account_number && (
