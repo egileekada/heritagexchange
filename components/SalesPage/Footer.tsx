@@ -10,7 +10,7 @@ export default function Footer() {
                 <p className='mx-2 lg:mx-8' >Privacy policy</p>
                 <p onClick={()=> Router.push('/support')} className='mx-2 lg:mx-8 cursor-pointer' >Support</p>
             </div>
-            <p className='font-Inter-Regular text-xs text-white mt-16 mb-4' >Copyright © 2021</p>
+            <p className='font-Inter-Regular text-xs text-white mt-16 mb-4' >Copyright © 2022</p>
         </div>
     )
 }
