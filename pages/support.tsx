@@ -8,6 +8,8 @@ import Footer from '../components/SalesPage/Footer'
 import Navbar from '../components/SalesPage/Navbar'
 import { Textarea } from '@chakra-ui/textarea'
 import Router from 'next/router'
+import { BsWhatsapp } from "react-icons/bs";
+import { HiOutlineMail } from "react-icons/hi";
 
 export default function support() { 
  
@@ -192,11 +194,13 @@ export default function support() {
             </div>
             <div className='w-full pt-14 pb-36 lg:pb-0 lg:pl-14 lg:pt-20 ' >
                 <p className='font-Inter-Bold text-lg' >You can also reach us here</p>
-                <div style={{backgroundColor: '#F8F9FF'}} className='mt-5 py-8 rounded-md px-8' >
-                    <p className='font-Inter-Medium ' >Support@heritagexchange.com</p>
+                <div style={{backgroundColor: '#F8F9FF'}} className='mt-5 flex items-center py-8 rounded-md px-8' >
+                    <HiOutlineMail size={30} className="mr-3"  />
+                    <p className='font-Inter-Medium text-sm ' >Support@heritagexchange.com</p>
                 </div>
-                <div style={{backgroundColor: '#F8F9FF'}} className='mt-3 py-8 rounded-md px-8' >
-                    <p className='font-Inter-Medium ' >+234 913 414 9633</p>
+                <div style={{backgroundColor: '#F8F9FF'}} className='mt-3 flex items-center py-8 rounded-md px-8' >
+                <BsWhatsapp size={30} className="mr-3" />
+                    <p className='font-Inter-Medium text-sm ' >+234 913 414 9633</p>
                 </div>
             </div>
         </div>

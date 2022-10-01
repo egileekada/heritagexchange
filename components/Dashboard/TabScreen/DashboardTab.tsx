@@ -62,6 +62,7 @@ export default function DashboardTab(props: any) {
                 setBtc(data[0].current_price)  
                 setEthereum(data[1].current_price)  
                 setUsd(data[4].current_price)  
+                console.log(data);
                 
             })
             .catch((error) => {
