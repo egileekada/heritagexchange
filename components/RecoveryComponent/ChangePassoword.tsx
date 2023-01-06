@@ -5,6 +5,7 @@ import { Input } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { IoIosArrowBack } from 'react-icons/io';
 import Router from 'next/router'
+import { BASEURL } from '../../global/URL';
 
 export default function ChangePassoword() {
 
@@ -62,7 +63,7 @@ export default function ChangePassoword() {
             return;
         }else {
             setLoading(true);
-            const request = await fetch(`https://heritage-server.herokuapp.com/auth/resetpassword/${otp}`, {
+            const request = await fetch(`${BASEURL.URL}/auth/resetpassword/${otp}`, {
                 method: 'PUT',
                 headers: {
                 'Content-Type': 'application/json',

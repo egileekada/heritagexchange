@@ -5,6 +5,7 @@ import * as yup from 'yup'
 import { useFormik } from 'formik'; 
 import Router from 'next/router'
 import { motion } from 'framer-motion';
+import { BASEURL } from '../../../global/URL';
 
 export default function Settings(props: any) {
 
@@ -38,7 +39,7 @@ export default function Settings(props: any) {
           return;
         }else {
             setLoading(true);
-            const request = await fetch(`https://heritage-server.herokuapp.com/auth/changepassword/${localStorage.getItem('id')}`, {
+            const request = await fetch(`${BASEURL.URL}/auth/changepassword/${localStorage.getItem('id')}`, {
                 method: 'PUT',
                 headers: {
                 'Content-Type': 'application/json',

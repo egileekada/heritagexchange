@@ -6,6 +6,7 @@ import * as yup from 'yup'
 import { useFormik } from 'formik'; 
 import { IUser, UserContext } from '../context/UserContext';
 import Router from 'next/router'
+import { BASEURL } from '../global/URL';
 
 export default function login() {
 
@@ -56,7 +57,7 @@ export default function login() {
           return;
         }else {
             setLoading(true);
-            const request = await fetch(`https://heritage-server.herokuapp.com/auth/login`, {
+            const request = await fetch(`${BASEURL.URL}/auth/login`, {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json',

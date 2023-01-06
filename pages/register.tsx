@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import * as yup from 'yup'
 import { useFormik } from 'formik'; 
 import Router from 'next/router'
+import { BASEURL } from '../global/URL';
 
 export default function register() { 
 
@@ -69,7 +70,7 @@ export default function register() {
             return;
         }else {
             setLoading(true);
-            const request = await fetch(`https://heritage-server.herokuapp.com/auth/signup`, {
+            const request = await fetch(`${BASEURL.URL}/auth/signup`, {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json',
@@ -94,7 +95,7 @@ export default function register() {
                 setLoading(false);
 
 
-                await fetch(`https://heritage-server.herokuapp.com/auth/verify/${json.data.user._id}`, {
+                await fetch(`${BASEURL.URL}/auth/verify/${json.data.user._id}`, {
                     method: 'GET',
                     headers: {
                     'Content-Type': 'application/json',

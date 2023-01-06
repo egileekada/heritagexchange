@@ -1,6 +1,7 @@
 import React from 'react'
 import { IoIosArrowDropleft, IoIosCloseCircleOutline } from 'react-icons/io'
 import { useQuery } from 'react-query'
+import { BASEURL } from '../../../global/URL'
 
 export default function CoinInstruction(props: any) {
     
@@ -24,7 +25,7 @@ export default function CoinInstruction(props: any) {
     }
  
     const { isLoading, data } = useQuery('transcation', () =>
-        fetch(`https://heritage-server.herokuapp.com/paypoint`).then(res =>
+        fetch(`${BASEURL.URL}/paypoint`).then(res =>
             res.json()
         )
     ) 

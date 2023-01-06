@@ -9,6 +9,7 @@ import SellPaymentProof from '../DashboardModal.tsx/SellPaymentProof';
 import Transaction from '../DashboardModal.tsx/Transaction';
 import { IUser, UserContext } from '../../../context/UserContext';
 import { useQuery } from 'react-query';
+import { BASEURL } from '../../../global/URL';
 // import { CyptoRate } from '../../../connections/CyptoRate';
 
 export default function DashboardTab(props: any) {
@@ -35,7 +36,7 @@ export default function DashboardTab(props: any) {
     const [ethereum, setEthereum] = React.useState('' as any) 
 
     const { isLoading, data } = useQuery('details', () =>
-        fetch(`https://heritage-server.herokuapp.com/paypoint`).then(res =>
+        fetch(`${BASEURL.URL}/paypoint`).then(res =>
             res.json()
         )   
     )  

@@ -2,6 +2,7 @@ import { Input } from '@chakra-ui/react'
 import Router from "next/router";
 import React from 'react'
 import { IUser, UserContext } from '../../../context/UserContext';
+import { BASEURL } from '../../../global/URL';
 
 export default function PersonalInformation() {
  
@@ -13,7 +14,7 @@ export default function PersonalInformation() {
 
     const submit = async () => {
         setLoading(true)
-        await fetch(`https://heritage-server.herokuapp.com/user/edit/names/${localStorage.getItem('id')}`, {
+        await fetch(`${BASEURL.URL}/user/edit/names/${localStorage.getItem('id')}`, {
             method: 'PUT',
             headers: {
             'Content-Type': 'application/json',

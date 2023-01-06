@@ -10,6 +10,7 @@ import { Textarea } from '@chakra-ui/textarea'
 import Router from 'next/router'
 import { BsWhatsapp } from "react-icons/bs";
 import { HiOutlineMail } from "react-icons/hi";
+import { BASEURL } from '../global/URL'
 
 export default function support() { 
  
@@ -48,7 +49,7 @@ export default function support() {
           return;
         }else {
             setLoading(true);
-            const request = await fetch(`https://heritage-server.herokuapp.com/support`, {
+            const request = await fetch(`${BASEURL.URL}/support`, {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json',

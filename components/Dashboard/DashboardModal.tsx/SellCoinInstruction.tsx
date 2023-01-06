@@ -2,6 +2,7 @@ import React from 'react'
 import { IoIosArrowDropleft, IoIosCloseCircleOutline, IoIosCopy } from 'react-icons/io'
 import QRCode from "react-qr-code";
 import { useQuery } from 'react-query'
+import { BASEURL } from '../../../global/URL';
 
 export default function SellCoinInstruction(props: any) {
     
@@ -31,7 +32,7 @@ export default function SellCoinInstruction(props: any) {
     }
  
     const { isLoading, data } = useQuery('details', () =>
-        fetch(`https://heritage-server.herokuapp.com/paypoint`).then(res =>
+        fetch(`${BASEURL.URL}/paypoint`).then(res =>
             res.json()
         )
     ) 

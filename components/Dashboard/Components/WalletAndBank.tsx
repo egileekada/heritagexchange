@@ -14,7 +14,7 @@ export default function WalletAndBank() {
     const [loading, setLoading] = React.useState(false);
 
     const { isLoading, data } = useQuery('AllBanks', () =>
-        fetch(`https://heritage-server.herokuapp.com/bank/all`).then(res =>
+        fetch(`${BASEURL.URL}/bank/all`).then(res =>
             res.json()
         )   
     )

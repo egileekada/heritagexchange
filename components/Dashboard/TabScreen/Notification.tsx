@@ -1,11 +1,12 @@
 import React from 'react'
 import { IoIosNotificationsOutline } from 'react-icons/io'
 import { useQuery } from 'react-query'
+import { BASEURL } from '../../../global/URL'
 
 export default function Notification() { 
       
     const { isLoading, data } = useQuery('notify', () =>
-        fetch(`https://heritage-server.herokuapp.com/notifications/user/${localStorage.getItem('id')}`).then(res =>
+        fetch(`${BASEURL.URL}/notifications/user/${localStorage.getItem('id')}`).then(res =>
             res.json()
         )
     ) 

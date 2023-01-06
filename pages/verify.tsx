@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import * as yup from 'yup'
 import { useFormik } from 'formik'; 
 import Router from 'next/router'
+import { BASEURL } from '../global/URL';
 
 export default function recovery() {
 
@@ -43,7 +44,7 @@ export default function recovery() {
               return;
             }else {
                 setLoading(true);
-                const request = await fetch(`https://heritage-server.herokuapp.com/auth/verify/${formik.values.code}`, {
+                const request = await fetch(`${BASEURL.URL}/auth/verify/${formik.values.code}`, {
                     method: 'GET',
                     headers: {
                     'Content-Type': 'application/json',

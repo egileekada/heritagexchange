@@ -3,6 +3,7 @@ import { IoIosArrowBack, IoIosArrowForward, IoIosNotificationsOutline } from 're
 import React from 'react';
 import { useQuery } from "react-query";
 import moment from "moment";
+import { BASEURL } from "../../../global/URL";
 
 export default function TranscationTab(props: any) {
 
@@ -17,7 +18,7 @@ export default function TranscationTab(props: any) {
     const ItemArray = ['Cancelled', 'Pending', 'Completed', 'Cancelled' ] 
       
     const { isLoading, data } = useQuery('trans', () =>
-        fetch(`https://heritage-server.herokuapp.com/transaction/all/${localStorage.getItem('id')}`).then(res =>
+        fetch(`${BASEURL.URL}/transaction/all/${localStorage.getItem('id')}`).then(res =>
             res.json()
         )
     )  

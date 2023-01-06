@@ -4,6 +4,7 @@ import { useFormik } from 'formik';
 import { Input } from '@chakra-ui/react';
 import Router from 'next/router'
 import { motion } from 'framer-motion';
+import { BASEURL } from '../../global/URL';
 
 export default function SendOtp(props: any) {
     
@@ -40,7 +41,7 @@ export default function SendOtp(props: any) {
               return;
             }else {
                 setLoading(true);
-                const request = await fetch(`https://heritage-server.herokuapp.com/auth/resetpassword`, {
+                const request = await fetch(`${BASEURL.URL}/auth/resetpassword`, {
                     method: 'POST',
                     headers: {
                     'Content-Type': 'application/json',

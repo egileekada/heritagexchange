@@ -11,13 +11,14 @@ import Notification from '../components/Dashboard/TabScreen/Notification'
 import { IUser, UserContext } from '../context/UserContext';
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 import Router from 'next/router' 
+import { BASEURL } from '../global/URL'
 
 export default function Dashboard() {
 
     const [tab, setTab] = React.useState('Dashboard') 
     const userContext: IUser = React.useContext(UserContext);  
     const { isLoading, data } = useQuery('repoData', () =>
-        fetch(`https://heritage-server.herokuapp.com/user/${localStorage.getItem('id')}`).then(res =>
+        fetch(`${BASEURL.URL}/user/${localStorage.getItem('id')}`).then(res =>
             res.json()
         )
     ) 

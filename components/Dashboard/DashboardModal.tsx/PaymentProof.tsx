@@ -4,6 +4,7 @@ import * as axios from 'axios'
 import React from 'react'
 import { IoIosArrowDropleft, IoIosClose, IoIosCloseCircleOutline } from 'react-icons/io'
 import { IUser, UserContext } from '../../../context/UserContext';
+import { BASEURL } from '../../../global/URL';
 
 export default function PaymentProof(props:any) {
 
@@ -69,7 +70,7 @@ export default function PaymentProof(props:any) {
         );
         
         setLoading(true) 
-            await axios.default.post(`https://heritage-server.herokuapp.com/transaction/uploadfiles/${localStorage.getItem('tid')}`, formData,{
+            await axios.default.post(`${BASEURL.URL}/transaction/uploadfiles/${localStorage.getItem('tid')}`, formData,{
                 headers: { 'content-type': 'application/json'}
             });
 

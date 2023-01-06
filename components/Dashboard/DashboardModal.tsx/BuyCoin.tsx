@@ -5,6 +5,7 @@ import * as yup from 'yup'
 import { useFormik } from 'formik'; 
 import React from 'react'
 import { IoIosCloseCircleOutline } from 'react-icons/io'
+import { BASEURL } from '../../../global/URL';
 
 export default function BuyCoin(props: any) { 
 
@@ -42,7 +43,7 @@ export default function BuyCoin(props: any) {
           return;
         }else {
             setLoading(true);
-            const request = await fetch(`https://heritage-server.herokuapp.com/transaction/create/${localStorage.getItem('id')}`, {
+            const request = await fetch(`${BASEURL.URL}/transaction/create/${localStorage.getItem('id')}`, {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json',
