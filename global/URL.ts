@@ -1,4 +1,4 @@
-const liveUrl = 'https://heritage-server.herokuapp.com'; 
+const liveUrl = 'https://api.heritagexchange.com'; 
 
 export const BASEURL = {
     URL: liveUrl,
