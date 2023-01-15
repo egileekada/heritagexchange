@@ -13,6 +13,7 @@ export default function login() {
     const [showpassword, setShowpass] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
     const [modal, setShowModal] = React.useState(0) 
+    const [message, setMessage] = React.useState("") 
 
     const handleShowpassword = () => {
         setShowpass(prev => !prev);
@@ -72,13 +73,15 @@ export default function login() {
                 localStorage.setItem('id', json.data.user._id); 
                 localStorage.setItem('details', JSON.stringify(json.data.user))
                 // console.log(json) 
+                setMessage(json?.successMessage)
                 setShowModal(1)
                 const t1 = setTimeout(() => { 
                     setShowModal(0)
-                    Router.push('/dashboard'); 
+                    // Router.push('/dashboard'); 
                     clearTimeout(t1);
                 }, 3000);  
             }else {
+                setMessage(json.errorMessage)
                 setShowModal(2)
                 const t1 = setTimeout(() => { 
                     setShowModal(0) 
@@ -103,7 +106,7 @@ export default function login() {
                     animate={{ y: 0, opacity: 1 }}
                     className="h-12 flex justify-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none">
                     <div className=' w-full bg-green-400 px-4 py-2 flex justify-center items-center ' > 
-                        <p style={{color: '#FFF', fontSize: '16px'}} className='font-Inter-Medium' >Login Successful</p>
+                        <p style={{color: '#FFF', fontSize: '16px'}} className='font-Inter-Medium' >{message}</p>
                     </div>
                 </motion.div>
             :null}
@@ -113,7 +116,7 @@ export default function login() {
                     animate={{ y: 0, opacity: 1 }}
                     className="h-12 flex justify-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none">
                     <div className=' w-full bg-red-500 px-4 py-2 flex justify-center items-center ' > 
-                        <p style={{color: '#FFF', fontSize: '16px'}} className='font-Inter-Bold' >Incorrect Email or Password</p>
+                        <p style={{color: '#FFF', fontSize: '16px'}} className='font-Inter-Bold' >{message}</p>
                     </div>
                 </motion.div>
             :null}

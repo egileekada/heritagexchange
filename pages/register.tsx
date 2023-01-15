@@ -14,6 +14,7 @@ export default function register() {
     const [modal, setShowModal] = React.useState(0) 
     const [value, setValue] = React.useState('') 
     const [newvalue, setNewValue] = React.useState('') 
+    const [message, setMessage] = React.useState("") 
 
     const handleShowpassword = () => {
         setShowpass(prev => !prev);
@@ -85,6 +86,7 @@ export default function register() {
                 localStorage.setItem('id', json.data.user._id); 
                 localStorage.setItem('details', JSON.stringify(json.data.user))
                 setLoading(false); 
+                setMessage(json?.successMessage)
                 setShowModal(1)
                 const t1 = setTimeout(() => { 
                     setShowModal(0)
@@ -103,6 +105,7 @@ export default function register() {
                 });
 
             }else {
+                setMessage(json.errorMessage)
                 setShowModal(2)
                 const t1 = setTimeout(() => { 
                     setShowModal(0) 
@@ -132,7 +135,7 @@ export default function register() {
                     animate={{ y: 0, opacity: 1 }}
                     className="h-12 flex justify-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none">
                     <div className=' w-full bg-green-400 px-4 py-2 flex justify-center items-center ' > 
-                        <p style={{color: '#FFF', fontSize: '16px'}} className='font-Inter-Medium' >Registration Successful</p>
+                        <p style={{color: '#FFF', fontSize: '16px'}} className='font-Inter-Medium' >{message}</p>
                     </div>
                 </motion.div>
             :null}
@@ -142,7 +145,7 @@ export default function register() {
                     animate={{ y: 0, opacity: 1 }}
                     className="h-12 flex justify-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none">
                     <div className=' w-full bg-red-500 px-4 py-2 flex justify-center items-center ' > 
-                        <p style={{color: '#FFF', fontSize: '16px'}} className='font-Inter-Bold' >Email Already Exist</p>
+                        <p style={{color: '#FFF', fontSize: '16px'}} className='font-Inter-Bold' >{message}</p>
                     </div>
                 </motion.div>
             :null}
