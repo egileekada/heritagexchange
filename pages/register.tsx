@@ -132,7 +132,7 @@ export default function register() {
                     animate={{ y: 0, opacity: 1 }}
                     className="h-12 flex justify-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none">
                     <div className=' w-full bg-green-400 px-4 py-2 flex justify-center items-center ' > 
-                        <p style={{color: '#FFF', fontSize: '16px'}} className='font-Inter-Medium' >Login Successfull</p>
+                        <p style={{color: '#FFF', fontSize: '16px'}} className='font-Inter-Medium' >Registration Successful</p>
                     </div>
                 </motion.div>
             :null}
