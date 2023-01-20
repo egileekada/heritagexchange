@@ -1,4 +1,4 @@
-import { Input, Select } from '@chakra-ui/react';
+import { Input, Select, useToast } from '@chakra-ui/react';
 import React from 'react'
 import * as axios from 'axios'   
 import { IoIosArrowDropleft, IoIosCloseCircleOutline, IoIosClose } from 'react-icons/io';
@@ -14,6 +14,7 @@ export default function SellPaymentProof(props:any) {
     const [loading, setLoading] = React.useState(false);
     const userContext: IUser = React.useContext(UserContext); 
     let formData = new FormData() 
+    const toast = useToast()
 
     const PreviousPage =()=> {
         props.close(false);
@@ -47,15 +48,28 @@ export default function SellPaymentProof(props:any) {
         );
         
         setLoading(true) 
-            await axios.default.post(`${BASEURL.URL}/transaction/uploadfiles/${localStorage.getItem('tid')}`, formData,{
+            const response = await axios.default.post(`${BASEURL.URL}/transaction/uploadfiles/${localStorage.getItem('tid')}`, formData,{
                 headers: { 'content-type': 'application/json'}
             });
 
-            // const json = await request.json(); 
-
-            setLoading(false)
-            props.close(false);
-            props.next(true);
+            console.log(response);
+            if(response?.status){
+                // window.open("https://web.whatsapp.com/send?phone=07030697459&text=Hello&app_absent=0")
+                
+                
+                // const json = await request.json();  
+                setLoading(false)
+                props.close(false);
+                props.next(true);
+            } else { 
+                setLoading(false) 
+                toast({
+                    title: "Error",
+                    position: "bottom",
+                    status: "error",
+                    isClosable: true,
+                }) 
+            }
     }  
 
     const handleImage = (e:any) => {  

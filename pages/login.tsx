@@ -77,7 +77,7 @@ export default function login() {
                 setShowModal(1)
                 const t1 = setTimeout(() => { 
                     setShowModal(0)
-                    // Router.push('/dashboard'); 
+                    Router.push('/dashboard'); 
                     clearTimeout(t1);
                 }, 3000);  
             }else {

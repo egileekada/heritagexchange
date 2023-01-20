@@ -90,7 +90,7 @@ export default function SellCoinInstruction(props: any) {
                     </div>
                     <p className='font-Inter-SemiBold text-xs mt-2 mb-2'>Address</p>   
                     {!isLoading ?  
-                        <p className=' w-full lg:w-84 flex font-Inter-Regular my-2 text-xs'>{props.type === 'BTC' ? data.data.bitcoin_wallet :props.type === 'ETH' ? data.data.etheruem_wallet :  data.data.usdt_wallet}<span><IoIosCopy onClick={() => copyToClipBoard(props.type === 'BTC' ? data.data.bitcoin_wallet :props.type === 'ETH' ? data.data.etheruem_wallet :  data.data.usdt_wallet)} style={{color: '#1526A7'}} className=' ml-2 cursor-pointer w-4 h-4' /></span>
+                        <p className=' w-full lg:w-84 flex font-Inter-Regular my-2 text-xs'>{props.type === 'BTC' ? "BTC "+data.data.bitcoin_wallet :props.type === 'ETH' ? "ETH ERC "+data.data.etheruem_wallet : "USDT TRC "+data.data.usdt_wallet}<span><IoIosCopy onClick={() => copyToClipBoard(props.type === 'BTC' ? data.data.bitcoin_wallet :props.type === 'ETH' ? data.data.etheruem_wallet :  data.data.usdt_wallet)} style={{color: '#1526A7'}} className=' ml-2 cursor-pointer w-4 h-4' /></span>
                         {copySuccess}</p> 
                     :null}
                     <button onClick={()=> NextPage()} style={{backgroundColor:'#1526A7'}} className='w-full py-4 my-6 font-Inter-Medium rounded text-xs text-white' >Upload Payment Proof</button>
