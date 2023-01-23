@@ -1,5 +1,5 @@
 import React from 'react' 
-import { IoIosNotificationsOutline } from 'react-icons/io';
+import { IoIosInformationCircleOutline, IoIosNotificationsOutline } from 'react-icons/io';
 import BuyCoin from '../DashboardModal.tsx/BuyCoin';
 import CoinInstruction from '../DashboardModal.tsx/CoinInstruction';
 import PaymentProof from '../DashboardModal.tsx/PaymentProof';
@@ -118,6 +118,10 @@ export default function DashboardTab(props: any) {
             </div>
             <div className='w-auto h-auto dashboardslide flex flex-row pt-8 px-2 pb-28 lg:pb-6' >
                 <div className='w-full items-center justify-center flex flex-col pr-0 lg:pr-14' >
+                    <div className=' bg-heritagecolor bg-opacity-10 text-red-500 mb-6 flex justify-center items-center rounded-md p-4 w-full ' >
+                        <IoIosInformationCircleOutline size="30px"  />
+                        <p className=' font-Inter-Medium text-sm ml-2 ' >Minimum trade on website 100$</p>
+                    </div>
                     <p className='font-Inter-SemiBold hidden text-sm lg:flex  ' >Buy Cryptocurrency</p>
                     <div className='w-full rounded flex flex-row lg:hidden justify-center items-center' >
                         <div onClick={()=> setTab(0)} className={tab === 0 ? 'w-full  flex justify-center items-center rounded bg-heritagebutton text-white':'w-full h-full flex justify-center items-center rounded bg-white'} >
@@ -169,8 +173,8 @@ export default function DashboardTab(props: any) {
                         </div>
                     </div>
                 </div> 
-                <div className=' w-full h-auto hidden lg:flex px-4 rounded-md bg-white ' >
-                    <img src='/assets/images/DashBg.png' className='mx-4 w-96 object-cover rounded-md' /> 
+                <div className=' w-fit h-fit hidden lg:flex px-4 rounded-md bg-white ' >
+                    <img src='/assets/images/DashBg.png' className='mx-4 w-96 h-full object-contain rounded-md' /> 
                 </div>
             </div>
         </div>
