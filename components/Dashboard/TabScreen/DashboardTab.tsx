@@ -183,7 +183,7 @@ export default function DashboardTab(props: any) {
             (
                 <>
                     <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed pb-4 px-4 inset-0 z-50 outline-none focus:outline-none"> 
-                        <SellCoin nairausd={usd} nairabtc={btc} rate={data.data.sell_rate} NairaEthereum={ethereum} amount={setAmount} type={coinType} set={setCoinType} next={setSellInstructionModal} close={setSellCoinModal} />
+                        <SellCoin nairausd={usd} nairabtc={btc} rate={data.data.buy_rate} NairaEthereum={ethereum} amount={setAmount} type={coinType} set={setCoinType} next={setSellInstructionModal} close={setSellCoinModal} />
                     </div> 
                     <div className="opacity-75 fixed flex flex-1 inset-0 z-40 bg-black"/>
                 </>
@@ -193,7 +193,7 @@ export default function DashboardTab(props: any) {
             (
                 <>
                     <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed pb-4 px-4 inset-0 z-50 outline-none focus:outline-none"> 
-                        <BuyCoin nairausd={usd} nairabtc={btc} rate={data.data.buy_rate} NairaEthereum={ethereum} amount={setAmount} type={coinType} set={setCoinType} next={setInstructionModal} close={setBuyCoinModal} />
+                        <BuyCoin nairausd={usd} nairabtc={btc} rate={data.data.sell_rate} NairaEthereum={ethereum} amount={setAmount} type={coinType} set={setCoinType} next={setInstructionModal} close={setBuyCoinModal} />
                     </div> 
                     <div className="opacity-75 fixed flex flex-1 inset-0 z-40 bg-black"/>
                 </>
@@ -203,7 +203,7 @@ export default function DashboardTab(props: any) {
             (
                 <>
                     <div className="h-full lg:w-98 mx-auto overflow-x-hidden overflow-y-auto fixed pb-4 px-4 pt-4 inset-0 z-50 outline-none focus:outline-none"> 
-                        <SellCoinInstruction nairausd={usd} nairabtc={btc}  rate={data.data.sell_rate} type={coinType}  NairaEthereum={ethereum} next={setSellPaymentModal} back={setSellCoinModal} amount={amount} close={setSellInstructionModal} />
+                        <SellCoinInstruction nairausd={usd} nairabtc={btc}  rate={data.data.buy_rate} type={coinType}  NairaEthereum={ethereum} next={setSellPaymentModal} back={setSellCoinModal} amount={amount} close={setSellInstructionModal} />
                     </div> 
                     <div className="opacity-75 fixed flex flex-1 inset-0 z-40 bg-black"/>
                 </>
@@ -213,7 +213,7 @@ export default function DashboardTab(props: any) {
             (
                 <>
                     <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed pb-4 px-4 inset-0 z-50 outline-none focus:outline-none"> 
-                        <CoinInstruction nairausd={usd}  nairabtc={btc}  rate={data.data.buy_rate} NairaEthereum={ethereum}  type={coinType} next={setPaymentModal}  amount={amount} back={setBuyCoinModal} close={setInstructionModal} />
+                        <CoinInstruction nairausd={usd}  nairabtc={btc}  rate={data.data.sell_rate} NairaEthereum={ethereum}  type={coinType} next={setPaymentModal}  amount={amount} back={setBuyCoinModal} close={setInstructionModal} />
                     </div> 
                     <div className="opacity-75 fixed flex flex-1 inset-0 z-40 bg-black"/>
                 </>
@@ -243,7 +243,7 @@ export default function DashboardTab(props: any) {
             (
                 <>
                     <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed pb-4 px-4 inset-0 z-50 outline-none focus:outline-none"> 
-                        <Transaction rate={data.data.buy_rate} close={setTransactionModal} amount={amount} nairabtc={btc} NairaEthereum={ethereum}  nairausd={usd}  coinType={coinType} />
+                        <Transaction rate={data.data.sell_rate} close={setTransactionModal} amount={amount} nairabtc={btc} NairaEthereum={ethereum}  nairausd={usd}  coinType={coinType} />
                     </div> 
                     <div className="opacity-75 fixed flex flex-1 inset-0 z-40 bg-black"/>
                 </>
@@ -253,7 +253,7 @@ export default function DashboardTab(props: any) {
             (
                 <>
                     <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed pb-4 px-4 inset-0 z-50 outline-none focus:outline-none"> 
-                        <Transaction rate={data.data.sell_rate} close={setSellTransactionModal} sell={true} amount={amount} nairabtc={btc} NairaEthereum={ethereum}  nairausd={usd}  coinType={coinType} />
+                        <Transaction rate={data.data.buy_rate} close={setSellTransactionModal} sell={true} amount={amount} nairabtc={btc} NairaEthereum={ethereum}  nairausd={usd}  coinType={coinType} />
                     </div> 
                     <div className="opacity-75 fixed flex flex-1 inset-0 z-40 bg-black"/>
                 </>
